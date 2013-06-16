@@ -42,7 +42,7 @@
                   'Active' - where the active window is -->
   </placement>
   <theme>
-    <name>Moka</name>
+    <name>AbsE</name>
     <titleLayout>LDIMC</titleLayout>
     <!--
       available characters are NDSLIMC, each can occur at most once.
@@ -273,9 +273,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-		  <name>playmusic</name>
+          <name>playmusic</name>
         </startupnotify>
-		<command>~/.bin/playmusic.sh</command>
+        <command>~/.bin/playmusic.sh</command>
       </action>
     </keybind>
     <keybind key="W-e">
