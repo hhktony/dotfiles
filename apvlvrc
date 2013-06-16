@@ -1,0 +1,88 @@
+
+"============================================================================================
+"
+"        FileName: .apvlvrc
+"
+"     Descriptions:
+"
+"         Version: 1.0
+"         Created: 2013-04-02 02:20:43
+"        Revision: (none)
+"
+"          Author: xutao(mark), butbueatiful@gmail.com
+"         Company: wanwei-tech
+"
+"============================================================================================
+
+""""""""""""""""""""""""""""""""""""""""""""""""""
+"   some map
+""""""""""""""""""""""""""""""""""""""""""""""""""
+" map n to <C-f> to goto next page
+map n <C-f>
+map <Space> <C-f>
+
+" and p to prepage
+map p <C-b>
+
+" map I to zi, and O to zo
+map I zi
+map O zo
+
+map h H
+map m M
+map l L
+
+" default fullscreen
+set fullscreen=no
+
+" default zoom
+" zoom has 4 styles
+" a float type number
+" fitwidth
+" fitheight
+" normal
+set zoom=fitwidth
+
+" set window size
+"set width=800
+"set height=800
+
+" set command timeout between two key press 
+set commandtimeout=2000
+
+" set default dir
+set defaultdir=/home/butbueaitful/book
+
+" set if use content view ad first
+set content=no
+
+" set a pdf page continuous or not
+set continuous=no
+
+" set a pad to continuous page
+"set continuouspad=2
+
+" set if auto scroll page when at the end or begin of one pdf page
+set autoscrollpage=no
+
+" set if auto scroll doc from 1st page when goto the last page
+"set autoscrolldoc=no
+
+" set if disable ~/.apvlvinfo, default is no
+"set noinfo=no
+
+" set pdf object cache size
+set pdfcache = 8
+
+" set if use right and bottom scrollbar
+set scrollbar = no
+
+" set if use visual mode to select and copy text
+set visualmode = no
+
+" set if wrapscan text
+"set wrapscan = yes
+
+" set double click action
+" option value is 'word', 'line' or 'page'
+"set doubleclick = word

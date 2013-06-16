@@ -1,0 +1,22 @@
+# wallpaper
+feh --bg-scale ~/.config/openbox/screen.png & 
+
+# Taskbar
+tint2 & 
+
+#  Thunar's file manager
+thunar --daemon &
+
+# Conky system monitor
+conky -d &
+
+# Volume control
+#volumeicon -b &
+
+# guake
+(sleep 3s && guake) &
+
+# fcitx
+#(sleep 4s && fcitx) &
+
+#(sleep 4s && /usr/bin/nm-applet --sm-disable) &

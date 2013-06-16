@@ -1,0 +1,45 @@
+# git config --global core.excludesfile ~/.global_ignore
+
+# Linux
+.*
+!.gitignore
+*~
+
+# Vim
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+
+# svn
+#.svn/
+
+# Ignore tags created by etags and ctags
+TAGS
+!TAGS/
+tags
+!tags/
+
+# c/c++
+*.slo
+*.lo
+*.o
+*.lib
+*.dll
+*.so
+*.so.*
+*.dylib
+*.lai
+*.la
+*.a
+*.exe
+*.out
+*.app
+
+# Qt-es
+*.pro.user
+*.pro.user.*
+moc_*.cpp
+qrc_*.cpp
+Makefile
+*-build-*

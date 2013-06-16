@@ -1,0 +1,102 @@
+source! ~/.vimperatorrc.local
+
+" vim: set ft=vimperator:
+
+" 先把麻烦的东西拿掉
+map A <Nop>
+map <C-q> <Nop>
+"map <C-o> <Nop>
+"map <C-i> <Nop>
+"map <C-z> <Nop>
+"map <C-p> <Nop>
+
+noremap j 3j
+noremap k 3k
+noremap J <C-d>
+noremap K <C-u>
+
+map < g0
+noremap > g$
+
+noremap y Y
+noremap Y y
+
+"在新窗口打开主页(当前窗口打开主页是gh)
+map gy gH
+
+noremap <C-F11> :tabmove -1<CR>
+noremap <C-F12> :tabmove +1<CR>
+inoremap <C-F11> <Esc>:tabmove -1<CR>
+inoremap <C-F12> <Esc>:tabmove +1<CR>
+
+"全局设置用,代替\
+let g:mapleader="," 
+
+":map <F2> :tabopen ~/.mozilla/firefox/tmmjjekc.default/bookmarks.html<CR>
+"set go=T
+"set newtab=all
+set complete=l
+set focuscontent
+set tabnumbers=true
+"set noscrollbars
+set showstatuslinks=2
+"set toolbars=none,tabs
+set editor=gvim -f
+set hintchars="hjklasdfgyuiopqwertnmzxcvb"
+
+" 显示/隐藏 地址栏菜单栏搜索栏
+map <C-Up> :set go=mT<CR>
+map <C-Down> :set go=<CR>
+
+" 在命令行下的自动补全.
+set wop=auto
+
+"命令行下拉菜单最多显示的条目数
+set maxitems=6
+
+" 显示书签栏
+map <C-Right> :set go=B<CR>
+
+" 修改配置文件后，键入,s即时生效
+map ,s :so "C:\\Users\\butbueatiful\\_vimperatorrc"<CR> 
+
+" surround com and net可以直接先输入网站名,再用<CTRL>+<ENTER>快捷输入.com/.net
+cnoremap<S-Return> <End>.org<Home><C-Right>www.<CR>
+cnoremap<C-Return> <End>.com<Home><C-Right>www.<CR>
+
+"Next Page and Previous Page超级的下一页,基本上是够用了.快捷键是[[和]]
+set nextpattern=\s*下一页|下一张|下一篇|下页|后页\s*,^\bnext\b,\\bnext\\b,^>$,^(>>|?)$,^(>|?),(>|?)$,\\bmore\\b
+set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,^\bprev|previous\b,\\bprev|previous\\b,^<$,^(<<|?)$,^(<|?),(<|?)$
+ 
+set titlestring=butbueatiful
+set novb
+set defsearch=g
+"set showstatuslinks=0
+
+colorscheme ot_sweets
+let g:hintsio="io"
+
+map <silent> <leader>t :exe ":tinyurl "+getBrowser().contentWindow.location.href<CR>
+
+noremap <silent> <leader>a :set! extensions.autoproxy.proxyMode=auto<CR>:echo ':)'<CR>
+noremap <silent> <leader>g :set! extensions.autoproxy.proxyMode=global<CR>:echo ':D'<CR>
+noremap <silent> <leader>d :set! extensions.autoproxy.proxyMode=disabled<CR>:echo ':('<CR>
+
+loadplugins
+
+"set flashblock
+"set fbw=youtube.com,hfest.net,youku.com,google.com,bloomberg.com,adobe.com,github.com,ku6.com
+"nmap \w \fbwhitelist
+
+"自定义打开网址
+noremap <leader>f :tabopen http://translate.google.com.tw/<CR>
+noremap <leader>q :tabopen http://web.qq.com/<CR>
+noremap <leader>b :tabopen butbueatiful.blog.chinaunix.net<CR>
+noremap <leader>m :tabopen http://dillinger.io/<CR>
+
+" 在Gmail和Greader中屏蔽Vimperator
+autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader).*/.test(buffer.URL)
+
+" Abbreviations
+" 连按两下:比按:!要爽
+cabbrev :!

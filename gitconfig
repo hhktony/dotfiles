@@ -1,0 +1,36 @@
+[color]
+    ui = true
+[user]
+	name = xutao
+	email = butbueatiful@gmail.com
+[core]
+	editor = vim
+	excludesfile = /home/butbueaitful/.global_ignore
+[alias]
+	ci = commit -a -v
+    st = status
+    br = branch
+    co = checkout
+    df = diff
+    dc = diff --cached
+    throw = reset --hard HEAD
+    throwh = reset --hard HEAD^
+    rb = rebase
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    ign = ls-files -o -i --exclude-standard
+[push]
+    default = current
+[merge]
+	tool = vimdiff
+[github]
+    user = ButBueatiful
+    # token = <enter token here>
+[url "git@github.com:"]
+    insteadOf = gh:
+[url "git@github.com:ButBueatiful/"]
+    insteadOf = gb:
+[url "git@heroku.com:"]
+    insteadOf = heroku:
