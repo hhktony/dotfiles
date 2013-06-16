@@ -20,7 +20,7 @@ if [ $# = 0 ]; then
     exit 1
 fi
 
-mkdir $HOME/software 2&> /dev/null
+[[ ! -d "$HOME/software/" ]] &&  mkdir $HOME/software
  
 function conf_sys
 {
