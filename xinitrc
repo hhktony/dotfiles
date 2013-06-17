@@ -12,5 +12,7 @@ if [ $mysystem == "ArchLinux" ]; then
         unset f
     fi
 
-exec openbox-session
+    exec openbox-session
+else
+    [[ -f /etc/X11/xinit/xinitrc ]] && . /etc/X11/xinit/xinitrc
 fi

@@ -1,6 +1,3 @@
 ##!/bin/sh
-#LANG=zh_CN.UTF-8
-#export XMODIFIERS="@im=fcitx"
-#export GTKIMMODULE="xim"
-#export QTIMMODULE="xim"
-#fcitx &
+
+[[ -f $HOME/.xinitrc ]] && . $HOME/.xinitrc
