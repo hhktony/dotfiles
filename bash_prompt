@@ -1,0 +1,92 @@
+# default prompt
+PS1='[\u@\h \W]\$ '
+
+# {{{ Colors
+case ${TERM} in
+  xterm*|rxvt*|Eterm|aterm|kterm|gnome*)
+    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033]0;%s@%s:%s\007" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+    ;;
+  screen)
+    PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'printf "\033_%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+    ;;
+esac
+
+# Set colorful PS1 only on colorful terminals.
+# dircolors --print-database uses its own built-in database
+# instead of using /etc/DIR_COLORS.  Try to use the external file
+# first to take advantage of user additions.  Use internal bash
+# globbing instead of external grep binary.
+
+# Dynamically modified variables. Do not change them!
+use_color=false
+# sanitize TERM:
+safe_term=${TERM//[^[:alnum:]]/?}
+match_lhs=""
+
+[[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
+[[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
+[[ -z ${match_lhs}    ]] \
+	&& type -P dircolors >/dev/null \
+    && $(dircolors -p > $HOME/.dir_colors)
+
+unset match_lhs
+use_color=true
+
+function parse_git_dirty
+{
+    [[ $(git status 2> /dev/null | tail -n1 | awk '{print $1}') != "nothing" ]] && echo "*"
+}
+
+function parse_git_branch
+{
+    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/(\1$(parse_git_dirty))/"
+}
+
+if ${use_color} ; then
+	# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
+	if type -P dircolors >/dev/null ; then
+		if [[ -f ~/.dir_colors ]] ; then
+			eval $(dircolors -b ~/.dir_colors)
+		elif [[ -f /etc/DIR_COLORS ]] ; then
+			eval $(dircolors -b /etc/DIR_COLORS)
+		fi
+	fi
+
+	if [[ ${EUID} == 0 ]] ; then
+		#PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+        PS1='\[\e[1;92m\]\h\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(parse_git_branch)\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
+	else
+		#PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
+        PS1='\[\e[1;92m\]\u@\h\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(parse_git_branch)\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
+	fi
+
+else
+	if [[ ${EUID} == 0 ]] ; then
+		# show root@ when we do not have colors
+		PS1='\u@\h \W \$ '
+	else
+		PS1='\u@\h \W \$ '
+	fi
+fi
+
+PS2='> '
+PS3='> '
+PS4='+ '
+# }}} end Colors
+
+### {{{ PS1 GIT
+if [[ $PS1 && -f /usr/share/git/git-prompt.sh ]]; then
+    source /usr/share/git/git-prompt.sh
+
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+
+    if $use_color; then
+        PS1='\[\e[1;92m\]\u\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(__git_ps1 "(%s)")\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
+    else
+        PS1='\u \W $(__git_ps1 "(%s)")\$ '
+    fi
+fi
+unset use_color
+# }}} PS1 GIT End

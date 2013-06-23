@@ -14,11 +14,12 @@
 #        Descriptions: auto play(or close) music in the background
 #        		Usage: Bind a shortcut key to execute the script(openbox is convenient)
 #********************************************************************************************
-#program="mplayer -playlist"
-program="mpg123 --list"
+#program="mplayer -shuffle -playlist"
+program="mpg123 --shuffle --list"
 music_dir="$HOME/Music"
 play_list="$HOME/.music.lst"
 
+$HOME/.bin/del_space.sh $music_dir
 ls $music_dir/*.mp3 > $play_list
 
 curstatus=`ps ax |grep "$program $play_list" | grep -v 'grep' | awk '{print $1}' `

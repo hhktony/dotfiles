@@ -1,0 +1,42 @@
+# Write your default config options here!
+
+msgcharset=noconv       # 停用转换 (为了如: iconv 问题)
+msgcolor=yes
+
+autosync=0              # 解决FLV播放同步问题
+mc=0                    # 解决FLV播放同步问题
+ao=alsa                 # 音频驱动选择
+#vo=xv                  # 视频驱动选择
+zoom=yes                # 允许视频缩放
+ass=on                  # 启用ASS字幕渲染
+overlapsub=1            # 支持多语言字幕
+#fs=yes                 # 以全屏显示
+osdlevel=3              # 在屏幕的左上角显示相应时间(可以通过O(Shift+o)控制) 
+aspect=16:9             # 在非宽屏中，你可以使用 4:3 的纵横比
+
+alang=chs,jpn,eng       # 音频语言选择
+slang=chs,chi,jpn,eng   # 字幕语言选择，MKV字幕出不来的话可以自己根据实际修改
+
+stop-xscreensaver=yes   # 不允许播放视频时出现屏保
+monitoraspect=1366:768  # 识别桌面分辨率为1366:768
+subfont-autoscale=1     # 设置按什么方法来进行自动缩放字幕，
+                            # 0－不自动缩放
+                            # 1－按电影高度缩放
+                            # 2－按电影宽度缩放
+                            # 3－按电影对角线缩放(默认值)
+subfont-text-scale=2    # 设置字幕文本的自动缩放系数(屏幕尺寸的百分比)，值范围为 0～100，默认值为5
+subfont-osd-scale=6     # OSD字幕的自动缩放系统(屏幕尺寸的百分比)，值范围为0～100，默认值为6
+#font='Courier 10 Pitch' # 设置字幕使用字体为文泉驿微米黑
+framedrop=no            # 不允许掉帧<据说允许掉帧可以解决RMVB快进后声音字幕不同步的问题>
+sub-fuzziness=1         # 设定字幕自动加载的识别，播放时可以通过j键切换
+cache=8192              # 此选项指定用多少内存(以kBytes为单位)作为播放文件或URL的预缓冲
+ass-hinting=3           # 指定ASS字幕的Hinting方式(Freetype Only) 
+                            # 0—无Hinting
+                            # 1—轻微
+                            # 2—普通 
+                            # 3—字体自带Hint
+af=lavcresample=44100   # 设置输出频率, 推荐使用默认的44100，
+                        # 如果喜欢低频可适当调低，喜欢高频不妨设置为48000或者以上，
+                        # 如果没什么特殊爱好可不设置或者干脆设置为*
+
+

@@ -1,0 +1,16 @@
+# only search with case sensitivity if there is mixed case
+--smart-case
+# follow symlinks
+--follow
+
+--type-set=cc=.c,.h
+--ignore-dir=vendor
+--ignore-dir=log
+--ignore-dir=tmp
+--ignore-dir=doc
+--ignore-dir=coverage
+--sort-files
+--color
+--follow
+--group
+--context=2
