@@ -7,12 +7,16 @@ set completion-prefix-display-length 2
 
 # 如果自动补全的结果只有2，3个文件，
 # 这两个选项可以让你通过Ctrl-j和Ctrl-k在结果中快速选择你想要的文件。
-#Control-j: menu-complete
-#Control-k: menu-complete-backward
+# Control-j: menu-complete
+# Control-k: menu-complete-backward
 
-#开启第两个选项后，只需要按一次TAB键，就会进行自动补全，默认的两次Tab
+# 开启第两个选项后，只需要按一次TAB键，就会进行自动补全，默认的两次Tab
 set show-all-if-ambiguous on
 set show-all-if-unmodified on
 
 # readline会将下划线_和连接符-当作同一个字符看待
 set completion-map-case on
+
+# 上下键代替 ctrl+r
+"\e[A": history-search-backward
+"\e[B": history-search-forward
