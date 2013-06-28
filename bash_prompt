@@ -34,7 +34,7 @@ use_color=true
 
 function parse_git_dirty
 {
-    [[ $(git status 2> /dev/null | tail -n1 | awk '{print $1}') != "nothing" ]] && echo "*"
+    [[ $(git status 2> /dev/null | tail -n1 | awk '{print $1, $2, $3}') != "nothing to commit" ]] && echo "*"
 }
 
 function parse_git_branch
