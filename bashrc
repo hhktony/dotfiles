@@ -63,8 +63,8 @@ if [ -d "$HOME/.bin" ] ; then
 fi
 
 # add ARM environment
-if [ -d "$HOME/Dev_Env/3.4.1/bin" ] ; then
-    PATH="$HOME/Dev_Env/3.4.1/bin:$PATH"
+if [ -d "$HOME/.devenv/3.4.1/bin" ] ; then
+    PATH="$HOME/.devenv/3.4.1/bin:$PATH"
 fi
 
 # add Ruby gems to PATH
