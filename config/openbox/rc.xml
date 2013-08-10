@@ -296,6 +296,15 @@
         <command>firefox</command>
       </action>
     </keybind>
+    <keybind key="C-A-t">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>terminal</name>
+        </startupnotify>
+        <command>lxterminal</command>
+      </action>
+    </keybind>
     <keybind key="A-F2">
       <action name="Execute">
         <startupnotify>

@@ -24,10 +24,6 @@ fi
  
 function conf_sys
 {
-    rm -rf $HOME/.oh-my-zsh
-
-    git clone git://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-
     conf_file
     conf_vim
 }
@@ -45,13 +41,13 @@ function conf_file
             do
                 target="$HOME/.config/$cname"
                 rm -rf ${target}
-                ln -s "$PWD/$cname" "$target"
+                ln -s "$PWD/$cname" "$target" > /dev/null 2>&1
             done
             cd ..
         else
             target="$HOME/.$name"
             rm -rf ${target}
-            ln -s "$PWD/$name" "$target"
+            ln -s "$PWD/$name" "$target" > /dev/null 2>&1
         fi
     done
 
