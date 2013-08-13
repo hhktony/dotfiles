@@ -59,7 +59,8 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 export EDITOR="vim"
 export SVN_EDITOR="$EDITOR --nofork"
 export CVS_RSH=ssh
-export WWW_HOME=http://www.archlinux.org
+export WWW_HOME=http://butbueatiful.github.io
+export LESSCHARSET=utf-8
 #export LESS="-R"
 #export CDPATH=.:$HOME/Yunio/srcs
 
