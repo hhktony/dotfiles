@@ -1,6 +1,8 @@
 #
 # ~/.bash_profile
 #
+mysystem=`head -n1 /etc/issue |awk '{print $1}'`
+
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # {{{ Environment Variables
@@ -14,11 +16,17 @@
 [ -d $HOME/.gem/ruby/1.9.1/bin ] && export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
 
 # fcitx
-#export XIM=fcitx
-#export XIM_PROGRAM=fcitx
-#export GTK_IM_MODULE=xim
-#export QT_IM_MODULE=xim
-#export XMODIFIERS="@im=fcitx"
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
-export XMODIFIERS="@im=fcitx"
+export XIM=fcitx
+export XIM_PROGRAM=/usr/bin/fcitx
+export XIN_ARGS=""
+if [ $mysystem == "Arch" ]; then
+    export GTK_IM_MODULE=fcitx
+    export QT_IM_MODULE=fcitx
+    export XMODIFIERS="@im=fcitx"
+else
+    export GTK_IM_MODULE=xim
+    export QT_IM_MODULE=xim
+    export XMODIFIERS="@im=fcitx"
+fi
+
+unset mysystem

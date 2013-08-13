@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -x
 
 #============================================================================================
 #
@@ -55,12 +56,15 @@ function conf_file
     rm -rf $HOME/.$FILENAME $HOME/.README.md
 }
 
-function conf_vim
+function conf_vim_emacs
 {
     cd $HOME
     rm -rf .vim .vimrc .gvimrc
 
+    git clone git@github.com:ButBueatiful/emacs.d .emacs.d
+
     git clone git@github.com:ButBueatiful/dotvim.git .vim
+
     cd $HOME/.vim 	
     ./config.sh
 }
@@ -70,7 +74,7 @@ then
     conf_sys
 elif [ "$1" = "vim" ]
 then
-    conf_vim
+    conf_vim_emacs
 elif [ "$1" = "file" ]
 then
    conf_file 

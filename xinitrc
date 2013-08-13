@@ -1,10 +1,8 @@
 #!/bin/sh
 
-export mysystem=`head -n1 /etc/issue |awk '{print $1}'`
+mysystem=`head -n1 /etc/issue |awk '{print $1}'`
 
-[[ $mysystem == "Arch" ]] && mysystem="ArchLinux"
-
-if [ $mysystem == "ArchLinux" ]; then
+if [ $mysystem == "Arch" ]; then
     if [ -d /etc/X11/xinit/xinitrc.d ]; then
         for f in /etc/X11/xinit/xinitrc.d*; do
             [ -x "$f" ] && . "$f"
@@ -16,3 +14,5 @@ if [ $mysystem == "ArchLinux" ]; then
 else
     [[ -f /etc/X11/xinit/xinitrc ]] && . /etc/X11/xinit/xinitrc
 fi
+
+unset mysystem

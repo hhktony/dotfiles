@@ -50,6 +50,7 @@ alias sudo='sudo '
 fi
 
 alias e='vim'
+alias ec='emacsclient -t -a ""'
 alias cls='clear'
 alias q='exit'
 alias vi='vim'
