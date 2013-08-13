@@ -1,5 +1,5 @@
 # wallpaper
-feh --bg-scale ~/.config/openbox/screen.png & 
+feh --bg-scale ~/.config/openbox/butbueatiful.jpg & 
 
 # window
 xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
@@ -15,9 +15,6 @@ conky -d &
 
 # Volume control
 #volumeicon -b &
-
-# guake
-(sleep 3s && guake) &
 
 # fcitx
 #(sleep 4s && fcitx) &
