@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -x
+#set -x
 
 #============================================================================================
 #
@@ -16,16 +16,19 @@ set -x
 #
 #============================================================================================
 
-if [ $# = 0 ]; then
-    printf "\e[01;033mUsage: $0 <sys/file/vim>\e[0m\n\n"
+function help_info
+{
+    printf "\e[01;033mUsage: \n\t$0 <sys/file/vim/emacs>\e[0m\n\n"
     exit 1
-fi
+}
 
 [[ ! -d "$HOME/software/" ]] &&  mkdir $HOME/software
+[[ ! -d "$HOME/workspace/" ]] && mkdir $HOME/workspace
  
 function conf_sys
 {
     conf_file
+    conf_emacs
     conf_vim
 }
 
@@ -56,12 +59,10 @@ function conf_file
     rm -rf $HOME/.$FILENAME $HOME/.README.md
 }
 
-function conf_vim_emacs
+function conf_vim
 {
     cd $HOME
     rm -rf .vim .vimrc .gvimrc
-
-    git clone git@github.com:ButBueatiful/emacs.d .emacs.d
 
     git clone git@github.com:ButBueatiful/dotvim.git .vim
 
@@ -69,15 +70,16 @@ function conf_vim_emacs
     ./config.sh
 }
 
-if [ "$1" = "sys" ]
-then
-    conf_sys
-elif [ "$1" = "vim" ]
-then
-    conf_vim_emacs
-elif [ "$1" = "file" ]
-then
-   conf_file 
-else
-    echo "Nothing to do!"
-fi
+function conf_emacs
+{
+    git clone git@github.com:ButBueatiful/emacs.d .emacs.d
+}
+
+case $1 in
+    sys)    conf_sys    ;;
+    file)   conf_file   ;;
+    vim)    conf_vim    ;;
+    emacs)  conf_emacs  ;;
+    *)      help_info   ;;
+esac
+

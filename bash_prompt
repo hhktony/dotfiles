@@ -54,18 +54,18 @@ if ${use_color} ; then
 
 	if [[ ${EUID} == 0 ]] ; then
 		#PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
-        PS1='\[\e[1;92m\]\u@\h\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(parse_git_branch)\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
+        PS1='\[\e[1;92m\]\u\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(parse_git_branch)\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
 	else
-		#PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \W \$\[\033[00m\] '
-        PS1='\[\e[1;92m\]\u@\h\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(parse_git_branch)\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
+		#PS1='\[\033[01;32m\]\u\[\033[01;34m\] \W \$\[\033[00m\] '
+        PS1='\[\e[1;92m\]\u\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(parse_git_branch)\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
 	fi
 
 else
 	if [[ ${EUID} == 0 ]] ; then
-		# show root@ when we do not have colors
-		PS1='\u@\h \W \$ '
+		# show root when we do not have colors
+		PS1='\u \W \$ '
 	else
-		PS1='\u@\h \W \$ '
+		PS1='\u \W \$ '
 	fi
 fi
 
@@ -83,9 +83,9 @@ if [[ $PS1 && -f /usr/share/git/git-prompt.sh ]]; then
     export GIT_PS1_SHOWUNTRACKEDFILES=1
 
     if $use_color; then
-        PS1='\[\e[1;92m\]\u@\h\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(__git_ps1 "(%s)")\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
+        PS1='\[\e[1;92m\]\u\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(__git_ps1 "(%s)")\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
     else
-        PS1='\u@\h \W $(__git_ps1 "(%s)")\$ '
+        PS1='\u \W $(__git_ps1 "(%s)")\$ '
     fi
 fi
 unset use_color

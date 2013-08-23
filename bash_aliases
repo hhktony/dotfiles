@@ -1,3 +1,8 @@
+# grep
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
 # GNU ls color
 alias ls='ls --color'
 alias ll='ls -l'
@@ -9,12 +14,8 @@ alias lu='ls -lur'				# Sort by access time
 alias lr='ls -lR'               # Recursion ls
 alias lt='ls -ltr'              # Sort by date
 alias lm='ls -al |more'
+alias lsd='ls -lF | grep "^d"'
 alias tree='tree -C'			# tree display color
-
-# grep
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
 
 # safety features
 #alias rm='rm -i'
@@ -36,6 +37,8 @@ alias ..2="cd ../.."
 alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
+alias ~="cd ~"
+alias -- -="cd -"
 
 # privileged access
 if [ $UID -ne 0 ]; then
@@ -50,7 +53,9 @@ alias sudo='sudo '
 fi
 
 alias e='vim'
-alias ec='emacsclient -t -a ""'
+alias eo='emacs --daemon'  #启动守护进程
+alias et='emacsclient -t -a ""'  #在终端中开启emacs
+alias ec='emacsclient -c -a ""'  #启动emacs图形界面
 alias cls='clear'
 alias q='exit'
 alias vi='vim'
