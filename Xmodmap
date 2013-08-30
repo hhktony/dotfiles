@@ -1,0 +1,25 @@
+! Swap Caps_Lock and Control_L
+remove Lock = Caps_Lock
+remove Control = Control_L
+keysym Control_L = Caps_Lock
+keysym Caps_Lock = Control_L
+add Lock = Caps_Lock
+add Control = Control_L
+
+!
+! Swap caps lock and escape
+!
+! remove Lock = Caps_Lock
+! keysym Escape = Caps_Lock
+! keysym Caps_Lock = Escape
+! add Lock = Caps_Lock
+
+!
+! swap Alt_L and Control_L
+!
+! remove mod1 = Alt_L
+! remove control = Control_L
+! keysym Control_L = Alt_L
+! keysym Alt_L = Control_L
+! add mod1 = Alt_L
+! add control = Control_L

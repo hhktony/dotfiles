@@ -252,10 +252,10 @@ ${else}${if_existing /proc/net/route p3p1}
 Down ${downspeed p3p1} k/s ${alignr}Up ${upspeed p3p1} k/s
 ${downspeedgraph p3p1 25,107} ${alignr}${upspeedgraph p3p1 25,107}
 Total ${totaldown p3p1} ${alignr}Total ${totalup p3p1}
-${else}${if_existing /proc/net/route enp0s3}
-Down ${downspeed enp0s3} k/s ${alignr}Up ${upspeed enp0s3} k/s
-${downspeedgraph enp0s3 25,107} ${alignr}${upspeedgraph enp0s3 25,107}
-Total ${totaldown enp0s3} ${alignr}Total ${totalup enp0s3}
+${else}${if_existing /proc/net/route enp7s0}
+Down ${downspeed enp7s0} k/s ${alignr}Up ${upspeed enp7s0} k/s
+${downspeedgraph enp7s0 25,107} ${alignr}${upspeedgraph enp7s0 25,107}
+Total ${totaldown enp7s0} ${alignr}Total ${totalup enp7s0}
 ${else}${if_existing /proc/net/route wlan0}
 Down ${downspeed wlan0} k/s ${alignr}Up ${upspeed wlan0} k/s
 ${downspeedgraph wlan0 25,107} ${alignr}${upspeedgraph wlan0 25,107}

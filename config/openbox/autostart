@@ -1,5 +1,6 @@
 # wallpaper
-feh --bg-scale ~/.config/openbox/butbueatiful.jpg & 
+#feh --bg-scale ~/.config/openbox/butbueatiful.jpg & 
+hsetroot -fill ~/.config/openbox/butbueatiful.jpg & 
 
 # window
 xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
@@ -8,7 +9,7 @@ xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
 tint2 & 
 
 #  Thunar's file manager
-thunar --daemon &
+#thunar --daemon &
 
 # Conky system monitor
 conky -d &
@@ -17,6 +18,6 @@ conky -d &
 #volumeicon -b &
 
 # fcitx
-#(sleep 4s && fcitx) &
+(sleep 4s && fcitx -d) &
 
 #(sleep 4s && /usr/bin/nm-applet --sm-disable) &

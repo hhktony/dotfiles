@@ -22,8 +22,10 @@ function help_info
     exit 1
 }
 
-[[ ! -d "$HOME/software/" ]] &&  mkdir $HOME/software
-[[ ! -d "$HOME/workspace/" ]] && mkdir $HOME/workspace
+[[ ! -d "$HOME/Software/" ]] &&  mkdir $HOME/Software
+[[ ! -d "$HOME/Workspace/" ]] && mkdir $HOME/Workspace
+[[ ! -d "$HOME/Music" ]] && mkdir $HOME/Music
+[[ ! -d "$HOME/.config/" ]] && mkdir $HOME/.config
  
 function conf_sys
 {
@@ -72,6 +74,8 @@ function conf_vim
 
 function conf_emacs
 {
+    cd $HOME
+
     git clone git@github.com:ButBueatiful/emacs.d .emacs.d
 }
 

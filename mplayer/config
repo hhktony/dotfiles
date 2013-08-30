@@ -10,8 +10,8 @@ ao=alsa                 # 音频驱动选择
 zoom=yes                # 允许视频缩放
 ass=on                  # 启用ASS字幕渲染
 overlapsub=1            # 支持多语言字幕
-#fs=yes                 # 以全屏显示
-osdlevel=3              # 在屏幕的左上角显示相应时间(可以通过O(Shift+o)控制) 
+fs=yes                 # 以全屏显示
+osdlevel=1              # 在屏幕的左上角显示相应时间(可以通过0控制) 
 aspect=16:9             # 在非宽屏中，你可以使用 4:3 的纵横比
 
 alang=chs,jpn,eng       # 音频语言选择

@@ -114,8 +114,8 @@
     <number>4</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name>WEB</name>
       <name>code</name>
+      <name>ETTM</name>
       <name>xterm</name>
       <name>ssh&amp;chat</name>
     </names>
@@ -316,12 +316,12 @@
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
-        <execute>amixer set Master 10%+ unmute</execute>
+        <execute>amixer set Master 5%+ unmute</execute>
       </action>
     </keybind>
     <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
-        <execute>amixer set Master 10%- unmute</execute>
+        <execute>amixer set Master 5%- unmute</execute>
       </action>
     </keybind>
     <keybind key="XF86AudioMute">

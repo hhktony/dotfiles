@@ -1,3 +1,12 @@
 ##!/bin/sh
-
-[[ -f $HOME/.xinitrc ]] && . $HOME/.xinitrc
+#
+# ~/.xprofile
+#
+# For: KDM, GDM, LightDM
+# fcitx
+export XIM=fcitx
+export XIM_PROGRAM=/usr/bin/fcitx
+export XIN_ARGS=""
+export GTK_IM_MODULE=xim
+export QT_IM_MODULE=xim
+export XMODIFIERS="@im=fcitx"
