@@ -16,6 +16,10 @@
             </action>
         </item>
         <separator/>
-        <item label="Log Out"> <action name="Exit"> <prompt>yes</prompt> </action> </item>
+        <item label="Log Out">
+            <action name="Exit">
+                <prompt>yes</prompt>
+            </action>
+        </item>
     </menu>
 </openbox_menu>

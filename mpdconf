@@ -1,0 +1,17 @@
+music_directory         "~/Music/"
+playlist_directory      "~/.mpd/playlists"
+db_file                 "~/.mpd/database"
+log_file                "~/.mpd/log"
+pid_file                "~/.mpd/pid"
+state_file              "~/.mpd/state"
+user                    "butbueatiful"
+group                   "users"
+bind_to_address         "localhost"
+port                    "6600"
+audio_output {
+    type            "alsa"
+    name            "My ALSA Device"
+    mixer_control   "Master"
+}
+filesystem_charset  "utf-8"
+id3v1_encoding      "gbk"

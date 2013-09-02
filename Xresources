@@ -1,110 +1,86 @@
 !***********************************************************
+! ~/.Xresource
 ! Reference：
 ! 	http://hi.baidu.com/goomw/item/5caddd694c83d70ba1cf0f0b
 ! 	http://forum.ubuntu.org.cn/viewtopic.php?t=66302
 !***********************************************************
+URxvt*termName   : rxvt-unicode
+URxvt*geometry   : 80x24+280+80
+URxvt*loginShell : true
 
-! font resolution
-Xft.dpi:96 
+URxvt*perl-ext-common  : default,matcher
+!,tabbed
 
-!*****************************
-! Color
-!*****************************
-URxvt.background:black
-URxvt.foreground:gray
-URxvt.colorBD:Yellow
-URxvt.colorUL: #4682B4
-URxvt.color0: #000000
-URxvt.color1: #CC0000
-URxvt.color2: #4E9A06
-URxvt.color3: #C4A000
-URxvt.color4: #3465A4
-URxvt.color5: #75507B
-URxvt.color6: #34E2E2
-URxvt.color7: #D3D7CF
-URxvt.color8: #555753
-URxvt.color9: #EF2929
-URxvt.color10: #8AE234
-URxvt.color11: #FCE94F
-URxvt.color12: #729FCF
-URxvt.color13: #AD7FA8
-URxvt.color14: #34E2E2
-URxvt.color15: #EEEEEC
+!{{{ Color
+URxvt*.depth         : 32
+URxvt*colorBD        : Yellow
+URxvt*colorUL        : #4682B4
+!}}}
 
-!*****************************
-! Scroll
-!*****************************
-Rxvt.scrollBar:false
-Rxvt.scrollBar_right:false
-Rxvt.scrollBar_floating:false
-Rxvt.scrollstyle:plain
-Rxvt.scrollWithBuffer:false
-Rxvt.saveLines:5000
+!{{{ transparent
+! URxvt.background: rgba:1111/1111/1111/dddd
+URxvt*background    : rgba:0000/0000/0200/c800
+URxvt*foreground    : grey
+URxvt*transparent   : false
+URxvt.transparency  : 100
+URxvt*tintColor     : grey
+URxvt*fading        : 0
+URxvt*fadeColor     : black
+URxvt.shading       : 0
+URxvt*shadeColor    : black
+URxvt*inheritPixmap : true
+URxvt*pointerColor  : black
+URxvt*pointerColor2 : white
+!}}}
 
-!*****************************
-! Font
-!*****************************
-URxvt*font:          xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
-URxvt*boldFont:      xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
-URxvt*italicFont:    xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
-URxvt*bolditalicFont:xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+!{{{ Font
+Xft.dpi:96
+URxvt*font              :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+URxvt*boldFont          :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+URxvt*italicFont        :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+URxvt*bolditalicFont    :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
 
-! URxvt*font:          xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-! URxvt*boldFont:      xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-! URxvt*italicFont:    xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-! URxvt*bolditalicFont:xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+! URxvt*font            :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+! URxvt*boldFont        :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+! URxvt*italicFont      :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+! URxvt*bolditalicFont  :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+!}}}
 
-!*****************************
-! Input Method
-!*****************************
-URxvt.inputMethod:fcitx
-!URxvt.imLocale:zh_CN.utf8
-URxvt.imFont:Console
-URxvt.preeditType: Root
+!{{{ Tab page
+! URxvt.tabbed.tabbar-fg : 2
+! URxvt.tabbed.tabbar-bg : 0
+! URxvt.tabbed.tab-fg    : 3
+! URxvt.tabbed.tab-bg    : 0
+!}}}
 
-!*****************************
-! Window geometry
-!*****************************
-URxvt.geometry:80x25+100+80
-URxvt.title:URxvt
+!{{{ Scroll
+URxvt*scrollBar          : false
+URxvt*scrollBar_right    : true
+URxvt*scrollBar_floating : true
+URxvt*scrollstyle        : plain
+URxvt*scrollWithBuffer   : false
+URxvt*saveLines          : 65535
+!}}}
 
-!*****************************
-! bg transparent
-!*****************************
-!URxvt.inheritPixmap: true
-!URxvt.tintCddolor: white
-!URxvt.shading: 80
+!{{{ Input Method
+URxvt*inputMethod : fcitx
+! URxvt*imLocale  : zh_CN.utf8
+URxvt*imFont      : Console
+URxvt*preeditType : Root
+!}}}
 
-!*****************************
-! Tab page
-!*****************************
-!URxvt.perl-ext-common: default,matcher,fullscreen
-!URxvt.perl-ext-common: default,tabbed,matcher
-!URxvt.tabbed.tab-fg: 12
-!URxvt.tabbed.tab-bg: 0
-!URxvt.tabbed.tabbar-fg: 4
-URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  firefox
-URxvt.url-select.underline: true
-URxvt.keysym.M-u:           perl:url-select:select_next
-URxvt.keysym.M-Escape:      perl:keyboard-select:activate
-URxvt.keysym.M-s:           perl:keyboard-select:search
+!{{{ url
+URxvt*url-launcher   : /usr/bin/firefox
+URxvt*matcher.button : 1
+!}}}
 
-Rxvt.menu:/etc/X11/rxvt.menu
-Rxvt.preeditType:Root
-Rxvt.transparency:255
+!{{{ cursor
+URxvt*cursorBlink     : true
+URxvt*cursorUnderline : false
+URxvt*visualBell      : false
+!}}}
 
-!*****************************
-! mouse left open link with firefox
-!*****************************
-!URxvt.urlLauncher: firefox
-!URxvt.matcher.button: 1
-
-!URxvt.perl-ext-common: 
-URxvt.keysym.F11: perl:fullscreen:switch
-
-!*****************************
-! misc
-!*****************************
-URxvt.cursorBlink: true
-URxvt.visualBell: false
+!{{{ keyboard
+! URxvt*keysym.M-Escape      : perl:keyboard-select:activate
+! URxvt*keysym.M-s           : perl:keyboard-select:search
+!}}}

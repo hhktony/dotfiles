@@ -300,9 +300,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>terminal</name>
+          <name>urxvtc</name>
         </startupnotify>
-        <command>lxterminal</command>
+        <command>urxvtc</command>
       </action>
     </keybind>
     <keybind key="A-F2">

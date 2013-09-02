@@ -20,4 +20,6 @@ export XMODIFIERS="@im=fcitx"
 
 xrdb -merge ~/.Xresources
 
+[ -f $HOME/.Xmodmap ] && /usr/bin/xmodmap $HOME/.Xmodmap
+
 exec openbox-session

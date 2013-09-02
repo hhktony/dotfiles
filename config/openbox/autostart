@@ -5,14 +5,14 @@ hsetroot -fill ~/.config/openbox/butbueatiful.jpg &
 # window
 xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
 
-# Taskbar
-tint2 & 
-
 #  Thunar's file manager
 #thunar --daemon &
 
 # Conky system monitor
 conky -d &
+
+# Taskbar
+tint2 & 
 
 # Volume control
 #volumeicon -b &
