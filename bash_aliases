@@ -18,11 +18,10 @@ alias lsd='ls -lF | grep "^d"'
 alias tree='tree -C'			# tree display color
 
 # safety features
-#alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm.sh'
-alias rf='/bin/rm'
+alias rm!='/bin/rm -v'
 
 # new commands
 alias da='date "+%A, %B %d[%V], %Y [%T]"'
