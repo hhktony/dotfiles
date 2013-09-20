@@ -7,4 +7,5 @@ a.out
 *~
 test
 tags
+TAGS
 EOF

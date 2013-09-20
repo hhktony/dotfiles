@@ -21,7 +21,7 @@ alias tree='tree -C'			# tree display color
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm.sh'
-alias rm!='/bin/rm -v'
+alias rm!='/bin/rm'
 
 # new commands
 alias da='date "+%A, %B %d[%V], %Y [%T]"'
@@ -52,9 +52,8 @@ alias sudo='sudo '
 fi
 
 alias e='vim'
-alias eo='emacs --daemon'  #启动守护进程
-alias et='emacsclient -t -a ""'  #在终端中开启emacs
-alias ec='emacsclient -c -a ""'  #启动emacs图形界面
+alias et='TERM=xterm-256color emacsclient -t -a ""'
+alias ec='emacsclient -c -a ""'
 alias cls='clear'
 alias q='exit'
 alias vi='vim'
