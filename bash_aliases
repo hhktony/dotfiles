@@ -70,8 +70,8 @@ alias scrotbs='scrot -bs' 	# Crawl window
 alias screenshot='gnome-screenshot --interactive'
 
 alias cman='man -M /usr/share/man/zh_CN'
-alias indent='indent -npro -gnu -i4 -ts4 -sob -l200 -ss -bl -bli 0 -npcs -npsl'
-alias indentkr='indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1 -il0'
+alias indent='indent -npro -gnu -i4 -ts4 -sob -l80 -ss -bl -bli0 -npcs -npsl'
+alias indentkr='indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1'
 alias gmplayer='gnome-mplayer'
 alias markdown='markdown --html4tags'
 alias dstat='dstat -cdlmnpsy'

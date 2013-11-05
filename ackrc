@@ -1,11 +1,10 @@
 # only search with case sensitivity if there is mixed case
 --smart-case
-# follow symlinks
---follow
 
---type-set=cc=.c,.h
 --ignore-dir=vendor
 --ignore-dir=log
+--ignore-dir=.git
+--ignore-dir=.svn
 --ignore-dir=tmp
 --ignore-dir=doc
 --ignore-dir=coverage
@@ -14,3 +13,4 @@
 --follow
 --group
 --context=2
+#--pager=less -r
