@@ -12,5 +12,5 @@
 --color
 --follow
 --group
---context=2
+# --context=2
 #--pager=less -r

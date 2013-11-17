@@ -228,29 +228,6 @@ function acroread() { command acroread "$@" & }
 # 	fbterm
 #fi 
 
-#---------------- color bash ----------------------------
-#PS1="\[\033[32m\][\[\033[32m\]\w]\[\033[0m\]\n\[\033[1;35m\]--->\[\033[0m\]"
-#PS1="\`if [ \$? = 0 ]; then echo \[\e[33m\]^_^\[\e[0m\]; else echo \[\e[31m\]O_O\[\e[0m\]; fi\`[\u@\h:\w]\\$ "
-
-#PS1="\[\033[35m\][\$?]\[\033[32m\][\[\033[32m\]\w]\[\033[0m\]\n\[\033[1;35m\]--->\[\033[0m\]"
-
-#PS1="\[\e[32;1m\](\[\e[37;1m\]\u\[\e[32;1m\])-(\[\e[37;1m\]jobs:\j\[\e[32;1m\])-(\[\e[37;1m\]\w\[\e[32;1m\])\n(\[\e[37;1m\]!\!\[\e[32;1m\])-> \[\e[0m\]"
-
-#PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
-
-#------------- bash-completion --------------------------
-#bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
-
-#if [ -n "$PS1" ]; then
-  #if [ $bmajor -eq 2 -a $bminor '>' 04 ] || [ $bmajor -gt 2 ]; then
-    #if [ -r /etc/bash_completion ]; then
-      ## Source completion code.
-      #. /etc/bash_completion
-    #fi
-  #fi
-#fi
-#unset bash bminor bmajor
-
 #--------- colorful man page ------------------------------
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -270,9 +247,5 @@ export HISTCONTROL=erasedups
 export EDITOR="vim"
 #export LESS="-R"
 
-export PATH=$PATH:$HOME/.mybin:$HOME/Development_Env/3.4.1/bin
-
 # welcome 
 #echo -ne "\E[01;31m Good Morning, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
