@@ -26,7 +26,6 @@ alias rm!='/bin/rm'
 # new commands
 alias da='date "+%A, %B %d[%V], %Y [%T]"'
 alias du1='du --max-depth=1'
-alias hg='history | grep $1' 	# requires an argument
 alias pg='ps aux|head -1; ps aux | grep -v "grep" | grep $1 '
 alias openports='netstat --all --numeric --programs --inet'
 

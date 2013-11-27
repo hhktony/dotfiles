@@ -13,6 +13,7 @@ set prompt "\[\e[0;33m\][\[\e[0;34m\]f\[\e[1m\]t\[\e[37m\]p\[\e[0;33m\]] \[\e[1;
 ## Uncomment the following two lines to make switch cls and ls, making
 ## cls the default.
 alias ls command cls
+alias q command bye
 #alias hostls command 'ls --color'
 
 ## default protocol selection
