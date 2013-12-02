@@ -18,6 +18,13 @@ tint2 &
 #volumeicon -b &
 
 # fcitx
-(sleep 4s && fcitx -d) &
+(sleep 3s && fcitx -d) &
+
+# xmodmap
+[[ -s ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+
+# urxvt
+[[ -z $(pidof urxvtd) ]] && urxvtd &
+(sleep 5s && urxvtc) &
 
 #(sleep 4s && /usr/bin/nm-applet --sm-disable) &

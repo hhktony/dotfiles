@@ -1,3 +1,6 @@
+## china language
+set ftp:charset "gbk"
+set file:charset "UTF-8"
 ## some useful aliases
 alias dir ls
 alias less more

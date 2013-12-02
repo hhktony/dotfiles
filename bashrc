@@ -1,7 +1,7 @@
 # ~/.bashrc - startup file for Bash interactive shell
 
-# Check for an interactive session
-[ -z "$PS1" ] && return
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
 # Read /etc/bashrc, if there are
 [ -f /etc/bashrc ] && source /etc/bashrc

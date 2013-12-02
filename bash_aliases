@@ -63,11 +63,7 @@ alias g='git'
 alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
-# scrot
-alias scrots='scrot -s' 	# Crawl selection area
-alias scrotbs='scrot -bs' 	# Crawl window
-alias screenshot='gnome-screenshot --interactive'
-
+# misc
 alias cman='man -M /usr/share/man/zh_CN'
 alias indent='indent -npro -gnu -i4 -ts4 -sob -l80 -ss -bl -bli0 -npcs -npsl'
 alias indentkr='indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1'

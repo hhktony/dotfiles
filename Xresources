@@ -8,7 +8,6 @@ URxvt*termName   : rxvt-unicode
 URxvt*geometry   : 80x24+280+80
 URxvt*loginShell : true
 
-URxvt*perl-ext-common  : default,matcher
 !,tabbed
 
 !{{{ Color
@@ -18,32 +17,21 @@ URxvt*colorUL        : #4682B4
 !}}}
 
 !{{{ transparent
-! URxvt.background: rgba:1111/1111/1111/dddd
-URxvt*background    : rgba:0000/0000/0200/c800
-URxvt*foreground    : grey
-URxvt*transparent   : false
-URxvt.transparency  : 100
-URxvt*tintColor     : grey
-URxvt*fading        : 0
-URxvt*fadeColor     : black
-URxvt.shading       : 0
-URxvt*shadeColor    : black
-URxvt*inheritPixmap : true
-URxvt*pointerColor  : black
-URxvt*pointerColor2 : white
+URxvt*background:[80]black
+URxvt*foreground:white
 !}}}
 
 !{{{ Font
 Xft.dpi:96
-URxvt*font              :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
-URxvt*boldFont          :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
-URxvt*italicFont        :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
-URxvt*bolditalicFont    :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+URxvt*font             :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+URxvt*boldFont         :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+URxvt*italicFont       :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+URxvt*bolditalicFont   :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
 
-! URxvt*font            :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-! URxvt*boldFont        :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-! URxvt*italicFont      :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-! URxvt*bolditalicFont  :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+! URxvt*font           :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+! URxvt*boldFont       :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+! URxvt*italicFont     :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+! URxvt*bolditalicFont :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
 !}}}
 
 !{{{ Tab page
@@ -69,9 +57,15 @@ URxvt*imFont      : Console
 URxvt*preeditType : Root
 !}}}
 
-!{{{ url
-URxvt*url-launcher   : /usr/bin/firefox
+!{{{ EX
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,fullscreen
+URxvt.url-select.launcher:  : /usr/bin/firefox -new-tab
+URxvt.url-select.underline: true
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt*matcher.button : 1
+urxvt*keysym.F11: perl:fullscreen:switch
 !}}}
 
 !{{{ cursor
