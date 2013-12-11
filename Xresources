@@ -6,9 +6,9 @@
 !***********************************************************
 URxvt*termName   : rxvt-unicode
 URxvt*geometry   : 80x24+280+80
-URxvt*loginShell : true
+URxvt*loginShell : false
 
-!,tabbed
+!tabbed
 
 !{{{ Color
 URxvt*.depth         : 32

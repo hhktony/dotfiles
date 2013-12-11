@@ -21,7 +21,7 @@ override_utf8_locale yes
 # 是否使用 xft 字体（全局字体）
 use_xft yes
 # Xft font when Xft is enabled
-xftfont Courier\ New:size=9
+xftfont Microsoft\ YaHei:size=9
 # 字体的alpha值
 xftalpha 0.8
 
@@ -88,9 +88,9 @@ uppercase no
 use_spacer right
 
 TEXT
-${alignc 48}${font Courier New:style=Bold:size=38}${time %H:%M}${font}
+${alignc 48}${font Microsoft YaHei:style=Bold:size=38}${time %H:%M}${font}
 ${color #8AE234}$hr${color}
-${alignc 38}${font Courier New:size=18}${time %A %d %b}${font}
+${alignc 38}${font Microsoft YaHei:size=18}${time %A %d %b}${font}
 
 Kernel: $alignr $kernel
 Uptime: $alignr $uptime
