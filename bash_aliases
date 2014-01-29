@@ -65,10 +65,9 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
 # misc
 alias cman='man -M /usr/share/man/zh_CN'
-alias indent='indent -npro -gnu -i4 -ts4 -sob -l80 -ss -bl -bli0 -npcs -npsl'
-alias indentkr='indent -npro -kr -i8 -ts8 -sob -l80 -ss -ncs -cp1'
 alias gmplayer='gnome-mplayer'
 alias markdown='markdown --html4tags'
+alias indent='indent -npro -kr -i4 -ts4 -sob -l80 -ss -ncs -cp1'
 alias dstat='dstat -cdlmnpsy'
 alias ping='ping -c 3'
 alias lock-screen="gnome-screensaver-command -a"

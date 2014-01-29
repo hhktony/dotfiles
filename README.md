@@ -5,4 +5,4 @@ my sysconfig
 
 Usage:
 
-    ./system_config.sh sys
+    ./setup.sh sys

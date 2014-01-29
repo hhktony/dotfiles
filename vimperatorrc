@@ -1,9 +1,10 @@
-" 3.7 (created: 2013/08/26 20:00:29)
+" 3.8 (created: 2013/08/26 20:00:29)
 
 source! ~/.vimperatorrc.local
 
 "{{{ some map
 let g:mapleader=","
+nnoremap ; :
 
 map A <Nop>
 map <C-q> <Nop>
@@ -23,49 +24,45 @@ inoremap <C-f> <Right>
 inoremap <C-b> <Left>
 inoremap <A-d> <C-t>dwi
 
-" Insertæ¨¡å¼ä¸‹ä½¿ç”¨<C-n>/<C-p>ç¿»é¡µ
+" InsertÄ£Ê½ÏÂÊ¹ÓÃ<C-n>/<C-p>·­Ò³
 imap <C-n> <Esc>:tabnext<CR>
 imap <C-p> <Esc>:tabprev<CR>
 
-" ç§»åŠ¨æ ‡ç­¾é¡µ
+" ÒÆ¶¯±êÇ©Ò³
 noremap <A-m> :tabmove<SPACE>
 noremap <A-Left> :tabmove! -1<CR>
 noremap <A-Right> :tabmove! +1<CR>
 
-" æ‰“å¼€å…³é—­ä¾§è¾¹æ‹¦
+" ´ò¿ª¹Ø±Õ²à±ßÀ¹
 noremap s :sidebar<SPACE>
 noremap S :sbclose<CR>
 "}}}
 
 "{{{ some settings
+color pgray
 set history=10000
 set titlestring=butbueatiful
 set noerrorbells
-" å‘½ä»¤è¡Œä¸‹æ‹‰èœå•æœ€å¤šæ˜¾ç¤ºçš„æ¡ç›®æ•°
 set maxitems=6
-
-"colorscheme ot_sweets
 let g:hintsio="io"
-
 set newtab=all
 set complete=sl
 set tabnumbers=true
 set focuscontent
-"set noscrollbars
+set noscrollbars
 "set editor=gvim -f
-
-" No toolbars or menus by default
 set toolbars=noaddons,nobookmarks,nomenu,nonavigation,tabs
-
-" Elements of the status line
 set status=input,location,tabcount,position
+set hintchars="hjklasdfgyuiopqwertnmzxcvb"
 
-" Show destination links in 1=status line, 2=command line, 0=none (FF4 baloon)
+" Show destination links in 
+    "   1=status line
+    "   2=command line
+    "   0=none (FF4 baloon)
 set showstatuslinks=0
-
 "}}}
 
-"{{{ search
+" search {{{
 set incsearch
 set ignorecase
 set hlsearch
@@ -73,31 +70,32 @@ set smartcase
 nnoremap <leader>nh :nohlsearch<cr>
 "}}}
 
-"{{{ hintchars å­—ä½“å¤§å°å’ŒèƒŒæ™¯é¢œè‰²
-set hintchars="hjklasdfgyuiopqwertnmzxcvb"
+" surround com and net¿ÉÒÔÖ±½ÓÏÈÊäÈëÍøÕ¾Ãû,ÔÙÓÃ<CTRL>+<ENTER>¿ì½İÊäÈë.com/.net {{{
+cnoremap<S-Return> <End>.org<Home><C-Right>www.<CR>
+cnoremap<C-Return> <End>.com<Home><C-Right>www.<CR>
+}}}
 
-hi Hint font-family: Arial; font-size: 15px; font-weight: bold; text-transform: uppercase; color: white; background-color: #dd2222; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
-
-hi HintActive -append background-color: #9acd32; color: #556b2f;
-hi HintElem background-color: #fffacd; color: #8b4513;
-hi PromptText background: #4682b4; color: white;
-hi ModeMsg -append background: #d2691e;
+"{{{ÉÏÒ»Ò³ºÍÏÂÒ»Ò³
+set nextpattern=\s*ÏÂÒ»Ò³|ÏÂÒ»ÕÅ|ÏÂÒ»Æª|ÏÂÒ³|ºóÒ³\s*,^\bnext\b,\\bnext\\b,^>$,^(>>|?)$,^(>|?),(>|?)$,\\bmore\\b
+set previouspattern=\s*ÉÏÒ»Ò³|ÉÏÒ»ÕÅ|ÉÏÒ»Æª|ÉÏÒ³|Ç°Ò³\s*,^\bprev|previous\b,\\bprev|previous\\b,^<$,^(<<|?)$,^(<|?),(<|?)$
 "}}}
 
-"{{{ä¸Šä¸€é¡µå’Œä¸‹ä¸€é¡µ
-"}}}
-
-"{{{ è‡ªå®šä¹‰æ‰“å¼€ç½‘å€
-noremap <leader>f :tabopen http://translate.google.com.tw/<CR>
+"{{{ ×Ô¶¨Òå´ò¿ªÍøÖ·
 noremap <leader>q :tabopen http://web.qq.com/<CR>
 noremap <leader>b :tabopen butbueatiful.blog.chinaunix.net<CR>
 noremap <leader>m :tabopen http://dillinger.io/<CR>
 "}}}
 
-"{{{ misc
-" åœ¨Gmailå’ŒGreaderä¸­å±è”½Vimperator
-autocmd LocationChange .* js modes.passAllKeys = /.*(mail\.google\.com|www\.google\.com\/reader).*/.test(buffer.URL)
+"{{{ ÔÚGmailºÍGreaderÖĞÊ¹ÓÃVimperator
+:command! -nargs=+ -description="Translates the given argument from Chinese to English" translate tabopen http://translate.google.com/#zh|en|<args>
+:command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+:lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
+:lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
+:lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
+:lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g
+:lazy fmaps -u='https?://www\.rememberthemilk\.com/home/' j k m i c t ? d F,f G,g S,s L,l Y,y H,h M,m <Del> <C-S-Left> <C-S-Right>
+:lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/list' o j k
+:lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/detail' u
 "}}}
 
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
-
+" vim: set ft=vimperator sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
