@@ -2,7 +2,7 @@
 
 source! ~/.vimperatorrc.local
 
-"{{{ some map
+" Bindings {{{ 
 let g:mapleader=","
 nnoremap ; :
 
@@ -14,7 +14,7 @@ noremap k 3k
 noremap J <C-d>
 noremap K <C-u>
 
-map < g0
+noremap < g0
 noremap > g$
 
 noremap y Y
@@ -38,8 +38,8 @@ noremap s :sidebar<SPACE>
 noremap S :sbclose<CR>
 "}}}
 
-"{{{ some settings
-color pgray
+" UI {{{ 
+colors pgray
 set history=10000
 set titlestring=butbueatiful
 set noerrorbells
@@ -62,7 +62,7 @@ set hintchars="hjklasdfgyuiopqwertnmzxcvb"
 set showstatuslinks=0
 "}}}
 
-" search {{{
+" Search {{{
 set incsearch
 set ignorecase
 set hlsearch
@@ -73,29 +73,21 @@ nnoremap <leader>nh :nohlsearch<cr>
 " surround com and net可以直接先输入网站名,再用<CTRL>+<ENTER>快捷输入.com/.net {{{
 cnoremap<S-Return> <End>.org<Home><C-Right>www.<CR>
 cnoremap<C-Return> <End>.com<Home><C-Right>www.<CR>
-}}}
+"}}}
 
-"{{{上一页和下一页
+"上一页和下一页 {{{
 set nextpattern=\s*下一页|下一张|下一篇|下页|后页\s*,^\bnext\b,\\bnext\\b,^>$,^(>>|?)$,^(>|?),(>|?)$,\\bmore\\b
 set previouspattern=\s*上一页|上一张|上一篇|上页|前页\s*,^\bprev|previous\b,\\bprev|previous\\b,^<$,^(<<|?)$,^(<|?),(<|?)$
 "}}}
 
-"{{{ 自定义打开网址
+" 自定义打开网址 {{{
 noremap <leader>q :tabopen http://web.qq.com/<CR>
 noremap <leader>b :tabopen butbueatiful.blog.chinaunix.net<CR>
 noremap <leader>m :tabopen http://dillinger.io/<CR>
 "}}}
 
-"{{{ 在Gmail和Greader中使用Vimperator
+" 自定义命令 {{{
 :command! -nargs=+ -description="Translates the given argument from Chinese to English" translate tabopen http://translate.google.com/#zh|en|<args>
-:command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
-:lazy fmaps -u='mail\.google\.com/mail' c / j k n p o u e x s r a # [ ] ? gi gs gt gd ga gc
-:lazy fmaps -u='mail\.google\.com/mail/.*/[0-9a-f]+$' c / j,n k,p n,j p,k o u e x s r a # [ ] ? gi gs gt gd ga gc
-:lazy fmaps -u='www\.google\.co\.jp/reader' -events=vkeypress j k n p m s v A r S N P X O gh ga gs gt gu u / ? J K
-:lazy fmaps -u='(fastladder|livedoor)\.com/reader' j k s a p o v c i,p <Space> <S-Space> z b < > q w e,g
-:lazy fmaps -u='https?://www\.rememberthemilk\.com/home/' j k m i c t ? d F,f G,g S,s L,l Y,y H,h M,m <Del> <C-S-Left> <C-S-Right>
-:lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/list' o j k
-:lazy fmaps -u='http://code.google.com/p/vimperator-labs/issues/detail' u
 "}}}
 
 " vim: set ft=vimperator sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:

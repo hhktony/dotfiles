@@ -68,33 +68,4 @@ hi HintActive           background-color: #5566bb; color: #dddded;
 hi HintImage            opacity: .5;
 "}}}
 
-js <<EOM
-var css = <css><![CDATA[
-#liberator-customize-toolbar {
-    -moz-box-align: center !important;
-    -moz-box-pack: center !important;
-    -moz-appearance: none !important;
-}
-
-#liberator-customize-toolbar toolbarbutton,
-#liberator-customize-toolbar statusbarpanel {
-    padding: 0 0 0 2px !important;
-}
-
-#feed-button {
-    list-style-image: url("chrome://browser/skin/feeds/feedIcon16.png") !important;
-    -moz-image-region: auto !important;
-    border: none !important;
-    min-width: 0 !important;
-}
-
-/* sbmcommentsviewer.js */
-.liberator-sbmcommentsviewer-content {
-    padding: 0 !important;
-    border: none !important;
-}
-]]></css>.toString();
-styles.addSheet(false, "indigo-customize-toolbar", "chrome://*", css, false);
-EOM
-
 " vim: set ft=vimperator sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
