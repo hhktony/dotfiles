@@ -26,7 +26,7 @@ match_lhs=""
 [[ -f ~/.dir_colors   ]] && match_lhs="${match_lhs}$(<~/.dir_colors)"
 [[ -f /etc/DIR_COLORS ]] && match_lhs="${match_lhs}$(</etc/DIR_COLORS)"
 [[ -z ${match_lhs}    ]] \
-	&& type -P dircolors >/dev/null \
+    && type -P dircolors >/dev/null \
     && $(dircolors -p > $HOME/.dir_colors)
 
 unset match_lhs
@@ -52,21 +52,10 @@ if ${use_color} ; then
 		fi
 	fi
 
-	if [[ ${EUID} == 0 ]] ; then
-		#PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
-        PS1='\[\e[1;92m\]\u\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(parse_git_branch)\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
-	else
-		#PS1='\[\033[01;32m\]\u\[\033[01;34m\] \W \$\[\033[00m\] '
-        PS1='\[\e[1;92m\]\u\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(parse_git_branch)\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
-	fi
-
+    #PS1='\[\033[01;32m\]\u\[\033[01;34m\] \W \$\[\033[00m\] '
+    PS1='\[\e[1;92m\]\u\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(parse_git_branch)\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
 else
-	if [[ ${EUID} == 0 ]] ; then
-		# show root when we do not have colors
-		PS1='\u \W \$ '
-	else
-		PS1='\u \W \$ '
-	fi
+    PS1='\u \W \$ '
 fi
 
 PS2='> '

@@ -1,13 +1,11 @@
-[color]
-    ui = true
 [user]
-	name = xutao
-	email = butbueatiful@gmail.com
+    name = Tony Xu
+    email = butbueatiful@gmail.com
 [core]
-	editor = vim
-	excludesfile = /home/butbueaitful/.global_ignore
+    editor = vim
+    excludesfile = ~/.gitignore_global
 [alias]
-	ci = commit -a -v
+    ci = commit -a -v
     st = status
     br = branch
     co = checkout
@@ -16,15 +14,17 @@
     throw = reset --hard HEAD
     throwh = reset --hard HEAD^
     rb = rebase
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
     ign = ls-files -o -i --exclude-standard
 [push]
     default = current
+[color]
+    ui = true
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [github]
     user = ButBueatiful
     # token = <enter token here>
@@ -34,3 +34,7 @@
     insteadOf = gb:
 [url "git@heroku.com:"]
     insteadOf = heroku:
+[i18n]
+    commitEncoding = utf-8
+[gui]
+    encoding = utf-8
