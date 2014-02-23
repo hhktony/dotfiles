@@ -16,7 +16,7 @@
 #
 #============================================================================================
 
-function help_info
+help_info ()
 {
     printf "\e[01;033mUsage: \n\t$0 <sys/file/vim/emacs>\e[0m\n\n"
     exit 1
@@ -27,14 +27,14 @@ function help_info
 [[ ! -d "$HOME/Music" ]] && mkdir $HOME/Music
 [[ ! -d "$HOME/.config/" ]] && mkdir $HOME/.config
  
-function conf_sys
+conf_sys ()
 {
     conf_file
     conf_emacs
     conf_vim
 }
 
-function conf_file
+conf_file ()
 {
     cd $HOME/.dotfiles
 
@@ -61,7 +61,7 @@ function conf_file
     rm -rf $HOME/.$FILENAME $HOME/.README.md
 }
 
-function conf_vim
+conf_vim ()
 {
     cd $HOME
     rm -rf .vim .vimrc .gvimrc
@@ -72,7 +72,7 @@ function conf_vim
     ./config.sh
 }
 
-function conf_emacs
+conf_emacs ()
 {
     cd $HOME
 
@@ -86,4 +86,3 @@ case $1 in
     emacs)  conf_emacs  ;;
     *)      help_info   ;;
 esac
-

@@ -14,7 +14,8 @@ else
     exit
 fi
 
-get_proj_root_dir () {
+get_proj_root_dir ()
+{
     local dir=.
 
     until [ "$dir" -ef $HOME ]; do
@@ -30,7 +31,8 @@ get_proj_root_dir () {
     fi
 }
 
-updatetags() {
+function updatetags ()
+{
     cd $proj_root_dir
     $ctags_exe -R --fields=+iaS --extra=+q
 }
