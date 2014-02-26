@@ -22,8 +22,7 @@ help_info ()
     exit 1
 }
 
-[[ ! -d "$HOME/Software/" ]] &&  mkdir $HOME/Software
-[[ ! -d "$HOME/Workspace/" ]] && mkdir $HOME/Workspace
+[[ ! -d "$HOME/Workspace/" ]] && mkdir $HOME/workspace
 [[ ! -d "$HOME/Music" ]] && mkdir $HOME/Music
 [[ ! -d "$HOME/.config/" ]] && mkdir $HOME/.config
  

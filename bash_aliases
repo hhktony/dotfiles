@@ -56,8 +56,15 @@ alias ec='emacsclient -c -a ""'
 alias cls='clear'
 alias q='exit'
 alias vi='vim'
-alias tmux='tmux -2'
 alias g='git'
+
+if [ -z $TMUX ]; then
+    if $(tmux has-session); then
+        exec tmux -2 attach
+    else
+        exec tmux -2
+    fi
+fi
 
 # path
 alias path='echo -e ${PATH//:/\\n}'
