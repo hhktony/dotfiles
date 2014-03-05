@@ -19,12 +19,20 @@
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
     ls = ls-files
     ign = ls-files -o -i --exclude-standard
-[push]
-    default = current
-[color]
-    ui = true
 [merge]
     tool = vimdiff
+[diff]
+    tool = vimdiff
+[difftool]
+    prompt = false
+[i18n]
+    commitEncoding = utf-8
+[gui]
+    encoding = utf-8
+[color]
+    ui = true
+[push]
+    default = current
 [github]
     user = ButBueatiful
     # token = <enter token here>
@@ -34,7 +42,3 @@
     insteadOf = gb:
 [url "git@heroku.com:"]
     insteadOf = heroku:
-[i18n]
-    commitEncoding = utf-8
-[gui]
-    encoding = utf-8
