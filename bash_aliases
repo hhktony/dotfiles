@@ -53,18 +53,19 @@ fi
 alias e='vim'
 alias et='TERM=xterm-256color emacsclient -t -a ""'
 alias ec='emacsclient -c -a ""'
-alias cls='clear'
 alias q='exit'
 alias vi='vim'
 alias g='git'
+alias cls='clear'
+alias tmux='tmux -2'
 
-if [ -z $TMUX ]; then
-    if $(tmux has-session); then
-        exec tmux -2 attach
-    else
-        exec tmux -2
-    fi
-fi
+# if [ -z $TMUX ]; then
+    # if $(tmux has-session); then
+        # exec tmux -2 attach
+    # else
+        # exec tmux -2
+    # fi
+# fi
 
 # path
 alias path='echo -e ${PATH//:/\\n}'
@@ -110,7 +111,6 @@ alias mkae='make'
 #----------------------------------------------------------
 # Make the following commands run in background automatically:
 #----------------------------------------------------------
-
 function mkcd()
 {
 	mkdir $1;
@@ -171,13 +171,15 @@ function te()  # Wrapper around xemacs/gnuserv ...
 	fi
 }
 
-function soffice()  { command soffice "$@" & }
-function firefox()  { command firefox "$@" & }
-function openoffice() { command openoffice.org "$@" & }
-function acroread() { command acroread "$@" & }
-function evince()   { command evince "$@" & }
-function apvlv()    { command apvlv "$@" & }
-function zathura()  { command zathura "$@" & }
-function eog()      { command eog "$@" & }
+function soffice()    { command soffice         "$@" & }
+function firefox()    { command firefox         "$@" & }
+function openoffice() { command openoffice.org  "$@" & }
+function acroread()   { command acroread        "$@" & }
+function evince()     { command evince          "$@" & }
+function apvlv()      { command apvlv           "$@" & }
+function zathura()    { command zathura         "$@" & }
+function eog()        { command eog             "$@" & }
 
 [ -f $HOME/.bash_aliases_local ] && . $HOME/.bash_aliases_local
+
+# vim: set syn=sh sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
