@@ -24,18 +24,18 @@ do_link_files()
 
     for i in `ls $src_dir $filter`
     do
-	if [ -e $dst_prefix$i ]; then
-		printf "\e[01;033mWARNING: \'$dst_prefix$i\' already exists!\nDo you want to delete it? (y|n) \e[0m"
-		read result
-		if [ $result = y ]; then
-			rm -rf $dst_prefix$i
-		else
-			continue
-		fi
-	fi
+        if [ -e $dst_prefix$i ]; then
+            printf "\e[01;033mWARNING: \'$dst_prefix$i\' already exists!\nDo you want to delete it? (y|n) \e[0m"
+            read result
+            if [ $result = y ]; then
+                rm -rf $dst_prefix$i
+            else
+                continue
+            fi
+        fi
 
-	ln -s $src_dir$i $dst_prefix$i
-	printf "\e[01;034mOK: \'$src_dir$i\' linked to \'$dst_prefix$i\'\e[0m\n"
+        ln -s $src_dir$i $dst_prefix$i
+        printf "\e[01;034mOK: \'$src_dir$i\' linked to \'$dst_prefix$i\'\e[0m\n"
     done
 }
 
