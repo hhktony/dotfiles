@@ -82,3 +82,4 @@ export LESSCHARSET=utf-8
 [ -f $HOME/.oraclerc ] && source $HOME/.oraclerc
 
 #export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
+echo ".bashrc"

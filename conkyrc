@@ -4,8 +4,8 @@ alignment top_right
 # alignment bottom_right
 
 # 设定输出范围距离屏幕边界的像素数量，最小为 10 像素
-gap_x 15
-gap_y 70
+gap_x 10
+gap_y 30
 
 # 大小 宽x高
 minimum_size 260 5

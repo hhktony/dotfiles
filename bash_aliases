@@ -14,7 +14,7 @@ alias lu='ls -lur'				# Sort by access time
 alias lr='ls -lR'               # Recursion ls
 alias lt='ls -ltr'              # Sort by date
 alias lm='ls -al |more'
-alias lsd='ls -lF | grep "^d"'
+alias lsd='ls -d */'
 alias tree='tree -C'			# tree display color
 
 # safety features

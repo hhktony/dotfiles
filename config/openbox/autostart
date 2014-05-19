@@ -17,14 +17,17 @@ tint2 &
 # Volume control
 #volumeicon -b &
 
-# fcitx
-(sleep 3s && fcitx -d) &
-
 # xmodmap
 [[ -s ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 
+# Screensaver
+xscreensaver -nosplash &
+
+# fcitx
+(sleep 3s && fcitx -d) &
+
 # urxvt
 [[ -z $(pidof urxvtd) ]] && urxvtd &
-(sleep 5s && urxvtc) &
+(sleep 3s && urxvtc) &
 
 #(sleep 4s && /usr/bin/nm-applet --sm-disable) &

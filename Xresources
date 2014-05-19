@@ -1,7 +1,6 @@
 !***********************************************************
 ! ~/.Xresource
 ! Reference：
-! 	http://hi.baidu.com/goomw/item/5caddd694c83d70ba1cf0f0b
 ! 	http://forum.ubuntu.org.cn/viewtopic.php?t=66302
 !***********************************************************
 URxvt*termName   : rxvt-unicode
@@ -17,7 +16,8 @@ URxvt*colorUL        : #4682B4
 !}}}
 
 !{{{ transparent
-URxvt*background:[80]black
+!URxvt*background:[80]black
+URxvt*background:black
 URxvt*foreground:white
 !}}}
 
@@ -58,23 +58,22 @@ URxvt*preeditType : Root
 !}}}
 
 !{{{ EX
+URxvt.perl-lib: /home/tony/.config/urxvt-perls/
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,fullscreen
-URxvt.url-select.launcher:  : /usr/bin/firefox -new-tab
+URxvt.url-select.launcher: /usr/bin/firefox -new-tab
+
 URxvt.url-select.underline: true
 URxvt.keysym.M-u: perl:url-select:select_next
+
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt*matcher.button : 1
-urxvt*keysym.F11: perl:fullscreen:switch
+
+URxvt.keysym.F11: perl:fullscreen:switch
 !}}}
 
 !{{{ cursor
 URxvt*cursorBlink     : true
 URxvt*cursorUnderline : false
 URxvt*visualBell      : false
-!}}}
-
-!{{{ keyboard
-! URxvt*keysym.M-Escape      : perl:keyboard-select:activate
-! URxvt*keysym.M-s           : perl:keyboard-select:search
 !}}}

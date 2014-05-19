@@ -308,9 +308,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>urxvtc</name>
+          <name>urxvt</name>
         </startupnotify>
-        <command>urxvtc</command>
+        <command>urxvt</command>
       </action>
     </keybind>
     <keybind key="A-F2">

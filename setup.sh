@@ -1,20 +1,9 @@
 #!/usr/bin/env bash
-#set -x
-
-#============================================================================================
-#
-#         FileName: system_config.sh
-#
-#      Descriptions:
-#
-#          Version: 1.0
-#          Created: 2013-04-22 23:34:09
-#         Revision: (none)
-#
-#           Author: xutao(mark), butbueatiful@gmail.com
-#          Company: wanwei-tech
-#
-#============================================================================================
+#  Filename: setup.sh
+#   Created: 2013-04-22 23:34:09
+#      Desc: mydotfiles
+#    Author: xutao(Tony Xu), butbueatiful@gmail.com
+#   Company: myself
 
 help_info ()
 {
@@ -22,10 +11,40 @@ help_info ()
     exit 1
 }
 
-[[ ! -d "$HOME/Workspace/" ]] && mkdir $HOME/workspace
-[[ ! -d "$HOME/Music" ]] && mkdir $HOME/Music
-[[ ! -d "$HOME/.config/" ]] && mkdir $HOME/.config
- 
+[[ ! -d "$HOME/workspace" ]]  		&& mkdir $HOME/workspace
+[[ ! -d "$HOME/Music" ]]      		&& mkdir $HOME/Music
+[[ ! -d "$HOME/.config" ]]    		&& mkdir $HOME/.config
+[[ ! -d "$HOME/.dotfiles.bak/config" ]] && mkdir -p $HOME/.dotfiles.bak/config
+
+do_link_files()
+{
+    local dst_prefix=$1
+    local src_dir=$2
+    local filter=$3
+
+    for i in `ls $src_dir $filter`
+    do
+	if [ -e $dst_prefix$i ]; then
+		printf "\e[01;033mWARNING: \'$dst_prefix$i\' already exists!\nDo you want to delete it? (y|n) \e[0m"
+		read result
+		if [ $result = y ]; then
+			rm -rf $dst_prefix$i
+		else
+			continue
+		fi
+	fi
+
+	ln -s $src_dir$i $dst_prefix$i
+	printf "\e[01;034mOK: \'$src_dir$i\' linked to \'$dst_prefix$i\'\e[0m\n"
+    done
+}
+
+conf_file()
+{
+    do_link_files $HOME/. $HOME/.dotfiles/ '-I config -I README.md -I setup.sh'
+    do_link_files $HOME/.config/ $HOME/.dotfiles/config/
+}
+
 conf_sys ()
 {
     conf_file
@@ -33,31 +52,11 @@ conf_sys ()
     conf_vim
 }
 
-conf_file ()
+conf_sys ()
 {
-    cd $HOME/.dotfiles
-
-    for name in *
-    do
-        if [[ $name == "config" ]]; then
-            cd config
-
-            for cname in *
-            do
-                target="$HOME/.config/$cname"
-                rm -rf ${target}
-                ln -s "$PWD/$cname" "$target" > /dev/null 2>&1
-            done
-            cd ..
-        else
-            target="$HOME/.$name"
-            rm -rf ${target}
-            ln -s "$PWD/$name" "$target" > /dev/null 2>&1
-        fi
-    done
-
-    FILENAME=`basename $0`
-    rm -rf $HOME/.$FILENAME $HOME/.README.md
+    conf_file
+    conf_emacs
+    conf_vim
 }
 
 conf_vim ()
@@ -67,8 +66,8 @@ conf_vim ()
 
     git clone git@github.com:ButBueatiful/dotvim.git .vim
 
-    cd $HOME/.vim 	
-    ./config.sh
+    cd $HOME/.vim
+    ./setup.sh
 }
 
 conf_emacs ()
@@ -79,9 +78,17 @@ conf_emacs ()
 }
 
 case $1 in
-    sys)    conf_sys    ;;
-    file)   conf_file   ;;
-    vim)    conf_vim    ;;
-    emacs)  conf_emacs  ;;
-    *)      help_info   ;;
+    sys)
+        conf_sys    ;;
+    file)
+        conf_file   ;;
+    vim)
+        conf_vim    ;;
+    emacs)
+        conf_emacs  ;;
+    *)
+        help_info
+        exit 1
 esac
+
+exit 0
