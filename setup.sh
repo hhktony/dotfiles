@@ -14,7 +14,6 @@ help_info ()
 [[ ! -d "$HOME/workspace" ]]  		&& mkdir $HOME/workspace
 [[ ! -d "$HOME/Music" ]]      		&& mkdir $HOME/Music
 [[ ! -d "$HOME/.config" ]]    		&& mkdir $HOME/.config
-[[ ! -d "$HOME/.dotfiles.bak/config" ]] && mkdir -p $HOME/.dotfiles.bak/config
 
 do_link_files()
 {
