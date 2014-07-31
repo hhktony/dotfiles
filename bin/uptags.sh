@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #  Filename: uptags.sh
 #   Created: 2013-12-25 00:13:25
-#      Desc: TODO (some description)
+#      Desc: update tags file
 #    Author: xutao(butbueatiful), butbueatiful@gmail.com
 #   Company: myself
 
@@ -16,24 +16,13 @@ fi
 
 get_proj_root_dir ()
 {
-    local dir=.
-
-    until [ "$dir" -ef $HOME ]; do
-        # echo $dir
-        [ -d "$dir/.git" ] && break
-        dir="../$dir"
-    done
-
-    if [ "$dir" -ef $HOME ]; then
-        proj_root_dir=.
-    else
-        proj_root_dir=`readlink -f $dir`
-    fi
+    gitroot=`git rev-parse --show-toplevel 2>/dev/null`
+    [[ -z $gitroot ]] && gitroot=.
 }
 
 function updatetags ()
 {
-    cd $proj_root_dir
+    cd $gitroot
     $ctags_exe -R --fields=+iaS --extra=+q
 }
 
