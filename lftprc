@@ -13,7 +13,7 @@ alias edit "eval -f \"get $0 -o ~/.lftp/edit.tmp.$$ && shell \\\"cp -p ~/.lftp/e
 ## make prompt look better
 #set prompt "lftp \S\? \u\@\h:\w> "
 ## some may prefer colors (contributed by Matthew <mwormald@optusnet.com.au>)
-set prompt "\[\e[0;33m\][\[\e[0;34m\]f\[\e[1m\]t\[\e[37m\]p\[\e[0;33m\]] \[\e[1;32m\]\u\[\e[0;33m\]\@\[\e[1;31m\]\h\[\e[0;33m\]:\[\e[1;34m\]\w\[\e[0;33m\]>\[\e[0m\] "
+set prompt "\[\e[0;34m\][\[\e[0;34m\]f\[\e[1m\]t\[\e[34m\]p\[\e[0;34m\]] \[\e[1;32m\]\u\[\e[0;33m\]\@\[\e[1;31m\]\h\[\e[0;33m\]:\[\e[1;34m\]\w\[\e[0;33m\]>\[\e[0m\] "
 ## Uncomment the following two lines to make switch cls and ls, making
 ## cls the default.
 alias ls command cls
@@ -21,21 +21,20 @@ alias q command bye
 #alias hostls command 'ls --color'
 
 ## default protocol selection
-#set default-protocol/ftp.* ftp
-#set default-protocol/www.* http
-#set default-protocol/localhost file
+# set default-protocol/ftp.* ftp
+# set default-protocol/www.* http
+# set default-protocol/localhost file
 
 ## this makes lftp faster but doesn't work with some sites/routers
-#set ftp:sync-mode off
+# set ftp:sync-mode off
 
 ## synchronous mode for broken servers and/or routers
-set sync-mode/ftp.idsoftware.com on
 set sync-mode/ftp.microsoft.com on
-set sync-mode/sunsolve.sun.com on
+
 ## extended regex to match first server message for automatic sync-mode.
 set auto-sync-mode "icrosoft FTP Service|MadGoat"
 
-## if default ftp passive mode does not work, try this:
+## If default ftp passive mode does not work, try this:
 # set ftp:passive-mode off
 
 ## Set this to follow http redirections

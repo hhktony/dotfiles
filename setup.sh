@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #  Filename: setup.sh
 #   Created: 2013-04-22 23:34:09
-#      Desc: mydotfiles
+#      Desc: my dotfiles
 #    Author: xutao(Tony Xu), butbueatiful@gmail.com
 #   Company: myself
 

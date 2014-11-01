@@ -25,7 +25,7 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 # }}}
 
-#set -o vi 	# Shell is vi mode
+# set -o vi 	# Shell is vi mode
 
 #  bash-completion {{{
 bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
@@ -70,15 +70,26 @@ export LESSCHARSET=utf-8
 #export LESS="-R"
 #export CDPATH=.:$HOME/Yunio/srcs
 
-[ -f $HOME/.bashrc_local ] && source $HOME/.bashrc_local
-[ -f $HOME/.bash_aliases ] && source $HOME/.bash_aliases
-[ -f $HOME/.bash_prompt ] && source $HOME/.bash_prompt
-[ -f $HOME/.bin/z.sh ] && source $HOME/.bin/z.sh
+[[ -f $HOME/.bash_aliases   ]] && source $HOME/.bash_aliases
+[[ -f $HOME/.bash_prompt    ]] && source $HOME/.bash_prompt
+[[ -f $HOME/.bin/z.sh       ]] && source $HOME/.bin/z.sh
+[[ -f $HOME/.bashrc_local   ]] && source $HOME/.bashrc_local
 
+# {{{ Environment Variables
+# set PATH so it includes user's private .bin if it exists
+[[ -d $HOME/.bin ]]                 && export PATH=$PATH:$HOME/.bin
+# add ARM environment
+[[ -d $HOME/.devenv/3.4.1/bin ]]    && export PATH=$PATH:$HOME/.devenv/3.4.1/bin
+# add Ruby gems to PATH
+[[ -d $HOME/.gem/ruby/1.9.1/bin ]]  && export PATH=$PATH:$HOME/.gem/ruby/1.9.1/bin
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]]   && source $HOME/.rvm/scripts/rvm
 # set Android environment
-[ -f $HOME/.androidrc ] && source $HOME/.androidrc
-
+[[ -f $HOME/.androidrc ]]           && source $HOME/.androidrc
 # set Oracle environment
-[ -f $HOME/.oraclerc ] && source $HOME/.oraclerc
+[[ -f $HOME/.oraclerc ]]            && source $HOME/.oraclerc
+# }}}
 
-#export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
+# export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
+
+# vim: syntax=sh set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
