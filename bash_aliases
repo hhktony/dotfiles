@@ -21,7 +21,8 @@ alias tree='tree -C'			# tree display color
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm.sh'
-alias rm!='/bin/rm'
+alias rm-clear='/bin/rm -rf ~/.Trash/*'
+alias rmf='/bin/rm'
 
 # new commands
 alias da='date "+%A, %B %d[%V], %Y [%T]"'

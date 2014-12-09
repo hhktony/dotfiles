@@ -18,38 +18,30 @@
 #and log the acction
 
 trash="$HOME/.Trash"
-log="$HOME/.Trash/trash.log"
+log="/root/.Trash.log"
 bdate=`date "+%Y-%m-%d-%H:%M:%S"` #current time
 
-if [[ ! -d "${trash}" ]]; then
-    mkdir ${trash}
-    touch ${log}
-fi
+[[ ! -d ${trash} ]] && mkdir ${trash}
 
-if [[ ! -f "${log}" ]]; then
-    touch ${log}
-fi
+[[ ! -f ${log} ]]   &&  touch ${log}
 
-while [ -e "$1" ]; do
-#remove the possible ending /
-file=`echo $1 |sed 's#\/$##' `
+while [ -e "$1" ]
+do
+    # Remove the possible ending /
+    file=`echo $1 |sed 's#\/$##' `
 
-pure_filename=`echo $file  |awk -F / '{print $NF}' |sed -e "s#^\.##" `
+    pure_filename=`echo $file  |awk -F / '{print $NF}' |sed -e "s#^\.##" `
 
-if [ `echo $pure_filename | grep "\." ` ]; then
-    new_file=` echo $pure_filename |sed -e "s/\([^.]*$\)/$bdate.\1/" `
-else
-    new_file="$pure_filename.$bdate"
-fi
+    [ `echo $pure_filename | grep "\." ` ] \
+    && new_file=` echo $pure_filename | sed -e "s/\([^.]*$\)/$bdate.\1/" ` \
+    || new_file="$pure_filename.$bdate"
 
-trash_file="$trash/$new_file"
-mv "$file" "$trash_file"
+    trash_file="$trash/$new_file"
+    mv "$file" "$trash_file"
 
-if [ -w $log ]; then
-    echo -e "[$bdate]\t$file\t=>\t[$trash_file]" |tee -a $log
-else
-    echo -e "[$bdate]\t$file\t=>\t[$trash_file]"
-fi
+    [ -w $log ] && \
+    echo -e "[$bdate]\t$file\t=>\t[$trash_file]" | tee -a $log \
+    || echo -e "[$bdate]\t$file\t=>\t[$trash_file]"
 
-shift   #increment the loop
+    shift   #increment the loop
 done
