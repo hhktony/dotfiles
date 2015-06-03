@@ -63,7 +63,7 @@ conf_vim ()
     cd $HOME
     rm -rf .vim .vimrc .gvimrc
 
-    git clone git@github.com:ButBueatiful/dotvim.git .vim
+    git clone git@github.com:hhktony/dotvim.git .vim
 
     cd $HOME/.vim
     ./setup.sh
@@ -73,7 +73,7 @@ conf_emacs ()
 {
     cd $HOME
 
-    git clone git@github.com:ButBueatiful/emacs.d .emacs.d
+    git clone git@github.com:hhktony/emacs.d .emacs.d
 }
 
 case $1 in
