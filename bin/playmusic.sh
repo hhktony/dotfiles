@@ -6,8 +6,8 @@
 #              History:
 #
 #            Author: xutao
-#              Email: butbueatiful@gmail.com
-#            HomePage: butbueatiful.github.com
+#              Email: hhktony@gmail.com
+#            HomePage: hhktony.github.com
 #              Company: akaedu.org
 #          Copyright: Copyright (c) 2012, xutao
 #

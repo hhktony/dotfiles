@@ -2,7 +2,7 @@
 #  Filename: setup.sh
 #   Created: 2013-04-22 23:34:09
 #      Desc: my dotfiles
-#    Author: xutao(Tony Xu), butbueatiful@gmail.com
+#    Author: xutao(Tony Xu), hhktony@gmail.com
 #   Company: myself
 
 help_info ()

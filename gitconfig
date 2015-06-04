@@ -1,6 +1,6 @@
 [user]
     name = Tony Xu
-    email = butbueatiful@gmail.com
+    email = hhktony@gmail.com
 [core]
     editor = vim
     excludesfile = ~/.gitignore_global
@@ -34,11 +34,11 @@
 [push]
     default = current
 [github]
-    user = ButBueatiful
+    user = hhktony
     # token = <enter token here>
 [url "git@github.com:"]
     insteadOf = gh:
-[url "git@github.com:ButBueatiful/"]
+[url "git@github.com:hhktony/"]
     insteadOf = gb:
 [url "git@heroku.com:"]
     insteadOf = heroku:

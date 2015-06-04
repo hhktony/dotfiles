@@ -2,7 +2,7 @@
 #  Filename: uptags.sh
 #   Created: 2013-12-25 00:13:25
 #      Desc: update tags file
-#    Author: xutao(butbueatiful), butbueatiful@gmail.com
+#    Author: xutao(Tony Xu), hhktony@gmail.com
 #   Company: myself
 
 if [ -e /usr/bin/ctags ]; then

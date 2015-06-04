@@ -1,6 +1,6 @@
 # wallpaper
-#feh --bg-scale ~/.config/openbox/butbueatiful.jpg & 
-hsetroot -fill ~/.config/openbox/butbueatiful.jpg & 
+#feh --bg-scale ~/.config/openbox/hhktony.jpg & 
+hsetroot -fill ~/.config/openbox/hhktony.jpg & 
 
 # window
 xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &

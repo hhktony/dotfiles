@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#============================================================================================
+#=====================================================
 #
 #         FileName: rm.sh
 #
@@ -10,10 +10,10 @@
 #          Created: 2012-11-30 11:52:23
 #         Revision: (none)
 #
-#           Author: xutao(mark), butbueatiful@gmail.com
-#          Company: wanwei-tech
+#           Author: xutao(mark), hhktony@gmail.com
+#          Company: myself
 #
-#============================================================================================
+#=====================================================
 #safe remove, mv the files to .Trash with unique name
 #and log the acction
 

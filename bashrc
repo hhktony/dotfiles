@@ -65,7 +65,7 @@ unset fbterm_tmp
 export EDITOR="vim"
 export SVN_EDITOR="$EDITOR --nofork"
 export CVS_RSH=ssh
-export WWW_HOME=http://butbueatiful.github.io
+export WWW_HOME=http://hhktony.github.io
 export LESSCHARSET=utf-8
 #export LESS="-R"
 #export CDPATH=.:$HOME/Yunio/srcs

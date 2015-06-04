@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-USER_NAME="ButBueatiful"
+USER_NAME="hhktony"
 
 if [ "$#" -ne "1" ];then
     echo "Usage: `basename $0` <repo>"
