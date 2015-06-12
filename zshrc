@@ -6,6 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
+# ZSH_THEME="sorin"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -21,7 +22,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_LS_COLORS="true"
 
 # Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
@@ -29,7 +30,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git ruby rails)
+plugins=(git ruby)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -51,7 +52,7 @@ bindkey "\e\e" sudo-command-line
 
 #RELEASE=`lsb_release -i |awk '{print $3}'`
 
-#if [[ ${RELEASE} == "Ubuntu" ]]; 
+#if [[ ${RELEASE} == "Ubuntu" ]];
 #then
 	#if [ ! -f "$HOME/.dir_colors" ];then
 		#dircolors -p > $HOME/.dir_colors
@@ -63,10 +64,12 @@ bindkey "\e\e" sudo-command-line
 #---------------------------------------------------------------
 # User specific aliases and functions
 #---------------------------------------------------------------
+alias tmux='tmux -2'
 
 # ls
 alias ls='ls --color'
 alias ll='ls -l'
+alias lll='ls -Alh --sort=size . | tr -s " " | cut -d " " -f 5,9'
 alias la='ls -Al'               # Show hidden files
 alias lx='ls -lXB'              # Sort by extension
 alias lk='ls -lSr'              # Sort by size
@@ -74,7 +77,7 @@ alias lc='ls -lcr'				# Sort by modification time
 alias lu='ls -lur'				# Sort by access time
 alias lr='ls -lR'               # Recursion ls
 alias lt='ls -ltr'              # Sort by date
-alias lm='ls -al |more'         
+alias lm='ls -al |more'
 alias tree='tree -C'			# tree display color
 
 # grep
@@ -96,9 +99,12 @@ alias openports='netstat --all --numeric --programs --inet'
 
 # cd
 alias ..='cd ..'
-alias cdsnip='cd $HOME/Yunio/SRC/snippet'
-alias cdpython='cd $HOME/Yunio/SRC/Python'
-
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
+alias ..4="cd ../../../.."
+alias ..5="cd ../../../../.."
+alias ~="cd ~"
+alias -- -="cd -"
 # kill
 alias k9='kill -9'
 alias kall9='killall -9'
@@ -153,7 +159,7 @@ alias which='type -a'
 # Assumes LPDEST is defined (default printer)
 #alias pjet='enscript -h -G -fCourier9 -d $LPDEST'
 #Pretty-print using enscript
-	   
+
 alias du='du -kh'        # Makes a more readable output.
 alias df='df -kTh'
 
@@ -226,7 +232,7 @@ function acroread() { command acroread "$@" & }
 #if [ "$TERM" = "linux" ]; then
 #	alias fbterm='LANG=zh_CN.UTF-8 fbterm'
 # 	fbterm
-#fi 
+#fi
 
 #--------- colorful man page ------------------------------
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -247,5 +253,5 @@ export HISTCONTROL=erasedups
 export EDITOR="vim"
 #export LESS="-R"
 
-# welcome 
+# welcome
 #echo -ne "\E[01;31m Good Morning, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime
