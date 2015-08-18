@@ -94,7 +94,7 @@ alias mv='mv -i'
 alias da='date "+%A, %B %d, %Y [%T]"'
 alias du1='du --max-depth=1'
 alias hg='history | grep $1' 	# requires an argument
-alias pg='ps aux|head -1; ps aux | grep -v "grep" | grep $1 ' 	# requires an argument (note: /usr/bin/pg is installed by the util-linux package; maybe a different alias name should be used)
+alias pg='ps aux|head -1; ps aux | grep -v "grep" | grep $1 '
 alias openports='netstat --all --numeric --programs --inet'
 
 # cd
@@ -105,9 +105,6 @@ alias ..4="cd ../../../.."
 alias ..5="cd ../../../../.."
 alias ~="cd ~"
 alias -- -="cd -"
-# kill
-alias k9='kill -9'
-alias kall9='killall -9'
 
 # privileged access
 if [ $UID -ne 0 ]; then
@@ -215,12 +212,12 @@ function te()  # Wrapper around xemacs/gnuserv ...
 	fi
 }
 
-function soffice() { command soffice "$@" & }
-function firefox() { command firefox "$@" & }
-function evince() { command evince "$@" & }
-function eog() { command eog "$@" & }
-function openoffice() { command openoffice.org "$@" & }
-function acroread() { command acroread "$@" & }
+function soffice()      { command soffice "$@" & }
+function firefox()      { command firefox "$@" & }
+function evince()       { command evince "$@" & }
+function eog()          { command eog "$@" & }
+function openoffice()   { command openoffice.org "$@" & }
+function acroread()     { command acroread "$@" & }
 
 #--------------------------------------------------------
 #			set
@@ -252,6 +249,8 @@ export HISTCONTROL=erasedups
 
 export EDITOR="vim"
 #export LESS="-R"
+
+[[ -f ~/.dircolor_dark ]] && eval $(dircolors -b ~/.dircolor_dark)
 
 # welcome
 #echo -ne "\E[01;31m Good Morning, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime

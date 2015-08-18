@@ -1,5 +1,6 @@
 ## ~/.lftprc
 ## china language
+debug 3
 set ftp:charset "gbk"
 set file:charset "UTF-8"
 ## some useful aliases
@@ -92,3 +93,4 @@ set cmd:term-status/*rxvt* "\e[11;0]\e]2;\T\007\e[11]"
 # set ftp:anon-pass "mozilla@"
 # set ftp:client ""
 # set http:user-agent "Mozilla/4.7 [en] (WinNT; I)"
+
