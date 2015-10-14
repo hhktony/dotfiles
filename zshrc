@@ -106,18 +106,6 @@ alias ..5="cd ../../../../.."
 alias ~="cd ~"
 alias -- -="cd -"
 
-# privileged access
-if [ $UID -ne 0 ]; then
-alias sudo='sudo '
-    alias scat='sudo cat'
-    alias svim='sudo vim'
-    alias root='sudo su'
-    alias reboot='sudo reboot'
-    alias halt='sudo halt'
-    alias update='sudo pacman -Su'
-    alias netcfg='sudo netcfg2'
-fi
-
 # vim
 alias e='vim'
 alias vi='vim'
@@ -141,7 +129,6 @@ alias markdown='markdown --html4tags'
 alias dstat='dstat -cdlmnpsy'
 alias ping='ping -c 3'
 alias lock-screen="gnome-screensaver-command -a"
-alias rbashrc='source ~/.bashrc'
 alias diff='diff -urNwB'
 
 alias pserver='python -m SimpleHTTPServer'
@@ -151,26 +138,12 @@ alias mkdir='mkdir -p'
 alias j='jobs -l'
 alias which='type -a'
 
-#alias print='/usr/bin/lp -o nobanner -d $LPDEST'
-
 # Assumes LPDEST is defined (default printer)
 #alias pjet='enscript -h -G -fCourier9 -d $LPDEST'
 #Pretty-print using enscript
 
 alias du='du -kh'        # Makes a more readable output.
 alias df='df -kTh'
-
-#---------------------------------------------------------------
-#  spelling typos - highly personnal and keyboard-dependent :-)
-#---------------------------------------------------------------
-alias xs='cd'
-alias vf='cd'
-alias moer='more'
-alias moew='more'
-alias kk='ll'
-alias mkea='make'
-alias mkae='make'
-alias mr='rm'
 
 #----------------------------------------------------------
 # Make the following commands run in background automatically:
@@ -185,17 +158,17 @@ mkcd()
 exz () {
   if [ -f $1 ] ; then
     case $1 in
-      *.tar.bz2)   tar xjf $1        ;;
-      *.tar.gz)    tar xzf $1     ;;
-      *.bz2)       bunzip2 $1       ;;
-      *.rar)       rar x $1     ;;
+      *.tar.bz2)   tar xjf $1    ;;
+      *.tar.gz)    tar xzf $1    ;;
+      *.bz2)       bunzip2 $1    ;;
+      *.rar)       rar x $1      ;;
       *.gz)        gunzip $1     ;;
-      *.tar)       tar xf $1        ;;
-      *.tbz2)      tar xjf $1      ;;
-      *.tgz)       tar xzf $1       ;;
-      *.zip)       unzip $1     ;;
-      *.Z)         uncompress $1  ;;
-      *.7z)        7z x $1    ;;
+      *.tar)       tar xf $1     ;;
+      *.tbz2)      tar xjf $1    ;;
+      *.tgz)       tar xzf $1    ;;
+      *.zip)       unzip $1      ;;
+      *.Z)         uncompress $1 ;;
+      *.7z)        7z x $1       ;;
       *)           echo "'$1' cannot be extracted via extract()" ;;
     esac
   else

@@ -5,15 +5,16 @@
 #    Author: xutao(Tony Xu), hhktony@gmail.com
 #   Company: myself
 
-help_info ()
+help_info()
 {
     printf "\e[01;033mUsage: \n\t$0 <sys/file/vim/emacs>\e[0m\n\n"
     exit 1
 }
 
-[[ ! -d "$HOME/workspace" ]]  		&& mkdir $HOME/workspace
-[[ ! -d "$HOME/Music" ]]      		&& mkdir $HOME/Music
-[[ ! -d "$HOME/.config" ]]    		&& mkdir $HOME/.config
+[[ ! -d "$HOME/workspace" ]]    && mkdir $HOME/workspace
+[[ ! -d "$HOME/Music" ]]        && mkdir $HOME/Music
+[[ ! -d "$HOME/Music" ]]        && mkdir $HOME/software
+[[ ! -d "$HOME/.config" ]]      && mkdir $HOME/.config
 
 do_link_files()
 {
@@ -24,7 +25,8 @@ do_link_files()
     for i in `ls $src_dir $filter`
     do
         if [ -e $dst_prefix$i ]; then
-            printf "\e[01;033mWARNING: \'$dst_prefix$i\' already exists!\nDo you want to delete it? (y|n) \e[0m"
+            printf "\e[01;033mWARNING: \'$dst_prefix$i\' already exists! \
+                    \nDo you want to delete it? (y|n) \e[0m"
             read result
             if [ $result = y ]; then
                 rm -rf $dst_prefix$i
@@ -34,7 +36,8 @@ do_link_files()
         fi
 
         ln -s $src_dir$i $dst_prefix$i
-        printf "\e[01;034mOK: \'$src_dir$i\' linked to \'$dst_prefix$i\'\e[0m\n"
+        printf "\e[01;034mOK: \'$src_dir$i\' linked to \'$dst_prefix$i\' \
+                \e[0m\n"
     done
 }
 
@@ -42,23 +45,24 @@ conf_file()
 {
     do_link_files $HOME/. $HOME/.dotfiles/ '-I config -I README.md -I setup.sh'
     do_link_files $HOME/.config/ $HOME/.dotfiles/config/
+    git clone https://github.com/hhktony/oh-my-zsh.git $HOME/.oh-my-zsh --depth=1
 }
 
-conf_sys ()
+conf_sys()
 {
     conf_file
     conf_emacs
     conf_vim
 }
 
-conf_sys ()
+conf_sys()
 {
     conf_file
     conf_emacs
     conf_vim
 }
 
-conf_vim ()
+conf_vim()
 {
     cd $HOME
     rm -rf .vim .vimrc .gvimrc
@@ -72,7 +76,6 @@ conf_vim ()
 conf_emacs ()
 {
     cd $HOME
-
     git clone git@github.com:hhktony/emacs.d .emacs.d
 }
 

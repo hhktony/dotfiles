@@ -39,20 +39,8 @@ alias ..5="cd ../../../../.."
 alias ~="cd ~"
 alias -- -="cd -"
 
-# privileged access
-if [ $UID -ne 0 ]; then
-alias sudo='sudo '
-    alias scat='sudo cat'
-    alias svim='sudo vim'
-    alias root='sudo su'
-    alias reboot='sudo reboot'
-    alias halt='sudo halt'
-    alias update='sudo pacman -Su'
-    alias netcfg='sudo netcfg2'
-fi
-
 alias e='vim'
-alias et='TERM=xterm-256color emacsclient -t -a ""'
+alias et='TERM=screen-256color emacsclient -t -a ""'
 alias ec='emacsclient -c -a ""'
 alias q='exit'
 alias vi='vim'
@@ -97,17 +85,6 @@ alias which='type -a'
 
 alias du='du -sh'        # Makes a more readable output.
 alias df='df -kTh'
-
-#---------------------------------------------------------------
-#  spelling typos - highly personnal and keyboard-dependent :-)
-#---------------------------------------------------------------
-alias xs='cd'
-alias vf='cd'
-alias moer='more'
-alias moew='more'
-alias kk='ll'
-alias mkea='make'
-alias mkae='make'
 
 #----------------------------------------------------------
 # Make the following commands run in background automatically:
