@@ -26,7 +26,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git docker docke-compose ruby)
+plugins=(git docker docke-compose z ruby autojump yum)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,6 +43,11 @@ zle -N sudo-command-line
 # 定义快捷键为： [Esc][Esc]
 bindkey "\e\e" sudo-command-line
 # }
+
+alias -s c='vim'
+alias -s py='vim'
+alias -s sh='vim'
+alias -g GG='| grep'
 
 alias rm='rm -i'
 alias mv='mv -i'
@@ -81,7 +86,6 @@ alias pserver='python -m SimpleHTTPServer'
 alias jserver="jekyll --server"
 
 alias mkdir='mkdir -p'
-alias j='jobs -l'
 alias which='type -a'
 
 mkcd() {

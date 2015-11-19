@@ -39,6 +39,4 @@
 [url "git@github.com:"]
     insteadOf = gh:
 [url "git@github.com:hhktony/"]
-    insteadOf = gb:
-[url "git@heroku.com:"]
-    insteadOf = heroku:
+    insteadOf = gt:
