@@ -36,6 +36,7 @@ if [[ $PS1 && -f /etc/bash_completion.d/git ]]; then
     export GIT_PS1_SHOWSTASHSTATE=1
     export GIT_PS1_SHOWUNTRACKEDFILES=1
 
+    source $HOME/.git-prompt
     PS1='\[\e[1;92m\]\u\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(__git_ps1 "(%s)")\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
 fi
 # }}} PS1 GIT End
