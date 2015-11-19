@@ -27,29 +27,18 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git
+  zsh_reload
+  zsh-syntax-highlighting
   docker
   docke-compose
   z
   autojump
   yum
-  zsh-syntax-highlighting
+  colored-man-pages
+  sudo
 )
 
 source $ZSH/oh-my-zsh.sh
-
-# Customize to your needs...
-
-##在命令前插入 sudo {
-# 定义功能
-sudo-command-line() {
-  [[ -z $BUFFER  ]] && zle up-history
-  [[ $BUFFER != sudo\ *  ]] && BUFFER="sudo $BUFFER"
-  zle end-of-line #光标移动到行末
-}
-zle -N sudo-command-line
-# 定义快捷键为： [Esc][Esc]
-bindkey "\e\e" sudo-command-line
-# }
 
 alias -s c='vim'
 alias -s py='vim'
