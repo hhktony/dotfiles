@@ -104,7 +104,6 @@ link_file() {
 
 do_link_dir() {
   local dst_dir=$1 src_dir=$2 filter=$3
-  local overwrite_all=false backup_all=false skip_all=false
 
   dotfiles=$(ls $src_dir $filter)
   for src in `ls $src_dir $filter`
@@ -114,12 +113,15 @@ do_link_dir() {
 }
 
 install_dotfiles() {
-  do_link_dir $HOME/. $HOME/.dotfiles/ '-I zsh bash config -I README.md -I install.sh'
+  local overwrite_all=false backup_all=false skip_all=false
+
+  do_link_dir $HOME/. $HOME/.dotfiles/ '-I zsh -I bash -I config -I README.md -I install.sh'
   do_link_dir $HOME/.config/ $HOME/.dotfiles/config/
   do_link_dir $HOME/. $HOME/.dotfiles/bash/
   do_link_dir $HOME/. $HOME/.dotfiles/zsh/
-  git clone https://github.com/hhktony/oh-my-zsh.git $HOME/.oh-my-zsh --depth=1
-  git clone git://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  git clone https://github.com/hhktony/oh-my-zsh.git $HOME/.oh-my-zsh --depth 1
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+            $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting --depth 1
 }
 
 install_all() {
