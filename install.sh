@@ -114,8 +114,10 @@ do_link_dir() {
 }
 
 install_dotfiles() {
-  do_link_dir $HOME/. $HOME/.dotfiles/ '-I config -I README.md -I install.sh'
+  do_link_dir $HOME/. $HOME/.dotfiles/ '-I zsh bash config -I README.md -I install.sh'
   do_link_dir $HOME/.config/ $HOME/.dotfiles/config/
+  do_link_dir $HOME/. $HOME/.dotfiles/bash/
+  do_link_dir $HOME/. $HOME/.dotfiles/zsh/
   git clone https://github.com/hhktony/oh-my-zsh.git $HOME/.oh-my-zsh --depth=1
 }
 

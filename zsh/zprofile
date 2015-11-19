@@ -1,8 +1,8 @@
-# {{{ Environment Variables
-# set PATH so it includes user's private .bin if it exists
+# Environment Variables {
 [[ -f $HOME/.bin/z.sh ]] && source $HOME/.bin/z.sh
 [[ -f $HOME/.golangrc ]] && source $HOME/.golangrc
-[[ -d $HOME/.bin ]]      && export PATH=$PATH:$HOME/.bin
+[[ -d $HOME/.bin ]] && export PATH=$PATH:$HOME/.bin
+# }
 
 # fcitx
 # export XIM=fcitx

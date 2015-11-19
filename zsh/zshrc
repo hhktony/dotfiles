@@ -1,0 +1,121 @@
+# Path to your oh-my-zsh configuration.
+ZSH=$HOME/.oh-my-zsh
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="sorin"
+
+# Set to this to use case-sensitive completion
+# CASE_SENSITIVE="true"
+
+# Comment this out to disable weekly auto-update checks
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment following line if you want to disable colors in ls
+# DISABLE_LS_COLORS="true"
+
+# Uncomment following line if you want to disable autosetting terminal title.
+DISABLE_AUTO_TITLE="true"
+
+# Uncomment following line if you want red dots to be displayed while waiting for completion
+# COMPLETION_WAITING_DOTS="true"
+
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git docker docke-compose ruby)
+
+source $ZSH/oh-my-zsh.sh
+
+# Customize to your needs...
+
+##在命令前插入 sudo {
+# 定义功能
+sudo-command-line() {
+  [[ -z $BUFFER  ]] && zle up-history
+  [[ $BUFFER != sudo\ *  ]] && BUFFER="sudo $BUFFER"
+  zle end-of-line #光标移动到行末
+}
+zle -N sudo-command-line
+# 定义快捷键为： [Esc][Esc]
+bindkey "\e\e" sudo-command-line
+# }
+
+alias rm='rm -i'
+alias mv='mv -i'
+
+alias tmux='tmux -2'
+alias tree='tree -C' # tree display color
+alias e='vim'
+alias vi='vim'
+alias cls='clear'
+
+alias da='date "+%A, %B %d, %Y [%T]"'
+alias du='du -kh'
+alias df='df -kTh'
+alias du1='du --max-depth=1'
+alias hg='history | grep $1' 	# requires an argument
+alias pg='ps aux|head -1; ps aux | grep -v "grep" | grep $1 '
+alias openports='netstat --all --numeric --programs --inet'
+
+# cd
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+alias ..4='cd ../../../..'
+alias ..5='cd ../../../../..'
+
+# path
+alias path='echo -e ${PATH//:/\\n}'
+alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+
+alias cman='man -M /usr/share/man/zh_CN'
+alias indent='indent -npro -gnu -i4 -ts4 -sob -l200 -ss -bl -bli 0 -npcs -npsl'
+alias dstat='dstat -cdlmnpsy'
+alias ping='ping -c 3'
+alias diff='diff -urNwB'
+
+alias pserver='python -m SimpleHTTPServer'
+alias jserver="jekyll --server"
+
+alias mkdir='mkdir -p'
+alias j='jobs -l'
+alias which='type -a'
+
+mkcd() {
+  mkdir -p $1;
+  cd $1;
+}
+
+te() {
+  [ "$(gnuclient -batch -eval t 2>&-)" == "t" ] &&  gnuclient -q "$@" || ( xemacs "$@" &)
+}
+
+soffice() { command soffice "$@" & }
+firefox() { command firefox "$@" & }
+evince() { command evince "$@" & }
+eog() { command eog "$@" & }
+openoffice() { command openoffice.org "$@" & }
+acroread() { command acroread "$@" & }
+
+#set -o vi 	# Shell is vi mode
+
+#------------- fbterm -----------------------------------
+#	---> fbterm <----
+#if [ "$TERM" = "linux" ]; then
+#	alias fbterm='LANG=zh_CN.UTF-8 fbterm'
+# 	fbterm
+#fi
+
+#----------- Enrironment Variable -----------------------
+export HISTTIMEFORMAT='%F %T '
+export HISTCONTROL=erasedups
+export EDITOR="vim"
+#export LESS="-R"
+
+[[ -f ~/.dircolor_dark ]] && eval $(dircolors -b ~/.dircolor_dark)
+
+# welcome
+#echo -ne "\E[01;31m Good Morning, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime

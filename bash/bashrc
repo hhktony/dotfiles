@@ -1,16 +1,16 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 
 # If not running interactively, don't do anything
-[ -z "$PS1" ] && return
+[[ -z "$PS1" ]] && return
 
 # Read /etc/bashrc, if there are
-[ -f /etc/bashrc ] && source /etc/bashrc
+[[ -f /etc/bashrc ]] && source /etc/bashrc
 
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
 shopt -s checkwinsize
 
-# History {{{
+# History {
 # Don't put duplicate lines in the history. See bash(1) for more options
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoreboth:erasedupes
@@ -23,11 +23,11 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-# }}}
+# }
 
 # set -o vi 	# Shell is vi mode
 
-#  bash-completion {{{
+#  bash-completion {
 bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
 
 if [ -n "$PS1" ]; then
@@ -39,9 +39,9 @@ if [ -n "$PS1" ]; then
   fi
 fi
 unset bash bminor bmajor
-# }}}
+# }
 
-# colorful man page {{{
+# colorful man page {
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -49,9 +49,9 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-# }}}
+# }
 
-# fbterm {{{
+# fbterm {
 fbterm_tmp=0
 if [ $fbterm_tmp == 1 ]; then
     if [ "$TERM" = "linux" ]; then
@@ -60,12 +60,11 @@ if [ $fbterm_tmp == 1 ]; then
     fi
 fi
 unset fbterm_tmp
-# }}}
+# }
 
 export EDITOR="vim"
 export SVN_EDITOR="$EDITOR --nofork"
 export CVS_RSH=ssh
-export WWW_HOME=http://hhktony.github.io
 export LESSCHARSET=utf-8
 #export LESS="-R"
 #export CDPATH=.:$HOME/Yunio/srcs
@@ -76,10 +75,10 @@ export LESSCHARSET=utf-8
 [[ -f $HOME/.bashrc_local   ]] && source $HOME/.bashrc_local
 [[ -f $HOME/.golangrc       ]] && source $HOME/.golangrc
 
-# {{{ Environment Variables
+# Environment Variables {
 # set PATH so it includes user's private .bin if it exists
-[[ -d $HOME/.bin ]]                 && export PATH=$PATH:$HOME/.bin
-# }}}
+[[ -d $HOME/.bin ]] && export PATH=$PATH:$HOME/.bin
+# }
 
 # export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
 
