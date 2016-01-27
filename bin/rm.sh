@@ -18,7 +18,7 @@
 #and log the acction
 
 trash="$HOME/.Trash"
-log="/root/.Trash.log"
+log="$HOME/.Trash.log"
 bdate=`date "+%Y-%m-%d-%H:%M:%S"` #current time
 
 [[ ! -d ${trash} ]] && mkdir ${trash}
