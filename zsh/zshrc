@@ -32,10 +32,10 @@ plugins=(git
   docker
   docke-compose
   z
-  autojump
   yum
   colored-man-pages
   sudo
+  pyenv
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -116,6 +116,7 @@ export EDITOR="vim"
 #export LESS="-R"
 
 [[ -f ~/.dircolor_dark ]] && eval $(dircolors -b ~/.dircolor_dark)
+[[ -f $HOME/.zhrc_local   ]] && source $HOME/.zhrc_local
 
 # welcome
 #echo -ne "\E[01;31m Good Morning, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime
