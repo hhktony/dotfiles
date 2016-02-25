@@ -36,13 +36,15 @@ plugins=(git
   colored-man-pages
   sudo
   pyenv
+  pip
+  django
 )
 
 source $ZSH/oh-my-zsh.sh
 
-alias -s c='vim'
-alias -s py='vim'
-alias -s sh='vim'
+# alias -s c='vim'
+# alias -s py='vim'
+# alias -s sh='vim'
 alias -g GG='| grep'
 
 alias rm='rm -i'
