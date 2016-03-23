@@ -35,8 +35,8 @@ plugins=(git
   yum
   colored-man-pages
   sudo
-  pyenv
   pip
+  pyenv
   django
 )
 
@@ -119,6 +119,8 @@ export EDITOR="vim"
 
 [[ -f ~/.dircolor_dark ]] && eval $(dircolors -b ~/.dircolor_dark)
 [[ -f $HOME/.zshrc_local   ]] && source $HOME/.zshrc_local
+
+# source $HOME/.pyenvrc
 
 # welcome
 #echo -ne "\E[01;31m Good Morning, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime
