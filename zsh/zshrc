@@ -51,7 +51,7 @@ alias rm='rm -i'
 alias mv='mv -i'
 
 alias tmux='tmux -2'
-alias tree='tree -C' # tree display color
+alias tree='tree -CN'
 alias e='vim'
 alias vi='vim'
 alias cls='clear'
