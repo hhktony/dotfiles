@@ -21,3 +21,4 @@ export XMODIFIERS="@im=fcitx"
 xrdb -merge ~/.Xresources
 
 exec openbox-session
+echo aaa > x
