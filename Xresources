@@ -23,15 +23,15 @@ URxvt*foreground:white
 
 !{{{ Font
 Xft.dpi:96
-URxvt*font             :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
-URxvt*boldFont         :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
-URxvt*italicFont       :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
-URxvt*bolditalicFont   :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+! URxvt*font             :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+! URxvt*boldFont         :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+! URxvt*italicFont       :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+! URxvt*bolditalicFont   :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
 
-! URxvt*font           :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-! URxvt*boldFont       :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-! URxvt*italicFont     :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-! URxvt*bolditalicFont :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+URxvt*font           :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+URxvt*boldFont       :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+URxvt*italicFont     :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+URxvt*bolditalicFont :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
 !}}}
 
 !{{{ Tab page

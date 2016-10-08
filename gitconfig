@@ -1,42 +1,45 @@
 [user]
-    name = Tony Xu
-    email = hhktony@gmail.com
+        name = Tony Xu
+        email = hhktony@gmail.com
 [core]
-    editor = vim
-    excludesfile = ~/.gitignore_global
+        editor = vim
+        excludesfile = ~/.gitignore_global
 [alias]
-    ci = commit -a -v
-    st = status
-    br = branch
-    co = checkout
-    df = diff
-    dc = diff --cached
-    throw = reset --hard HEAD
-    throwh = reset --hard HEAD^
-    rb = rebase
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-    ls = ls-files
-    ign = ls-files -o -i --exclude-standard
+        ci = commit -a -v
+        st = status -sb
+        br = branch
+        co = checkout
+        df = diff
+        dc = diff --cached
+        throw = reset --hard HEAD
+        throwh = reset --hard HEAD^
+        rb = rebase
+        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+        ls = ls-files
+        ign = ls-files -o -i --exclude-standard
+        branches = branch -a
+        remotes = remote -v
+	ac = !git add -A && git commit
 [merge]
-    tool = vimdiff
+        tool = vimdiff
 [diff]
-    tool = vimdiff
+        tool = vimdiff
 [difftool]
-    prompt = false
+        prompt = false
 [i18n]
-    commitEncoding = utf-8
+        commitEncoding = utf-8
 [gui]
-    encoding = utf-8
+        encoding = utf-8
 [color]
-    ui = true
+        ui = true
 [push]
-    default = current
+        default = current
 [github]
-    user = hhktony
+        user = hhktony
     # token = <enter token here>
 [url "git@github.com:"]
-    insteadOf = gh:
+        insteadOf = gh:
 [url "git@github.com:hhktony/"]
-    insteadOf = gt:
+        insteadOf = gt:

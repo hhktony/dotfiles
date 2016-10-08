@@ -74,12 +74,13 @@ export LESSCHARSET=utf-8
 [[ -f $HOME/.bin/z.sh       ]] && source $HOME/.bin/z.sh
 [[ -f $HOME/.bashrc_local   ]] && source $HOME/.bashrc_local
 [[ -f $HOME/.golangrc       ]] && source $HOME/.golangrc
+[[ -f $HOME/.pyenvrc       ]] && source $HOME/.pyenvrc
 
 # Environment Variables {
 # set PATH so it includes user's private .bin if it exists
 [[ -d $HOME/.bin ]] && export PATH=$PATH:$HOME/.bin
 # }
-
+export CHEATCOLORS=true
 # export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
 
 # vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:

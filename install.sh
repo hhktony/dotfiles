@@ -118,10 +118,13 @@ install_dotfiles() {
   do_link_dir $HOME/. $HOME/.dotfiles/ '-I zsh -I bash -I config -I README.md -I install.sh'
   do_link_dir $HOME/.config/ $HOME/.dotfiles/config/
   do_link_dir $HOME/. $HOME/.dotfiles/bash/
+
   do_link_dir $HOME/. $HOME/.dotfiles/zsh/
-  git clone https://github.com/hhktony/oh-my-zsh.git $HOME/.oh-my-zsh --depth 1
+  git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh --depth 1
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
             $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting --depth 1
+  git clone https://github.com/zsh-users/zsh-autosuggestions.git \
+            $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth 1
 }
 
 install_all() {

@@ -1,3 +1,4 @@
+alias s='sudo'
 # grep
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -22,7 +23,6 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm.sh'
 alias rm-clear='/bin/rm -rf ~/.Trash/*'
-alias rmf='/bin/rm'
 
 # new commands
 alias da='date "+%A, %B %d[%V], %Y [%T]"'
@@ -47,6 +47,7 @@ alias vi='vim'
 alias g='git'
 alias cls='clear'
 alias tmux='tmux -2'
+alias ip='colorize-ip'
 
 # if [ -z $TMUX ]; then
     # if $(tmux has-session); then
@@ -66,7 +67,6 @@ alias gmplayer='gnome-mplayer'
 alias markdown='markdown --html4tags'
 alias indent='indent -npro -kr -i4 -ts4 -sob -l80 -ss -ncs -cp1'
 alias dstat='dstat -cdlmnpsy'
-alias ping='ping -c 3'
 alias lock-screen="gnome-screensaver-command -a"
 alias rbashrc='source ~/.bashrc'
 alias diff='diff -urNwB'
@@ -91,8 +91,8 @@ alias df='df -kTh'
 #----------------------------------------------------------
 function mkcd()
 {
-	mkdir $1;
-	cd $1;
+	mkdir $1
+	cd $1
 }
 
 function exz()

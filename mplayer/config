@@ -10,8 +10,8 @@ ao=alsa                 # 音频驱动选择
 zoom=yes                # 允许视频缩放
 ass=on                  # 启用ASS字幕渲染
 overlapsub=1            # 支持多语言字幕
-fs=yes                 	# 以全屏显示
-osdlevel=1              # 在屏幕的左上角显示相应时间(可以通过0控制) 
+fs=no                 	# 以全屏显示
+osdlevel=1              # 在屏幕的左上角显示相应时间(可以通过0控制)
 aspect=16:9             # 在非宽屏中，你可以使用 4:3 的纵横比
 
 alang=chs,jpn,eng       # 音频语言选择
@@ -30,10 +30,10 @@ subfont-osd-scale=6     # OSD字幕的自动缩放系统(屏幕尺寸的百分�
 framedrop=no            # 不允许掉帧<据说允许掉帧可以解决RMVB快进后声音字幕不同步的问题>
 sub-fuzziness=1         # 设定字幕自动加载的识别，播放时可以通过j键切换
 cache=8192              # 此选项指定用多少内存(以kBytes为单位)作为播放文件或URL的预缓冲
-ass-hinting=3           # 指定ASS字幕的Hinting方式(Freetype Only) 
+ass-hinting=3           # 指定ASS字幕的Hinting方式(Freetype Only)
                             # 0—无Hinting
                             # 1—轻微
-                            # 2—普通 
+                            # 2—普通
                             # 3—字体自带Hint
 af=lavcresample=44100   # 设置输出频率, 推荐使用默认的44100，
                         # 如果喜欢低频可适当调低，喜欢高频不妨设置为48000或者以上，

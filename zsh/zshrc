@@ -6,11 +6,9 @@ ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
-# ZSH_THEME="sorin"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
-
 # Comment this out to disable weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
 
@@ -27,29 +25,26 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git
-  zsh_reload
-  zsh-syntax-highlighting
-  docker
-  docke-compose
-  z
-  yum
-  colored-man-pages
-  sudo
-  pip
-  pyenv
-  django
+    git-flow
+    zsh_reload
+    zsh-syntax-highlighting
+    zsh-autosuggestions
+    docker
+    docke-compose
+    z
+    yum
+    colored-man-pages
+    sudo
+    pip
+    pyenv
+    go
+    django
+    nvm
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# alias -s c='vim'
-# alias -s py='vim'
-# alias -s sh='vim'
 alias -g GG='| grep'
-
-alias rm='rm -i'
-alias mv='mv -i'
-
 alias tmux='tmux -2'
 alias tree='tree -CN'
 alias e='vim'
@@ -57,12 +52,11 @@ alias vi='vim'
 alias cls='clear'
 
 alias da='date "+%A, %B %d, %Y [%T]"'
-alias du='du -kh'
-alias df='df -kTh'
 alias du1='du --max-depth=1'
 alias hg='history | grep $1' 	# requires an argument
 alias pg='ps aux|head -1; ps aux | grep -v "grep" | grep $1 '
 alias openports='netstat --all --numeric --programs --inet'
+alias ip='colorize-ip'
 
 # cd
 alias ..2='cd ../..'
@@ -77,14 +71,22 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 alias cman='man -M /usr/share/man/zh_CN'
 alias indent='indent -npro -gnu -i4 -ts4 -sob -l200 -ss -bl -bli 0 -npcs -npsl'
 alias dstat='dstat -cdlmnpsy'
-alias ping='ping -c 3'
 alias diff='diff -urNwB'
-
-alias pserver='python -m SimpleHTTPServer'
-alias jserver="jekyll --server"
 
 alias mkdir='mkdir -p'
 alias which='type -a'
+
+# Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
+if type -p dircolors >/dev/null; then
+    if [[ -f ~/.dir_colors ]]; then
+        eval $(dircolors -b ~/.dir_colors)
+    elif [[ -f /etc/DIR_COLORS ]]; then
+        eval $(dircolors -b /etc/DIR_COLORS)
+    else
+        dircolors -p > ~/.dir_colors
+        eval $(dircolors -b ~/.dir_colors)
+    fi
+fi
 
 mkcd() {
   mkdir -p $1;
@@ -98,7 +100,7 @@ te() {
 soffice() { command soffice "$@" & }
 firefox() { command firefox "$@" & }
 evince() { command evince "$@" & }
-eog() { command eog "$@" & }
+shotwell() { command shotwell "$@" & }
 openoffice() { command openoffice.org "$@" & }
 acroread() { command acroread "$@" & }
 
@@ -117,10 +119,10 @@ export HISTCONTROL=erasedups
 export EDITOR="vim"
 #export LESS="-R"
 
-[[ -f ~/.dircolor_dark ]] && eval $(dircolors -b ~/.dircolor_dark)
+# [[ -f ~/.dircolor_dark ]] && eval $(dircolors -b ~/.dircolor_dark)
 [[ -f $HOME/.zshrc_local   ]] && source $HOME/.zshrc_local
-
-# source $HOME/.pyenvrc
+[[ -d $HOME/.bin ]] && export PATH=$PATH:$HOME/.bin
+[[ -f $HOME/.golangrc       ]] && source $HOME/.golangrc
 
 # welcome
 #echo -ne "\E[01;31m Good Morning, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime
