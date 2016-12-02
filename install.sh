@@ -122,6 +122,9 @@ install_dotfiles() {
   do_link_dir $HOME/.config/ $HOME/.dotfiles/config/
   do_link_dir $HOME/. $HOME/.dotfiles/bash/
 
+  git clone git@github.com:hhktony/lcl.git $HOME/.cheat
+
+  # For zsh
   do_link_dir $HOME/. $HOME/.dotfiles/zsh/
   git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh --depth 1
   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
