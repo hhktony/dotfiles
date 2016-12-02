@@ -70,11 +70,14 @@ alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
 alias cman='man -M /usr/share/man/zh_CN'
 alias indent='indent -npro -gnu -i4 -ts4 -sob -l200 -ss -bl -bli 0 -npcs -npsl'
-alias dstat='dstat -cdlmnpsy'
+# alias dstat='dstat -cdlmnpsy'
 alias diff='diff -urNwB'
 
 alias mkdir='mkdir -p'
 alias which='type -a'
+
+alias psctcp='nmap -Pn'
+alias pscudp='nmap -sU'
 
 # Enable colors for ls, etc.  Prefer ~/.dir_colors #64489
 if type -p dircolors >/dev/null; then
@@ -89,12 +92,12 @@ if type -p dircolors >/dev/null; then
 fi
 
 mkcd() {
-  mkdir -p $1;
-  cd $1;
+    mkdir -p $1;
+    cd $1;
 }
 
 te() {
-  [ "$(gnuclient -batch -eval t 2>&-)" == "t" ] &&  gnuclient -q "$@" || ( xemacs "$@" &)
+    [ "$(gnuclient -batch -eval t 2>&-)" == "t" ] &&  gnuclient -q "$@" || ( xemacs "$@" &)
 }
 
 soffice() { command soffice "$@" & }

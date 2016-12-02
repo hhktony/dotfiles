@@ -1,0 +1,43 @@
+out_to_x no
+out_to_console yes
+background no
+double_buffer no
+update_interval 1
+total_run_times 0
+override_utf8_locale no
+short_units yes
+if_up_strictness address
+cpu_avg_samples 2
+
+TEXT
+[
+# {"full_text": "", "color": "\#BADA55"},
+# {"full_text": " ${exec curl icanhazip.com}"},
+{ "full_text" : ${if_up enp0s25}"  ${upspeed enp0s25}/s  ${downspeed enp0s25}/s"${else}""${endif}, "color" : "\#94F397" },
+{ "full_text" : ${if_up wlp3s0}"  ${upspeed wlp3s0}/s  ${downspeed wlp3s0}/s"${else}""${endif}, "color" : "\#94F397" },
+{ "full_text" : ${if_up br0}"  ${upspeed wlp3s1}/s  ${downspeed br0}/s"${else}""${endif}, "color" : "\#94F397" },
+{ "full_text" : " ${cpu cpu0}%" , "color" : "\#8BC3E7" },
+{ "full_text" : " ${mem}" , "color" : "\#B987D9" },
+# { "full_text" : " ${fs_used_perc /}%" , "color" : "\#FF9D17" },
+# { "full_text" : " ${fs_used_perc /home}%" , "color" : "\#F3EA0C" },
+# { "full_text" : " ${battery_percent}%" , "color" : "\#A4DC6A" },
+
+${if_existing /sys/class/power_supply/AC/online 0}
+    ${if_existing /sys/class/power_supply/BAT0}
+        ${if_match "$battery_percent" < "20"}
+            ${if_match "$battery_percent" < "10"}
+                {"full_text": " [$battery_percent%] ","color":"\#FF0000"},
+            $else
+                {"full_text": " [$battery_percent%] ","color":"\#FFa500"},
+            $endif
+        $else
+            {"full_text": " [$battery_percent%] ","color":"\#9C9C9C"},
+        $endif
+    $endif
+$else
+    {"full_text": "  ","color":"\#9C9C9C"},
+$endif
+
+{ "full_text" : " ${time %Y/%m/%d %a}" , "color" : "\#ff797b" },
+{ "full_text" : " ${time %H:%M}" , "color" : "\#8BADF9" }
+],

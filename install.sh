@@ -10,6 +10,9 @@
 [[ ! -d "$HOME/software" ]]  && mkdir $HOME/software
 [[ ! -d "$HOME/.config" ]]   && mkdir $HOME/.config
 
+# create mpd dir tree
+[[ ! -d "$HOME/.mpd" ]] && mkdir -p $HOME/.mpd/playlists ; touch $HOME/.mpd/{db,log,pid,state,sticker.sql}
+
 help_info() {
   cat << EOF
 usage: $0 [OPTIONS]

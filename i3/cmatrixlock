@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+terminator -f -e cmatrix &
+# i3-sensible-terminal -f -e cmatrix &
+xtrlock
+kill -9 $(pgrep cmatrix)
