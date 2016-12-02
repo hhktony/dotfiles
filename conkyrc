@@ -57,7 +57,7 @@ own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
 
 # 是否使用阴影
 draw_shades no
-# 是否使用边线 
+# 是否使用边线
 draw_outline no
 # 是否使用边框线
 draw_borders no
@@ -67,7 +67,7 @@ draw_graph_borders yes
 # Stippled borders?
 # stippled_borders 0
 
-# 默认颜色 
+# 默认颜色
 # default_color white
 default_color 88AADD
 # 默认阴影的颜色
