@@ -1,4 +1,4 @@
-<img alt="dotfiles" width="200" src="https://cdn.rawgit.com/davidosomething/dotfiles/master/meta/dotfiles-logo.png">
+<img alt="dotfiles" width="200" src="http://dotfiles.github.io/images/dotfiles-logo.png">
 
 My dotfiles
 ===========
