@@ -7,8 +7,6 @@ URxvt*termName   : rxvt-unicode
 URxvt*geometry   : 80x24+280+80
 URxvt*loginShell : false
 
-!tabbed
-
 !{{{ Color
 URxvt*.depth         : 32
 URxvt*colorBD        : Yellow
@@ -28,18 +26,18 @@ Xft.dpi:96
 ! URxvt*italicFont       :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
 ! URxvt*bolditalicFont   :xft:Microsoft YaHei:size=12:antialias=true,xft:Monaco:size=12:antialias=true
 
-URxvt*font           :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-URxvt*boldFont       :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-URxvt*italicFont     :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
-URxvt*bolditalicFont :xft:Courier New:size=12:antialias=true,xft:Courier New:size=12:antialias=true
+! URxvt*font: xft:Source\ Code\ Pro\ Medium:pixelsize=16:antialias=true:hinting=true,xft:Source\ Code\ Pro\ Medium:pixelsize=16:antialias=true:hinting=true
+! URxvt*font: xft:Source Code Pro:size=16:antialias=true:,xft:Monaco:size=16:antialias=true
+URxvt.font:     xft:Source Code Pro:size=14
+
+! URxvt.font: xft:monaco:size=10
+
+! URxvt*font           :xft:Courier New:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+! URxvt*boldFont       :xft:Courier New:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+! URxvt*italicFont     :xft:Courier New:size=12:antialias=true,xft:Monaco:size=12:antialias=true
+! URxvt*bolditalicFont :xft:Courier New:size=12:antialias=true,xft:Monaco:size=12:antialias=true
 !}}}
 
-!{{{ Tab page
-! URxvt.tabbed.tabbar-fg : 2
-! URxvt.tabbed.tabbar-bg : 0
-! URxvt.tabbed.tab-fg    : 3
-! URxvt.tabbed.tab-bg    : 0
-!}}}
 
 !{{{ Scroll
 URxvt*scrollBar          : false
@@ -57,9 +55,19 @@ URxvt*imFont      : Console
 URxvt*preeditType : Root
 !}}}
 
+URxvt.iso14755: false
+URxvt.iso14755_52: false⇧
 !{{{ EX
-URxvt.perl-lib: /home/tony/.config/urxvt-perls/
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,fullscreen
+URxvt.perl-lib: /home/tony/.urxvt
+URxvt.perl-ext-common: default,tabbed,clipboard,url-select,keyboard-select,fullscreen
+
+! Tab page {{{
+! URxvt.tabbed.tabbar-fg : 2
+! URxvt.tabbed.tabbar-bg : 0
+! URxvt.tabbed.tab-fg    : 3
+! URxvt.tabbed.tab-bg    : 0
+!}}}
+
 URxvt.url-select.launcher: /usr/bin/firefox -new-tab
 
 URxvt.url-select.underline: true
