@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #  Filename: install.sh
 #   Created: 2013-04-22 23:34:09
-#      Desc: my dotfiles
+#      Desc: Linux Configuration files
 #    Author: xutao(Tony Xu), hhktony@gmail.com
 #   Company: myself
 
@@ -13,65 +13,42 @@
 # create mpd dir tree
 [[ ! -d "$HOME/.mpd" ]] && mkdir -p $HOME/.mpd/playlists ; touch $HOME/.mpd/{db,log,pid,state,sticker.sql}
 
-help_info() {
-  cat << EOF
-usage: $0 [OPTIONS]
+GIT_CLONE='git clone -q --depth 1'
 
-    --help               Show this message
-    --all                Install all config
-    --file               Install all config, exclude emacs vim
-    --vim                Install vim config
-    --emacs              Install emacs config
-EOF
-}
+ok()    { echo -e " \033[1;32m✔\033[0m  $@"; 	}
+tips()  { echo -e " \033[1;33m?\033[0m  $@";  }
+skip()  { echo -e " \033[1;33m!\033[0m  $@";  }
 
-info() {
-  printf "\r  [\033[00;34mINFO\033[0m] $1\n"
-}
+link_file()
+{
+  overwrite_all=${overwrite_all:-false}
+  backup_all=${backup_all:-false}
+  skip_all=${skip_all:-false}
 
-ok() {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-warn() {
-  printf "\r  [\033[0;33mWARN\033[0m] $1\n"
-}
-
-link_file() {
   local src=$1 dst=$2
 
   local overwrite= backup= skip=
   local action=
 
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
-  then
-    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
-    then
+  if [[ -e "$dst" ]]; then
+    if [[ "$overwrite_all" == "false" && "$backup_all" == "false" && "$skip_all" == "false" ]]; then
       local currentSrc="$(readlink $dst)"
 
-      if [ "$currentSrc" == "$src" ]
-      then
+      if [[ "$currentSrc" == "$src" ]]; then
         skip=true
       else
-        warn "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        tips "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
-          o )
-            overwrite=true;;
-          O )
-            overwrite_all=true;;
-          b )
-            backup=true;;
-          B )
-            backup_all=true;;
-          s )
-            skip=true;;
-          S )
-            skip_all=true;;
-          * )
-            ;;
+          o ) overwrite=true;;
+          O ) overwrite_all=true;;
+          b ) backup=true;;
+          B ) backup_all=true;;
+          s ) skip=true;;
+          S ) skip_all=true;;
+          * ) ;;
         esac
       fi
     fi
@@ -80,32 +57,17 @@ link_file() {
     backup=${backup:-$backup_all}
     skip=${skip:-$skip_all}
 
-    if [ "$overwrite" == "true" ]
-    then
-      rm -rf "$dst"
-      ok "removed $dst"
-    fi
-
-    if [ "$backup" == "true" ]
-    then
-      mv "$dst" "${dst}.backup"
-      ok "moved $dst to ${dst}.backup"
-    fi
-
-    if [ "$skip" == "true" ]
-    then
-      ok "skipped $src"
-    fi
+    [[ "$overwrite" == "true" ]] && rm -rf "$dst" && ok "removed $dst"
+    [[ "$backup" == "true" ]] && mv "$dst" "${dst}.backup" && ok "moved $dst to ${dst}.backup"
+    [[ "$skip" == "true" ]] && skip "skipped $src"
   fi
 
-  if [ "$skip" != "true" ]  # "false" or empty
-  then
-    ln -s "$1" "$2"
-    ok "linked $1 to $2"
-  fi
+  # "false" or empty
+  [[ "$skip" != "true" ]] && ln -s "$1" "$2" && ok "linked $1 to $2"
 }
 
-do_link_dir() {
+do_link_dir()
+{
   local dst_dir=$1 src_dir=$2 filter=$3
 
   dotfiles=$(ls $src_dir $filter)
@@ -115,63 +77,24 @@ do_link_dir() {
   done
 }
 
-install_dotfiles() {
+main()
+{
   local overwrite_all=false backup_all=false skip_all=false
 
   do_link_dir $HOME/. $HOME/.dotfiles/ '-I zsh -I bash -I config -I README.md -I install.sh'
   do_link_dir $HOME/.config/ $HOME/.dotfiles/config/
   do_link_dir $HOME/. $HOME/.dotfiles/bash/
 
-  git clone git@github.com:hhktony/lcl.git $HOME/.cheat
-
   # For zsh
   do_link_dir $HOME/. $HOME/.dotfiles/zsh/
-  git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh --depth 1
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
-            $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting --depth 1
-  git clone https://github.com/zsh-users/zsh-autosuggestions.git \
-            $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions --depth 1
+  $GIT_CLONE  https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+  $GIT_CLONE  https://github.com/zsh-users/zsh-syntax-highlighting.git \
+              $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  $GIT_CLONE  https://github.com/zsh-users/zsh-autosuggestions.git \
+              $HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 }
 
-install_all() {
-  install_dotfiles
-  install_emacs
-  install_vim
-}
-
-install_vim() {
-  cd $HOME
-
-  git clone git@github.com:hhktony/dotvim.git .vim
-
-  cd $HOME/.vim
-  ./install.sh
-}
-
-install_emacs() {
-  cd $HOME
-  git clone git@github.com:hhktony/emacs.d .emacs.d
-}
-
-case $1 in
-  --help )
-      help_info
-      exit 0
-      ;;
-  --all )
-    install_all;;
-  --file )
-    install_dotfiles;;
-  --vim )
-    install_vim;;
-  --emacs )
-    install_emacs;;
-  *)
-    echo "unknown option: $1"
-    help_info
-    exit 1
-    ;;
-esac
+main
 
 echo ''
 echo '  All installed!'
