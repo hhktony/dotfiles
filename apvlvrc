@@ -47,11 +47,11 @@ set zoom=fitwidth
 "set width=800
 "set height=800
 
-" set command timeout between two key press 
+" set command timeout between two key press
 set commandtimeout=2000
 
 " set default dir
-set defaultdir=/home/butbueaitful/book
+set defaultdir=/home/tony/book
 
 " set if use content view ad first
 set content=no

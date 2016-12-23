@@ -141,7 +141,6 @@ install_all() {
 
 install_vim() {
   cd $HOME
-  rm -rf .vim .vimrc .gvimrc
 
   git clone git@github.com:hhktony/dotvim.git .vim
 

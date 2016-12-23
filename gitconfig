@@ -14,14 +14,16 @@
         throw = reset --hard HEAD
         throwh = reset --hard HEAD^
         rb = rebase
-        lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+        lg = log --abbrev-commit --decorate --all --graph
+        ll = log --abbrev-commit --oneline --decorate --all
         lol = log --graph --decorate --pretty=oneline --abbrev-commit
         lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
         ls = ls-files
         ign = ls-files -o -i --exclude-standard
         branches = branch -a
         remotes = remote -v
-	ac = !git add -A && git commit
+        ac = !git add -A && git commit
+        lasttag = describe --tags --abbrev=0
 [merge]
         tool = vimdiff
 [diff]
@@ -40,6 +42,8 @@
         user = hhktony
     # token = <enter token here>
 [url "git@github.com:"]
-        insteadOf = gh:
+        insteadOf = github:
 [url "git@github.com:hhktony/"]
-        insteadOf = gt:
+        insteadOf = gh:
+[url "git://gist.github.com/"]
+        insteadOf = gist:
