@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -x
 
 command -v ctags &>/dev/null || { echo >&2 "Please install ctags!"; exit 1; }
 
