@@ -86,6 +86,8 @@ main()
   do_link_dir $HOME/.config/ $HOME/.dotfiles/config/
   do_link_dir $HOME/. $HOME/.dotfiles/bash/
 
+	[ ! -e ~/.git-prompt.sh ] && curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+
   # For zsh
   do_link_dir $HOME/. $HOME/.dotfiles/zsh/
   $GIT_CLONE  https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
