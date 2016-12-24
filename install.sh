@@ -39,7 +39,7 @@ link_file()
       else
         tips "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
-        read -n 1 action
+        read -s -n 1 action
 
         case "$action" in
           o ) overwrite=true;;
@@ -81,7 +81,8 @@ main()
 {
   local overwrite_all=false backup_all=false skip_all=false
 
-  do_link_dir $HOME/. $HOME/.dotfiles/ '-I zsh -I bash -I config -I README.md -I install.sh'
+  do_link_dir $HOME/. $HOME/.dotfiles/ '-I ssh -I zsh -I bash -I config -I README.md -I install.sh'
+  do_link_dir $HOME/.ssh/ $HOME/.dotfiles/ssh/
   do_link_dir $HOME/.config/ $HOME/.dotfiles/config/
   do_link_dir $HOME/. $HOME/.dotfiles/bash/
 

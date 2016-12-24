@@ -1,0 +1,8 @@
+Host *
+    Compression yes
+    User root
+    ServerAliveInterval 60
+    ServerAliveCountMax 5
+    ControlMaster auto
+    ControlPath /tmp/%r@%h-%p
+    ControlPersist 4h
