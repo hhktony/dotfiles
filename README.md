@@ -12,4 +12,4 @@ Installation
 ------------
 
     git clone https://github.com/hhktony/dotfiles.git .dotfiles
-    cd .dotfiles && ./install.sh sys
+    cd .dotfiles && ./install.sh
