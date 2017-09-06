@@ -34,7 +34,7 @@
 
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 50 -padding 100 -opacity "85" -bw 0 -bc "$bg" -bg "$bg" -fg "$tx" -hlbg "$bg" -hlfg "#9575cd"
+bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 30 -padding 1 -opacity "80" -bw 0 -bc "$bg" -bg "$bg" -fg "$tx" -hlbg "$bg" -hlfg "#9575cd"
 
 # change focus
 bindsym $mod+h focus left
@@ -67,8 +67,8 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
-set $ws1 ""
-set $ws2 ""
+set $ws1 ""
+set $ws2 ""
 set $ws3 ""
 set $ws4 ""
 
@@ -100,7 +100,7 @@ bindsym $mod+Shift+0 move container to workspace 10
   # workspace $WS1 output $monitor1
 
 # Program Workspaces
-  assign [class="google-chrome"]    $ws2
+  assign [class="google-chrome"]    $ws1
   assign [class="Zathura"]          $ws3
   assign [class="MPlayer|smplayer"] $ws4
 
@@ -143,8 +143,8 @@ client.unfocused            $br     $ubg    $utx    $ubg
 # client.background         #FFFFFF
 
 
-# bindsym $mod+Shift+x exec i3lock --color "$bg"
-bindsym $mod+Shift+x exec ~/.i3/cmatrixlock
+bindsym $mod+Shift+x exec i3lock --color "$bg"
+# bindsym $mod+Shift+x exec ~/.i3/cmatrixlock
 
 bar {
     font pango:System San Francisco Display 11
@@ -183,14 +183,17 @@ mode "$mode_launcher" {
     bindsym Return mode "default"
 }
 
-# scrot {
+# screenshot {
 # 全屏截图
-bindsym Print exec "scrot -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
+# bindsym Print exec "shutter -f"
+# bindsym Print exec "scrot -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
 # 截取当前窗口
-bindsym $mod+Print exec "scrot -u -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
+# bindsym $mod+Print exec "scrot -u -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
+# bindsym $mod+Print exec "shutter -a"
 # 选择截屏
 # bindsym --release Control+Mod1+A exec "scrot -s -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
-bindsym --release Control+Mod1+A exec "deepin-scrot"
+# bindsym --release Control+Mod1+A exec "deepin-scrot"
+bindsym --release Control+Mod1+A exec "shutter -s"
 # }
 
 # Pulse Audio controls {
@@ -218,9 +221,15 @@ bindsym XF86MonBrightnessUp   exec "xbacklight + 10"
 bindsym XF86MonBrightnessDown exec "xbacklight - 10"
 # }
 
+# startup {
 exec --no-startup-id feh --bg-scale "$HOME/.bg.jpg"
 exec --no-startup-id nm-applet
-exec --no-startup-id mpd
-exec_always --no-startup-id compton -f
+# exec --no-startup-id mpd
+exec --no-startup-id parcellite
+exec --no-startup-id volumeicon
+exec --no-startup-id compton -f
+# exec_always --no-startup-id compton -f
+exec --no-startup-id unclutter
+# }
 
-# vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
+# vim: ft=conf fdm=marker fmr={,} fdl=0 fdc=1 ts=2 sw=2 sts=2 et

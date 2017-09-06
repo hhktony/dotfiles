@@ -1,18 +1,28 @@
 [global_config]
   borderless = True
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
-  focus = system
-  inactive_color_offset = 0.6
-  scroll_tabbar = True
+  focus = mouse
+  inactive_color_offset = 0.5
   suppress_multiple_term_dialog = True
+  title_font = Sans 3
   title_transmit_bg_color = "#211b0c"
   title_use_system_font = False
 [keybindings]
+  edit_tab_title = <Ctrl><Shift>M
+  edit_terminal_title = <Primary><Alt>x
+  move_tab_left = <Primary><Shift>j
+  move_tab_right = <Primary><Shift>k
+  next_tab = <Ctrl><Shift>N
+  prev_tab = <Ctrl><Shift>P
   switch_to_tab_1 = <Alt>1
   switch_to_tab_2 = <Alt>2
   switch_to_tab_3 = <Alt>3
   switch_to_tab_4 = <Alt>4
   switch_to_tab_5 = <Alt>5
+  switch_to_tab_6 = <Alt>6
+  switch_to_tab_7 = <Alt>7
+  switch_to_tab_8 = <Alt>8
+  switch_to_tab_9 = <Alt>9
 [layouts]
   [[default]]
     [[[child1]]]
@@ -25,29 +35,13 @@
 [plugins]
 [profiles]
   [[default]]
-    background_color = "#2d2d2d"
-    background_darkness = 0.8
-    background_image = None
     background_type = transparent
     copy_on_selection = True
     cursor_color = "#ffffff"
-    font = Source Code Pro 14
-    foreground_color = "#eee9e9"
+    cursor_shape = ibeam
+    font = Source Code Pro 16
     icon_bell = False
-    palette = "#2d2d2d:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#d3d0c8:#747369:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#f2f0ec"
+    scrollback_lines = 65535
+    scrollbar_position = hidden
     show_titlebar = False
     use_system_font = False
-  [[solarized-dark]]
-    background_color = "#002b36"
-    background_image = None
-    cursor_color = "#ffffff"
-    foreground_color = "#eee8d5"
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#586e75:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-    show_titlebar = False
-  [[solarized-light]]
-    background_color = "#eee8d5"
-    background_image = None
-    cursor_color = "#6c71c4"
-    foreground_color = "#002b36"
-    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
-    show_titlebar = False

@@ -16,10 +16,10 @@ DISABLE_AUTO_TITLE="true"
 # COMPLETION_WAITING_DOTS="true"
 
 plugins=(git
-  git-flow
-  zsh_reload
   zsh-syntax-highlighting
   zsh-autosuggestions
+  git-flow
+  zsh_reload
   docker
   docke-compose
   z
@@ -31,6 +31,7 @@ plugins=(git
   go
   django
   nvm
+  npm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -46,7 +47,7 @@ alias du1='du --max-depth=1'
 alias hg='history | grep $1' 	# requires an argument
 alias pg='ps aux|head -1; ps aux | grep -v "grep" | grep $1 '
 alias openports='netstat --all --numeric --programs --inet'
-alias ip='colorize-ip'
+# alias ip='colorize-ip'
 
 # cd
 alias ..2='cd ../..'
@@ -111,7 +112,7 @@ export EDITOR="vim"
 # [[ -f ~/.dircolor_dark ]] && eval $(dircolors -b ~/.dircolor_dark)
 [[ -f $HOME/.zshrc_local   ]] && source $HOME/.zshrc_local
 [[ -d $HOME/.bin ]] && export PATH=$PATH:$HOME/.bin
-[[ -f $HOME/.golangrc       ]] && source $HOME/.golangrc
+# [[ -f $HOME/.golangrc ]] && source $HOME/.golangrc
 
 # welcome
 # echo -ne "\E[01;31m Hi, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime
