@@ -10,6 +10,7 @@
 [keybindings]
   edit_tab_title = <Ctrl><Shift>M
   edit_terminal_title = <Primary><Alt>x
+  insert_number = <Shift><Super>q
   move_tab_left = <Primary><Shift>j
   move_tab_right = <Primary><Shift>k
   next_tab = <Ctrl><Shift>N
@@ -36,6 +37,7 @@
 [profiles]
   [[default]]
     background_type = transparent
+    background_darkness = 0.6
     copy_on_selection = True
     cursor_color = "#ffffff"
     cursor_shape = ibeam

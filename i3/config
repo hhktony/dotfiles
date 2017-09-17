@@ -32,15 +32,23 @@
   hide_edge_borders both
 
 
-bindsym $mod+Return exec i3-sensible-terminal
+# bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
-bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 30 -padding 1 -opacity "80" -bw 0 -bc "$bg" -bg "$bg" -fg "$tx" -hlbg "$bg" -hlfg "#9575cd"
+# bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 30 -padding 1 -opacity "80" -bw 0 -bc "$bg" -bg "$bg" -fg "$tx" -hlbg "$bg" -hlfg "#9575cd"
+bindsym $mod+d exec rofi -show run -lines 5 -eh 2 -width 30 -padding 1 -opacity "80" -bw 0
+# bindsym $mod+d exec dmenu_run
 
 # change focus
+# focus_follows_mouse no
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -52,8 +60,11 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-bindsym $mod+Shift+backslash split h
-bindsym $mod+minus split v
+# bindsym $mod+b split h; exec notify-send 'tile horizontally'
+# bindsym $mod+v split v; exec notify-send 'tile vertically'
+bindsym $mod+q split toggle
+bindsym $mod+Shift+backslash split h; exec notify-send 'tile horizontally'
+bindsym $mod+minus split v; exec notify-send 'tile vertically'
 
 # bindsym $mod+Shift+minus move scratchpad
 # bindsym $mod+minus scratchpad show
@@ -100,13 +111,14 @@ bindsym $mod+Shift+0 move container to workspace 10
   # workspace $WS1 output $monitor1
 
 # Program Workspaces
-  assign [class="google-chrome"]    $ws1
+  assign [class="Google-chrome"]    $ws1
   assign [class="Zathura"]          $ws3
   assign [class="MPlayer|smplayer"] $ws4
 
 # Floating
   for_window [class="Lxappearance"] floating enable
-  for_window [class="Pavucontrol"] 	floating enable
+  for_window [class="Pavucontrol"]  floating enable
+  for_window [class="Shutter"]      floating enable
 
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
@@ -124,16 +136,23 @@ mode "  " {
         bindsym Escape mode "default"
 }
 
-set $br         #000000
-set $bg         #272727
-set $tx         #ffffff
-set $utx        #7780a1
-set $id         #333333
-set $ubg        #000000
+bindsym $mod+Shift+x exec --no-startup-id ~/.i3/blurlock
+exec --no-startup-id xautolock -time 5 -locker ~/.i3/blurlock
+# bindsym $mod+Shift+x exec i3lock --color "$bg"
+# bindsym $mod+Shift+x exec ~/.i3/cmatrixlock
 
-# 窗口颜色                  边框    背景    文字    提示
-client.focused              $br     $bg     $tx     $id
-client.unfocused            $br     $ubg    $utx    $ubg
+# Theme
+set $br_color    #000000
+set $bg_color    #272727
+set $tx_color    #ffffff
+set $utx_color   #ff0000
+set $id_color    #333333
+set $ubg_color   #000000
+set $transparent #00000000
+
+# Window Colors             border        background    text          indicator
+client.focused              $br_color     $bg_color     $tx_color     $id_color
+client.unfocused            $br_color     $ubg_color    $utx_color    $ubg_color
 
 # client.focused            #333333 #333333 #FFFFFF #333333
 # client.unfocused          #999999 #999999 #FFFFFF #3399FF
@@ -142,15 +161,17 @@ client.unfocused            $br     $ubg    $utx    $ubg
 # client.placeholder        #000000 #000000 #FFFFFF #000000
 # client.background         #FFFFFF
 
-
-bindsym $mod+Shift+x exec i3lock --color "$bg"
-# bindsym $mod+Shift+x exec ~/.i3/cmatrixlock
-
+# bar {{{
 bar {
     font pango:System San Francisco Display 11
+    i3bar_command i3bar -t
     status_command ~/.i3/i3conky
+    # status_command i3status
     # status_command i3blocks -c ~/.i3/i3blocks.conf
     position top
+    ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+    # tray_output primary
+    # tray_output eDP1
     # mode hide
     # 显示/隐藏切换键
     # modifier $mod
@@ -159,17 +180,18 @@ bar {
     # 定义分隔符（适用于i3status）
     # separator_symbol " "
     colors {
-        background #333333
-        statusline #FFFFFF
-        #eparator  #3399FF
-        # 工作区颜色         边框    背景    文字
-        focused_workspace  #111111 #111111 #FFFFFF
-        active_workspace   #FFFFFF #FFFFFF #FFFFFF
-        inactive_workspace #333333 #333333 #FFFFFF
-        urgent_workspace   #990000 #990000 #FFFFFF
-        #binding_mode       #990000 #990000 #FFFFFF
+        background $transparent
+        statusline $tx_color
+        separator  #454947
+        # workpace colors   border    background    text
+        focused_workspace   #3297FD   #11111100     $tx_color
+        active_workspace    #FFFFFF   #FFFFFF00     $tx_color
+        inactive_workspace  #111111   #11111100     $tx_color
+        urgent_workspace    #990000   #11111100     $tx_color
+        binding_mode        #990000   #99000000     $tx_color
     }
 }
+# }}}
 
 set $mode_launcher Launch: [f]irefox [t]hunderbird [g]oogle-chrome
 bindsym $mod+o mode "$mode_launcher"
@@ -183,7 +205,7 @@ mode "$mode_launcher" {
     bindsym Return mode "default"
 }
 
-# screenshot {
+# screenshot {{{
 # 全屏截图
 # bindsym Print exec "shutter -f"
 # bindsym Print exec "scrot -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
@@ -194,42 +216,94 @@ mode "$mode_launcher" {
 # bindsym --release Control+Mod1+A exec "scrot -s -b -m /tmp/screenshot.png && xclip -selection clipoard -t 'image/png' /tmp/screenshot.png"
 # bindsym --release Control+Mod1+A exec "deepin-scrot"
 bindsym --release Control+Mod1+A exec "shutter -s"
-# }
+# }}}
 
-# Pulse Audio controls {
-bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 1 +10%"
-bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 1 -10%"
-bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 1 toggle"
-# }
+# Pulse Audio controls {{{
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume 0 +10%"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume 0 -10%"
+bindsym XF86AudioMute exec --no-startup-id "pactl set-sink-mute 0 toggle"
+# }}}
 
-# Media player controls {
+# Media player controls {{{
 # bindsym XF86AudioPlay exec "playerctl play"
 # bindsym XF86AudioPause exec "playerctl pause"
 # bindsym XF86AudioNext exec "playerctl next"
 # bindsym XF86AudioPrev exec "playerctl previous"
 
-bindsym XF86AudioPlay exec "mpc toggle"
-bindsym XF86AudioStop exec "mpc stop"
-bindsym XF86AudioNext exec "mpc next"
-bindsym XF86AudioPrev exec "mpc prev"
-bindsym $mod+n exec "mpc next"
-bindsym $mod+p exec "mpc prev"
-# }
+# bindsym XF86AudioPlay exec "mpc toggle"
+# bindsym XF86AudioStop exec "mpc stop"
+# bindsym XF86AudioNext exec "mpc next"
+# bindsym XF86AudioPrev exec "mpc prev"
+# bindsym $mod+n exec "mpc next"
+# bindsym $mod+p exec "mpc prev"
+# }}}
 
-# Screen brightness controls {
+# Screen brightness controls {{{
 bindsym XF86MonBrightnessUp   exec "xbacklight + 10"
 bindsym XF86MonBrightnessDown exec "xbacklight - 10"
-# }
+# }}}
 
-# startup {
+# startup {{{
 exec --no-startup-id feh --bg-scale "$HOME/.bg.jpg"
-exec --no-startup-id nm-applet
 # exec --no-startup-id mpd
 exec --no-startup-id parcellite
-exec --no-startup-id volumeicon
-exec --no-startup-id compton -f
+# exec --no-startup-id volumeicon
+# exec --no-startup-id pasystray &
+exec --no-startup-id "pgrep fcitx || fcitx &"
+# exec --no-startup-id unclutter
+exec --no-startup-id compton -b
+exec --no-startup-id nm-applet
+# }}}
 # exec_always --no-startup-id compton -f
-exec --no-startup-id unclutter
-# }
 
-# vim: ft=conf fdm=marker fmr={,} fdl=0 fdc=1 ts=2 sw=2 sts=2 et
+# i3-gaps {{{
+for_window [class="^.*"] border pixel 0
+# Set inner/outer gaps
+gaps inner 8
+gaps outer 6
+
+# Smart gaps (gaps used if only more than one container on the workspace)
+smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
+smart_borders on
+
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+  bindsym o      mode "$mode_gaps_outer"
+  bindsym i      mode "$mode_gaps_inner"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+  bindsym plus  gaps inner current plus 5
+  bindsym minus gaps inner current minus 5
+  bindsym 0     gaps inner current set 0
+
+  bindsym Shift+plus  gaps inner all plus 5
+  bindsym Shift+minus gaps inner all minus 5
+  bindsym Shift+0     gaps inner all set 0
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+  bindsym plus  gaps outer current plus 5
+  bindsym minus gaps outer current minus 5
+  bindsym 0     gaps outer current set 0
+
+  bindsym Shift+plus  gaps outer all plus 5
+  bindsym Shift+minus gaps outer all minus 5
+  bindsym Shift+0     gaps outer all set 0
+
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+# }}}
+
+# vim: ft=conf fdm=marker fmr={{{,}}} fdl=0 tw=100 fdc=1 ts=2 sw=2 sts=2 et
