@@ -1,6 +1,3 @@
-[user]
-    name = Tony Xu
-    email = hhktony@gmail.com
 [core]
     editor = vim
     excludesfile = ~/.gitignore_global
@@ -21,6 +18,7 @@
     ls = ls-files
     ign = ls-files -o -i --exclude-standard
     branches = branch -a
+    branch-name = rev-parse --abbrev-ref --symbolic-full-name HEAD
     remotes = remote -v
     ac = !git add -A && git commit
     lasttag = describe --tags --abbrev=0
@@ -38,12 +36,7 @@
     ui = true
 [push]
     default = current
-[github]
-    user = hhktony
-    # token = <enter token here>
 [url "git@github.com:"]
     insteadOf = github:
-[url "git@github.com:hhktony/"]
-    insteadOf = gh:
-[url "git://gist.github.com/"]
-    insteadOf = gist:
+[include]
+    path = .gitconfig.user

@@ -41,7 +41,6 @@ noremap S :sbclose<CR>
 " UI {{{
 " colors pgray
 set history=10000
-set titlestring=hhktony
 set noerrorbells
 set maxitems=6
 let g:hintsio="io"

@@ -10,7 +10,7 @@
 #          Created: 2012-11-30 11:52:23
 #         Revision: (none)
 #
-#           Author: xutao(mark), hhktony@gmail.com
+#           Author: xutao(Tony Xu), hhktony@gmail.com
 #          Company: myself
 #
 #=====================================================
