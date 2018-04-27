@@ -1,0 +1,99 @@
+if [[ -x $(command -v vimx 2>/dev/null) ]]; then
+  export EDITOR=vimx
+  alias vi='vimx'
+  alias vim='vimx'
+fi
+alias tmux='tmux -2'
+alias tree='tree -CN'
+alias e='vim'
+alias cls='clear'
+
+alias da='date "+%A, %B %d, %Y [%T]"'
+alias openports='netstat --all --numeric --programs --inet'
+# alias ip='colorize-ip'
+alias ccat="highlight --out-format=xterm256"
+
+# cd
+alias ..2='cd ../..'
+alias ..3='cd ../../..'
+alias ..4='cd ../../../..'
+alias ..5='cd ../../../../..'
+
+alias path='echo -e ${PATH//:/\\n}'
+alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
+
+alias cman='man -M /usr/share/man/zh_CN'
+alias indent='indent -npro -gnu -i4 -ts4 -sob -l80 -ss -bl -bli 0 -npcs -npsl -nut'
+# alias dstat='dstat -cdlmnpsy'
+if [[ -x $(command -v colordiff 2>/dev/null) ]]; then
+  alias diff='colordiff -urNwB'
+else
+  alias diff='diff -urNwB'
+fi
+
+alias mkdir='mkdir -p'
+alias which='type -a'
+
+alias psctcp='nmap -Pn'
+alias pscudp='nmap -sU'
+# alias starwars="telnet towel.blinkenlights.nl"
+
+mkcd() { mkdir -p "$@" && cd "$_"; }
+weath() { curl wttr.in/"$1" ;}
+macinfo() { curl https://api.macvendors.com/"$1" ;}
+ipinfo() { curl ip.cn/"$1" ;}
+
+unalias z 2> /dev/null
+z() {
+  [ $# -gt 0 ] && _z "$*" && return
+  cd "$(_z -l 2>&1 | fzf --height 60% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')" || exit
+}
+
+v() {
+  local files
+  files=$(grep '^>' ~/.viminfo | cut -c3- |
+          while read -r line; do
+            [ -f "${line/\~/$HOME}" ] && echo "$line"
+          done | fzf -d -m -q "$*" -1) && vim "${files//\~/$HOME}"
+}
+
+alias i3keys='grep -nr ^bindsym ~/.i3/config | fzf'
+
+# fzf-locate() { xdg-open "$(locate "*" | fzf -e)" ; }
+# fzf-cd() { cd "$(locate "*" | fzf -e)" ; }
+
+te() { [ "$(gnuclient -batch -eval t 2>&-)" == "t" ] &&  gnuclient -q "$@" || ( xemacs "$@" &); }
+
+firefox()  { command firefox     "$@" & }
+evince()   { command evince      "$@" & }
+zathura()  { command zathura     "$@" & }
+shotwell() { command shotwell    "$@" & }
+office()   { command libreoffice "$@" & }
+
+# set -o vi # Shell is vi mode
+
+# Enable colors for ls, etc.  Prefer ~/.dir_colors
+if type -p dircolors >/dev/null; then
+  if [[ -f ~/.dir_colors ]]; then
+    eval "$(dircolors -b ~/.dir_colors)"
+  elif [[ -f /etc/DIR_COLORS ]]; then
+    eval "$(dircolors -b /etc/DIR_COLORS)"
+  else
+    dircolors -p > ~/.dir_colors
+    eval "$(dircolors -b ~/.dir_colors)"
+  fi
+fi
+
+# History {{{
+# Don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoreboth:erasedupes
+
+HISTTIMEFORMAT='%F %T '
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+# }}}
+
+# vim: set ft=sh syn=sh sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
