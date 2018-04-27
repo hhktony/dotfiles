@@ -1,3 +1,8 @@
+##############################################################
+## ~/.ncmpcpp/bindings                                      ##
+## Reference: /usr/share/doc/ncmpcpp/bindings               ##
+##############################################################
+
 def_key "j"
   scroll_down
 
@@ -16,10 +21,10 @@ def_key "l"
 def_key "l"
   slave_screen
 
-def_key "ctrl-u"
+def_key "ctrl-b"
   page_up
 
-def_key "ctrl-d"
+def_key "ctrl-f"
   page_down
 
 def_key "ctrl-j"
@@ -49,8 +54,8 @@ def_key "d"
 def_key "'"
   jump_to_playing_song
 
-def_key "space"
-  pause
+# def_key "space"
+#  pause
 
 def_key ","
   previous

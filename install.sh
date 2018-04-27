@@ -33,9 +33,8 @@ link_file()
 
   if [[ -e "$dst" ]]; then
     if [[ "$overwrite_all" == "false" && "$backup_all" == "false" && "$skip_all" == "false" ]]; then
-      local currentSrc="$(readlink $dst)"
 
-      if [[ "$currentSrc" == "$src" ]]; then
+      if [[ "$(readlink "$dst")" == "$src" ]]; then
         skip=true
       else
         tips "File already exists: $dst ($(basename "$src")), what do you want to do?\n\

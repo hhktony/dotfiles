@@ -1,3 +1,7 @@
+##############################################################
+## ~/.mpdconf                                               ##
+## Reference: /etc/mpd.conf                                 ##
+##############################################################
 music_directory     "~/Music/"
 playlist_directory  "~/.mpd/playlists"
 db_file             "~/.mpd/db"
@@ -6,25 +10,27 @@ pid_file            "~/.mpd/pid"
 state_file          "~/.mpd/state"
 sticker_file        "~/.mpd/sticker.sql"
 
-# user              "mpd"
-# group             "users"
-# bind_to_address   "0.0.0.0"
 bind_to_address     "localhost"
 port                "6600"
 
 audio_output {
-    type            "alsa"
-    name            "My ALSA Device"
-#    mixer_control   "Master"
-#    mixer_type      "software"
+    type            "pulse"
+    name            "MPD Pulse Audio"
 }
 
+# audio_output {
+#     type            "alsa"
+#     name            "MPD ALSA Device"
+#     mixer_control   "Master"
+#     mixer_type      "software"
+# }
+
 audio_output {
-    type	"fifo"
-    name	"my_fifo"
+    type    "fifo"
+    name    "my_fifo"
     path    "/tmp/mpd.fifo"
     format  "44100:16:2"
 }
 
 filesystem_charset  "UTF-8"
-id3v1_encoding		"UTF-8"
+id3v1_encoding     "UTF-8"

@@ -1,17 +1,26 @@
-#bind main G !@hub browse -- commit/%(commit)
-#bind diff G !@hub browse -- commit/%(commit)
+# set split-view-height = 80%
+# set diff-context = 5
+# set main-view = id:width=12 date author commit-title:graph=yes,refs=yes
+set main-view	= line-number:no,interval=5 id:yes date:default author:full commit-title:yes,graph,refs,overflow=no
+set diff-view	= line-number:no,interval=5 text:yes,commit-title-overflow=no
 
-bind generic G none
-# alias vim-like behavior
-bind main g move-first-line
-bind main G move-last-line
+# bind main           G    !@hub browse -- commit/%(commit)
+# bind diff           G    !@hub browse -- commit/%(commit)
 
-set split-view-height = 80%
-set diff-context = 5
-set main-view = id:width=12 date author commit-title:graph=yes,refs=yes
+bind generic        h     none
+bind generic        H     view-help
+bind generic        G     none
+bind generic    <C-F>     move-half-page-down
+bind generic    <C-B>     move-half-page-up
 
-bind diff ; view-next
-bind diff l scroll-right
-bind diff h scroll-left
+bind main           g     move-first-line
+bind main           G     move-last-line
+
+# bind diff           ;     view-next
+bind diff           l     scroll-right
+bind diff           h     scroll-left
+
+bind generic        -     none
+bind main           -     :toggle commit-title-graph # Toggle revision graph visualization
 
 # vim: ft=config
