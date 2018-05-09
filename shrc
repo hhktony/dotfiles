@@ -72,7 +72,7 @@ office()   { command libreoffice "$@" & }
 
 # set -o vi # Shell is vi mode
 
-# Enable colors for ls, etc.  Prefer ~/.dir_colors
+# Enable colors for ls, etc.  Prefer ~/.dir_colors {{{
 if type -p dircolors >/dev/null; then
   if [[ -f ~/.dir_colors ]]; then
     eval "$(dircolors -b ~/.dir_colors)"
@@ -83,6 +83,7 @@ if type -p dircolors >/dev/null; then
     eval "$(dircolors -b ~/.dir_colors)"
   fi
 fi
+# }}}
 
 # History {{{
 # Don't put duplicate lines in the history. See bash(1) for more options
@@ -96,4 +97,4 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 # }}}
 
-# vim: set ft=sh syn=sh sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker:
+# vim: set ft=sh syn=sh sw=2 ts=2 sts=2 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker:

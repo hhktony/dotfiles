@@ -82,11 +82,14 @@ config_zsh()
   $GIT_CLONE https://github.com/robbyrussell/oh-my-zsh.git "$oh_zsh_dir"
 
   # Plugins
-  local plugin_dir="$oh_zsh_dir"/custom/plugins
-  $GIT_CLONE https://github.com/zsh-users/zsh-syntax-highlighting "$plugin_dir"/zsh-syntax-highlighting
-  $GIT_CLONE https://github.com/zsh-users/zsh-autosuggestions     "$plugin_dir"/zsh-autosuggestions
-  $GIT_CLONE https://github.com/djui/alias-tips                   "$plugin_dir"/alias-tips
-  # $GIT_CLONE https://github.com/zsh-users/zsh-completions         "$plugin_dir"/zsh-completions
+  local plugins_dir="$oh_zsh_dir/custom/plugins"
+  local themes_dir="$oh_zsh_dir/custom/themes"
+  $GIT_CLONE https://github.com/zsh-users/zsh-syntax-highlighting "$plugins_dir"/zsh-syntax-highlighting
+  $GIT_CLONE https://github.com/zsh-users/zsh-autosuggestions     "$plugins_dir"/zsh-autosuggestions
+  $GIT_CLONE https://github.com/djui/alias-tips                   "$plugins_dir"/alias-tips
+  curl --create-dirs -fLo "$themes_dir"/hhktony.zsh-theme \
+    https://raw.githubusercontent.com/hhktony/hhktony.zsh-theme/master/hhktony.zsh-theme
+  # $GIT_CLONE https://github.com/zsh-users/zsh-completions         "$plugins_dir"/zsh-completions
 }
 
 main()

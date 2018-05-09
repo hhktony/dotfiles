@@ -14,12 +14,10 @@ shopt -s histappend
 
 # set -o vi # Shell is vi mode
 
-# Bash completion
-[ -r /etc/bash_completion ] && . /etc/bash_completion
-
 # Disable CTRL-S and CTRL-Q
 [[ $- =~ i ]] && stty -ixoff -ixon
 
+# Prompt {{{
 # Default prompt
 PS1='[\u@\h \W]\$ '
 # PS1='\[\033[01;32m\]\u\[\033[01;34m\] \W \$\[\033[00m\] '
@@ -31,11 +29,50 @@ __git_ps1() { :;}
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWSTASHSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
-PS1='\[\e[1;92m\]\u\[\e[m\] \[\e[1;94m\]\W\[\e[m\] \[\e[1;91m\]$(__git_ps1 "(%s)")\[\e[m\]\[\e[1;92m\]\$\[\e[m\] \[\e[0;37m\]'
+
+normal="\[\e[0m\]"
+
+# biblack="\[\e[1;90m\]"
+bired="\[\e[1;91m\]"
+bigreen="\[\e[1;92m\]"
+# biyellow="\[\e[1;93m\]"
+biblue="\[\e[1;94m\]"
+# bipurple="\[\e[1;95m\]"
+bicyan="\[\e[1;96m\]"
+biwhite="\[\e[1;97m\]"
+# biorange="\[\e[1;91m\]"
+
+# white="\[\e[0;37m\]"
+
+_virtualenv_prompt()
+{
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        virtualenv=$(basename "$VIRTUAL_ENV")
+        echo -e "($virtualenv$VIRTUALENV_THEME_PROMPT_SUFFIX) "
+    fi
+}
+
+_update_ps1() {
+  local RET=$?
+  if [[ $RET == 0 ]]; then
+    ret_status="${bigreen}➜ "
+  else
+    ret_status="${bired}➜ "
+  fi
+  [[ -n $SSH_CLIENT  ]] && user_host="${biblue}\u@\h" || user_host=""
+
+  # PS1="${biwhite}$(_virtualenv_prompt)${ret_status}${user_host} ${bicyan}\W ${bired}$(__git_ps1 "(%s)")${normal}\\$ ${white}"
+  # PS1="${biwhite}$(_virtualenv_prompt)${ret_status}${user_host} ${bicyan}\W ${bired}$(__git_ps1 "(%s)")${normal}\\$ "
+  PS1="${biwhite}$(_virtualenv_prompt)${ret_status}${user_host} ${bicyan}\W ${bired}$(__git_ps1 "(%s)")${normal} "
+}
+
+[[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]] && PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+# export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
 
 PS2='> '
 PS3='> '
 PS4='+ '
+# }}}
 
 # colorful man page {{{
 export LESS_TERMCAP_mb=$'\E[01;31m'
@@ -48,24 +85,24 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # }}}
 
 # fbterm {{{
-fbterm_tmp=0
-if [ $fbterm_tmp == 1 ]; then
-  if [ "$TERM" = "linux" ]; then
-    alias fbterm='LANG=zh_CN.UTF-8 fbterm'
-    fbterm
+if [[ -x $(command -v fbterm 2>/dev/null) ]]; then
+  fbterm_tmp=0
+  if [ $fbterm_tmp == 1 ]; then
+    if [ "$TERM" = "linux" ]; then
+      alias fbterm='LANG=zh_CN.UTF-8 fbterm'
+      fbterm
+    fi
   fi
+  unset fbterm_tmp
 fi
-unset fbterm_tmp
 # }}}
 
 export LESSCHARSET=utf-8
+export CHEATCOLORS=true
 # export LESS="-R"
 
-[ -f $HOME/.shrc         ] && source "$HOME/.shrc"
-[ -f $HOME/.bash_prompt  ] && source "$HOME/.bash_prompt"
-[ -f $HOME/.bin/z.sh     ] && source "$HOME/.bin/z.sh"
-[ -f $HOME/.shrc_local   ] && source "$HOME/.shrc_local"
-export CHEATCOLORS=true
-# export PROMPT_COMMAND="echo -n [$(date +%k:%m:%S)]"
+[ -f "$HOME/.bin/z.sh"   ] && source "$HOME/.bin/z.sh"
+[ -f "$HOME/.shrc"       ] && source "$HOME/.shrc"
+[ -f "$HOME/.shrc_local" ] && source "$HOME/.shrc_local"
 
-# vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker:
+# vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker:
