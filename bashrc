@@ -4,6 +4,7 @@
 [ -z "$PS1" ] && return
 
 [ -f /etc/bashrc ] && source /etc/bashrc
+[ -f "$HOME/.shrc_local" ] && source "$HOME/.shrc_local"
 
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
@@ -52,7 +53,13 @@ _virtualenv_prompt()
     fi
 }
 
-_update_ps1() {
+_osp_prompt()
+{
+  [[ -n "$OS_USERNAME" ]] && echo -e "$OS_USERNAME-$OS_REGION_NAME "
+}
+
+_update_ps1()
+{
   local RET=$?
   if [[ $RET == 0 ]]; then
     ret_status="${bigreen}➜ "
@@ -63,7 +70,7 @@ _update_ps1() {
 
   # PS1="${biwhite}$(_virtualenv_prompt)${ret_status}${user_host} ${bicyan}\W ${bired}$(__git_ps1 "(%s)")${normal}\\$ ${white}"
   # PS1="${biwhite}$(_virtualenv_prompt)${ret_status}${user_host} ${bicyan}\W ${bired}$(__git_ps1 "(%s)")${normal}\\$ "
-  PS1="${biwhite}$(_virtualenv_prompt)${ret_status}${user_host} ${bicyan}\W ${bired}$(__git_ps1 "(%s)")${normal} "
+  PS1="${biwhite}$(_virtualenv_prompt)${ret_status}${user_host} ${bicyan}\W${bired}$(__git_ps1 "(%s)")${normal} "
 }
 
 [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]] && PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
@@ -99,10 +106,21 @@ fi
 
 export LESSCHARSET=utf-8
 export CHEATCOLORS=true
-# export LESS="-R"
+
+# History {{{
+# Don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoreboth:erasedupes
+
+HISTTIMEFORMAT='%F %T '
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+# }}}
 
 [ -f "$HOME/.bin/z.sh"   ] && source "$HOME/.bin/z.sh"
 [ -f "$HOME/.shrc"       ] && source "$HOME/.shrc"
-[ -f "$HOME/.shrc_local" ] && source "$HOME/.shrc_local"
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker:

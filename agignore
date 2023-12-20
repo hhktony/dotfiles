@@ -2,3 +2,7 @@ cscope.*
 tags
 tests
 .git
+locale
+*.pyc
+build/*
+*.class

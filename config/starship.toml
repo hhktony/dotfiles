@@ -1,0 +1,55 @@
+# https://starship.rs/zh-CN
+# 根据 schema 提供自动补全
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# 在提示符之间插入空行
+add_newline = false
+
+[character]
+success_symbol = '[➜](bold green) '
+
+[directory]
+disabled = false
+
+[package]
+symbol = "📦 "
+disabled = true
+
+[git_branch]
+disabled = false
+symbol = "br:"
+
+[git_state]
+disabled = true
+# format = '[\($state( $progress_current of $progress_total)\)]($style) '
+merge =   "MG"
+revert = "RVT"
+# cherry_pick = "CP"
+cherry_pick = "[🍒 PICKING](bold red)"
+bisect = "BS"
+am = "AM"
+am_or_rebase = "AM/RB"
+style = "yellow"
+
+[git_metrics]
+disabled=true
+
+# https://starship.rs/zh-CN/config/#git-status
+[git_status]
+disabled=false
+# modified = '📝'
+# untracked = '?'
+
+[java]
+disabled=true
+
+[nodejs]
+disabled=true
+
+[time]
+disabled=true
+
+[localip]
+ssh_only = false
+format = "[IP:$localipv4](bold red) "
+disabled = true

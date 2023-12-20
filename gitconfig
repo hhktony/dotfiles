@@ -1,6 +1,16 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore_global
+    quotepath = false
+    abbrev = 9
+    ; pager = delta
+[delta]
+    ; plus-color = "#012800"
+    ; minus-color = "#340001"
+    ; syntax-theme = Monokai Extended
+    ; syntax-theme = light
+[interactive]
+    diffFilter = delta --color-only
 [alias]
     ci = commit -a -v
     st = status -sb
@@ -10,6 +20,7 @@
     dc = diff --cached
     throw = reset --hard HEAD
     throwh = reset --hard HEAD^
+    throwa = !git reset --hard HEAD && git clean -fd
     rb = rebase
     lg = log --abbrev-commit --decorate --all --graph
     ll = log --abbrev-commit --oneline --decorate --all
@@ -22,6 +33,7 @@
     remotes = remote -v
     ac = !git add -A && git commit
     lasttag = describe --tags --abbrev=0
+    tagsort = !sh -c 'git tag -l $1 | sort -V'
 [merge]
     tool = vimdiff
 [diff]
@@ -36,7 +48,25 @@
     ui = true
 [push]
     default = current
+[pull]
+    rebase = true
 [url "git@github.com:"]
     insteadOf = github:
-[include]
-    path = .gitconfig.user
+[user]
+    name = Tony Xu
+    email = hhktony@gmail.com
+[includeIf "gitdir:~/workspace/01-work/08-t2cloud/06-src"]
+    path = ~/.gitconfig.work
+[includeIf "gitdir:~/workspace/01-work/09-cepo/src"]
+    path = ~/.gitconfig.cepo
+[commit]
+    template = ~/.gitmessage
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[init]
+    defaultBranch = master
+[http]
+    sslBackend = openssl

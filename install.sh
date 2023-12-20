@@ -17,9 +17,9 @@ GIT_CLONE='git clone -q --depth 1'
 oh_zsh_dir=$HOME/.oh-my-zsh
 DOTFILES_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 
-ok()    { echo -e " \033[1;32m✔\033[0m  $1"; 	}
-tips()  { echo -e " \033[1;33m?\033[0m  $1";  }
-skip()  { echo -e " \033[1;33m!\033[0m  $1";  }
+ok()    { echo -e " \033[1;32m✔\033[0m  $1"; }
+tips()  { echo -e " \033[1;33m?\033[0m  $1"; }
+skip()  { echo -e " \033[1;33m!\033[0m  $1"; }
 
 link_file()
 {
@@ -84,7 +84,8 @@ config_zsh()
   # Plugins
   local plugins_dir="$oh_zsh_dir/custom/plugins"
   local themes_dir="$oh_zsh_dir/custom/themes"
-  $GIT_CLONE https://github.com/zsh-users/zsh-syntax-highlighting "$plugins_dir"/zsh-syntax-highlighting
+  $GIT_CLONE https://github.com/skywind3000/z.lua "$plugins_dir"/z.lua
+  $GIT_CLONE https://github.com/zdharma/fast-syntax-highlighting  "$plugins_dir"/fast-syntax-highlighting
   $GIT_CLONE https://github.com/zsh-users/zsh-autosuggestions     "$plugins_dir"/zsh-autosuggestions
   $GIT_CLONE https://github.com/djui/alias-tips                   "$plugins_dir"/alias-tips
   curl --create-dirs -fLo "$themes_dir"/hhktony.zsh-theme \

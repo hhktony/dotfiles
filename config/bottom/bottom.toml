@@ -1,0 +1,70 @@
+# bottom config
+# https://github.com/ClementTsang/bottom/tree/master/sample_configs
+
+# This group of options represents a command-line flag/option.  Flags explicitly
+# added when running (ie: btm -a) will override this config file if an option
+# is also set here.
+
+[flags]
+disable_click = true
+# Built-in themes.  Valid values are "default", "default-light", "gruvbox", "gruvbox-light", "nord", "nord-light"
+color = "default"
+# Show memory values in the processes widget as values by default
+mem_as_value = true
+# Show tree mode by default in the processes widget.
+tree = false
+default_widget_type = "proc"
+#disable_advanced_kill = false
+enable_gpu_memory = true
+enable_cache_memory = true
+# How much data is stored at once in terms of time.
+#retention = "10m"
+
+[[row]]
+  ratio=30
+  [[row.child]]
+  type="cpu"
+[[row]]
+    ratio=30
+    [[row.child]]
+      ratio=2
+      type="mem"
+    [[row.child]]
+      ratio=3
+      [[row.child.child]]
+        type="disk"
+[[row]]
+  ratio=40
+  [[row.child]]
+    ratio=2
+    type="net"
+  [[row.child]]
+    ratio=3
+    type="proc"
+    default=true
+
+[disk_filter]
+is_list_ignored = true
+list = ["/dev/loop\\d+"]
+regex = true
+
+#[mount_filter]
+#is_list_ignored = true
+#list = ["/mnt/.*", "/boot"]
+#regex = true
+#case_sensitive = false
+#whole_word = false
+
+#[temp_filter]
+#is_list_ignored = true
+#list = ["cpu", "wifi"]
+#regex = false
+#case_sensitive = false
+#whole_word = false
+
+[net_filter]
+is_list_ignored = true
+list = ["virbr0.*"]
+regex = true
+case_sensitive = false
+whole_word = false

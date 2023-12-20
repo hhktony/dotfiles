@@ -1,0 +1,14 @@
+[style]
+based_on_style = pep8
+split_all_top_level_comma_separated_values = true
+allow_split_before_dict_value = false
+
+continuation_indent_width = 4
+dedent_closing_brackets = false
+coalesce_brackets = true
+split_before_dot = false
+
+each_dict_entry_on_separate_line = true
+indent_dictionary_value = true
+spaces_before_comment = 2
+column_limit = 79

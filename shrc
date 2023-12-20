@@ -1,4 +1,8 @@
-if [[ -x $(command -v vimx 2>/dev/null) ]]; then
+[ -z ${PLATFORM+x} ] && export PLATFORM="$(uname -s)"
+
+export EDITOR=vim
+
+if command -v vimx >/dev/null; then
   export EDITOR=vimx
   alias vi='vimx'
   alias vim='vimx'
@@ -7,9 +11,6 @@ alias tmux='tmux -2'
 alias tree='tree -CN'
 alias e='vim'
 alias cls='clear'
-
-alias da='date "+%A, %B %d, %Y [%T]"'
-alias openports='netstat --all --numeric --programs --inet'
 # alias ip='colorize-ip'
 alias ccat="highlight --out-format=xterm256"
 
@@ -23,46 +24,63 @@ alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
 alias cman='man -M /usr/share/man/zh_CN'
-alias indent='indent -npro -gnu -i4 -ts4 -sob -l80 -ss -bl -bli 0 -npcs -npsl -nut'
+# alias indent='indent -npro -gnu -i4 -ts4 -sob -l80 -ss -bl -bli 0 -npcs -npsl -nut'
+alias indent='indent -npro -kr -i4 -ts4 -sob -l80 -ss -ncs -cp1 -il0'
 # alias dstat='dstat -cdlmnpsy'
-if [[ -x $(command -v colordiff 2>/dev/null) ]]; then
-  alias diff='colordiff -urNwB'
+if command -v delta >/dev/null; then
+  alias diff='delta'
 else
   alias diff='diff -urNwB'
 fi
 
+command -v bat >/dev/null && alias bat='bat -p'
+# command -v rsync >/dev/null && alias scp='rsync -avuzP'
+
 alias mkdir='mkdir -p'
 alias which='type -a'
 
-alias psctcp='nmap -Pn'
-alias pscudp='nmap -sU'
 # alias starwars="telnet towel.blinkenlights.nl"
+
+# /bin/bash -c "$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)"
 
 mkcd() { mkdir -p "$@" && cd "$_"; }
 weath() { curl wttr.in/"$1" ;}
 macinfo() { curl https://api.macvendors.com/"$1" ;}
-ipinfo() { curl ip.cn/"$1" ;}
+ipinfo() { curl -L ip.cn/"$1" ;}
 
-unalias z 2> /dev/null
-z() {
-  [ $# -gt 0 ] && _z "$*" && return
-  cd "$(_z -l 2>&1 | fzf --height 60% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')" || exit
-}
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+
+command -v bat  > /dev/null && export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
+command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+
+# unalias z 2> /dev/null
+# z() {
+#   [ $# -gt 0 ] && _z "$*" && return
+#   cd "$(_z -l 2>&1 | fzf --height 60% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')" || exit
+# }
 
 v() {
   local files
   files=$(grep '^>' ~/.viminfo | cut -c3- |
-          while read -r line; do
-            [ -f "${line/\~/$HOME}" ] && echo "$line"
-          done | fzf -d -m -q "$*" -1) && vim "${files//\~/$HOME}"
+    while read -r line; do
+      [ -f "${line/\~/$HOME}" ] && echo "$line"
+    done | fzf -d -m -q "$*" -1) && vim "${files//\~/$HOME}"
+  }
+
+tm() {
+  if (( $# )); then
+    tmux has-session -t "$*" && tmux attach -t "$*" || tmux new-session -s "$*"
+  else
+    tmux attach || tmux new-session -s default
+  fi
 }
 
-alias i3keys='grep -nr ^bindsym ~/.i3/config | fzf'
+alias i3keys='grep ^bindsym ~/.i3/config | fzf'
 
 # fzf-locate() { xdg-open "$(locate "*" | fzf -e)" ; }
 # fzf-cd() { cd "$(locate "*" | fzf -e)" ; }
 
-te() { [ "$(gnuclient -batch -eval t 2>&-)" == "t" ] &&  gnuclient -q "$@" || ( xemacs "$@" &); }
+te() { [ "$(gnuclient -batch -eval t 2>&-)" = "t" ] &&  gnuclient -q "$@" || ( xemacs "$@" &); }
 
 firefox()  { command firefox     "$@" & }
 evince()   { command evince      "$@" & }
@@ -72,29 +90,81 @@ office()   { command libreoffice "$@" & }
 
 # set -o vi # Shell is vi mode
 
-# Enable colors for ls, etc.  Prefer ~/.dir_colors {{{
-if type -p dircolors >/dev/null; then
-  if [[ -f ~/.dir_colors ]]; then
+# -i turns on "smartcase" search by default
+export LESS="-iR"
+
+if [ "$PLATFORM" = 'Darwin' ]; then
+  export HOMEBREW_NO_AUTO_UPDATE=false
+  export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+  export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+  export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
+  export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/bottles"
+
+  # export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH
+  export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+  export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+fi
+
+# Enable colors for ls, etc.  Prefer ~/.dir_colors
+if command -v dircolors >/dev/null; then
+  if [ -f ~/.dir_colors ]; then
     eval "$(dircolors -b ~/.dir_colors)"
-  elif [[ -f /etc/DIR_COLORS ]]; then
+  elif [ -f /etc/DIR_COLORS ]; then
     eval "$(dircolors -b /etc/DIR_COLORS)"
   else
     dircolors -p > ~/.dir_colors
     eval "$(dircolors -b ~/.dir_colors)"
   fi
 fi
-# }}}
 
-# History {{{
-# Don't put duplicate lines in the history. See bash(1) for more options
-# ... or force ignoredups and ignorespace
-HISTCONTROL=ignoreboth:erasedupes
+export PATH="/usr/local/sbin:$PATH"
 
-HISTTIMEFORMAT='%F %T '
+# export BAT_THEME="Material-Theme-Darker"
+export BAT_THEME="Dracula"
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
-# }}}
+export GOROOT="$HOME/.devenv/go"
+export GOPATH="$HOME/workspace/go"
+export GOBIN="$GOPATH/bin"
+export PATH="$GOROOT/bin:$GOBIN:$PATH"
+
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8'
+
+if [ -d "${HOME}/.pyenv" ];then
+  export PYENV_ROOT="${HOME}/.pyenv"
+  export PATH="${PYENV_ROOT}/bin:${PATH}"
+  eval "$(pyenv init --path)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+if [ -d "$HOME/.nvm" ];then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+  # [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
+
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
+if [ -d "$HOME/.jenv" ]; then
+  export PATH="$HOME/.jenv/bin:$PATH"
+  eval "$(jenv init -)"
+fi
+
+# export MACOS_JAVA_8_HOME=~/.devenv/openlogic-openjdk-8u372-b07-mac-x64/jdk1.8.0_372.jdk/Contents/Home
+# export MACOS_JAVA_17_HOME=~/.devenv/jdk-17.0.7.jdk/Contents/Home
+# export JAVA_HOME="$MACOS_JAVA_8_HOME"
+# export JAVA_HOME="$MACOS_JAVA_17_HOME"
+# export PATH="$JAVA_HOME/bin:$PATH"
+
+export M2_HOME="$HOME/.devenv/apache-maven-3.9.3"
+export MAVEN_OPTS="-Xmx1024m"
+export PATH="${M2_HOME}/bin:$PATH"
+
+# export GRADLE_HOME="$HOME/.devenv/gradle-8.2.1"
+export GRADLE_HOME="$HOME/.devenv/gradle-6.9.3"
+export PATH="${GRADLE_HOME}/bin:$PATH"
+
+eval "$(zoxide init ${SHELL##*/})"
 
 # vim: set ft=sh syn=sh sw=2 ts=2 sts=2 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker:

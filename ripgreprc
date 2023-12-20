@@ -1,0 +1,41 @@
+# Search hidden files and directories.
+--hidden
+
+# Follow symbolic links.
+--follow
+
+# Don't respect ignore files (.gitignore, .ignore, etc.).
+--no-ignore
+
+# Exclude directories.
+--glob=!{.git,.hg,.svn,node_modules,Trash,vendor,build,dist,tags,.tags,target}
+
+# Exclude file types.
+--glob=!*.{lock,po,pyc}
+
+# Exclude files.
+--glob=!{package-lock.json}
+
+# Don't print lines longer than this limit.
+--max-columns=10000
+
+# Searches case insensitively.
+#--smart-case
+
+# Sort by file path.
+--sort=path
+
+# Always show line numbers for matches
+--no-line-number
+
+# Show context
+--context=0
+
+# Configure color settings and styles.
+# https://github.com/BurntSushi/ripgrep/blob/master/FAQ.md#silver-searcher-output
+# --colors=path:bg:0x3b,0x3b,0x3b
+--colors=path:fg:white
+#--colors=line:fg:0xf2,0xc2,0x60
+#--colors=match:bg:0x2b,0x83,0xa6
+#--colors=match:fg:0xff,0xff,0xff
+#--colors=match:style:nobold

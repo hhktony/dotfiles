@@ -7,13 +7,49 @@ set diff-view	= line-number:no,interval=5 text:yes,commit-title-overflow=no
 # bind main           G    !@hub browse -- commit/%(commit)
 # bind diff           G    !@hub browse -- commit/%(commit)
 
+# View switching
+bind generic    m       view-main
+bind generic    d       view-diff
+bind generic    l       view-log
+bind generic    t       view-tree
+bind generic    f       view-blob
+bind generic    b       view-blame
+bind generic    r       view-refs
+bind generic    p       view-pager
+# bind generic    h       view-help
+bind generic    s       view-status
+bind generic    c       view-stage
+bind generic    y       view-stash
+# bind generic    g       view-grep
+
 bind generic        h     none
 bind generic        H     view-help
-bind generic        G     none
+bind generic        g     move-first-line
+bind generic        G     move-last-line
 bind generic    <C-F>     move-half-page-down
 bind generic    <C-B>     move-half-page-up
 
-bind main           g     move-first-line
+
+# View manipulation
+bind generic    <Enter> enter                   # Enter and open selected entry
+# TODO: open (from stash => open diff, but stay in stash list)
+bind generic    <Lt>    back                    # Go back to the previous view state
+bind generic    <Down>  next                    # Move to next
+bind generic    <C-N>   next
+bind generic    J       next
+bind generic    <Up>    previous                # Move to previous
+bind generic    <C-P>   previous
+bind generic    K       previous
+bind generic    ,       parent                  # Move to parent
+bind generic    <Tab>   view-next               # Move focus to the next view
+bind generic    R       refresh                 # Reload and refresh view
+bind generic    <F5>    refresh
+bind generic    O       maximize                # Maximize the current view
+bind generic    q       view-close              # Close the current view
+bind generic    Q       quit                    # Close all views and quit
+
+
+# bind main           g     move-first-line
 bind main           G     move-last-line
 
 # bind diff           ;     view-next
