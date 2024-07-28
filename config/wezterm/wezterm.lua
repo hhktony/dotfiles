@@ -71,13 +71,13 @@ local config = {
   automatically_reload_config = true,
   -- exit_behavior = 'CloseOnCleanExit', -- if the shell program exited with a successful status
   switch_to_last_active_tab_when_closing_tab = false,
-  selection_word_boundary = " \\()\"'`:,;<>~!@#$%^&*|+=[]{}~?",
+  selection_word_boundary = " \\()\"'`:,;<>~!@#$%^&*|+=[]{}~?‘’",
 
 
   -- Window
   native_macos_fullscreen_mode = true,
   adjust_window_size_when_changing_font_size = true,
-  window_background_opacity = 0.91, -- 如果设置为1.0会明显卡顿
+  -- window_background_opacity = 0.91, -- 如果设置为1.0会明显卡顿
   window_padding = {
     left = 5,
     right = 5,
@@ -187,6 +187,7 @@ local config = {
     { key = 'f', mods = 'CMD', action = act.Search { CaseInSensitiveString = '' } },
 
     { key = 'p', mods = 'SHIFT|CTRL', action = act.ShowLauncher },
+    { key = 'p', mods = 'SHIFT|CMD', action = act.ShowLauncher },
 
     -- Copy/paste buffer
     { key = '[', mods = 'LEADER', action = 'ActivateCopyMode' },

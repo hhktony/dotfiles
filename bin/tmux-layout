@@ -1,0 +1,5 @@
+#!/bin/sh
+
+tmux new -ds 'main' -n 'sys' -c ~
+tmux new -ds 'work' -n 'sys' -c ~/workspace
+# tmux new -ds 'blog' -n 'sys' -c ~/src/blog

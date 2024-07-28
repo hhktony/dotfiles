@@ -84,8 +84,8 @@ config_zsh()
   # Plugins
   local plugins_dir="$oh_zsh_dir/custom/plugins"
   local themes_dir="$oh_zsh_dir/custom/themes"
-  $GIT_CLONE https://github.com/skywind3000/z.lua "$plugins_dir"/z.lua
-  $GIT_CLONE https://github.com/zdharma/fast-syntax-highlighting  "$plugins_dir"/fast-syntax-highlighting
+  # $GIT_CLONE https://github.com/skywind3000/z.lua "$plugins_dir"/z.lua
+  $GIT_CLONE https://github.com/z-shell/F-Sy-H.git                "$plugins_dir"/F-Sy-H
   $GIT_CLONE https://github.com/zsh-users/zsh-autosuggestions     "$plugins_dir"/zsh-autosuggestions
   $GIT_CLONE https://github.com/djui/alias-tips                   "$plugins_dir"/alias-tips
   curl --create-dirs -fLo "$themes_dir"/hhktony.zsh-theme \

@@ -9,13 +9,19 @@
 
 # ZSH_THEME="hhktony"
 eval "$(starship init zsh)"
+
+# if type brew &>/dev/null
+# then
+#   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+#   # oh-my-zsh not need
+#   autoload -Uz compinit
+#   compinit
+# fi
+
 export OH_ZSH_HOME=$HOME/.oh-my-zsh
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 # zmodload zsh/zprof
 # alias tt="\time zsh -i -c exit"
-
-[[ -f $HOME/.shrc ]] && source $HOME/.shrc
-[[ -f $HOME/.shrc_local ]] && source $HOME/.shrc_local
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -35,11 +41,10 @@ DISABLE_AUTO_TITLE="true"
 # COMPLETION_WAITING_DOTS="true"
 
 plugins=(
-  z.lua
   # gitfast
   # git-extras
   emoji
-  fast-syntax-highlighting
+  F-Sy-H
   zsh-autosuggestions
   alias-tips
   docker
@@ -51,10 +56,33 @@ plugins=(
   # kubectl
   # npm
   # nvm
-  pyenv # TODO: slow
+  # pyenv # TODO: slow
   # django
   # kubectl
 )
+
+# /bin/bash -c "$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)"
+if [[ $(uname -s) == "Darwin" ]]; then
+  HOMEBREW_PREFIX=$(brew --prefix)
+  export HOMEBREW_NO_AUTO_UPDATE=false
+  export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+  export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+  export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
+  export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/bottles"
+  export PATH="$HOMEBREW_PREFIX/opt/uutils-coreutils/libexec/uubin:$PATH"
+  export PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
+  FPATH=$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH
+
+  if command -v $HOMEBREW_PREFIX/bin/vim >/dev/null; then
+    alias vi=$HOMEBREW_PREFIX/bin/vim
+    alias vim=$HOMEBREW_PREFIX/bin/vim
+    alias vimdiff=$HOMEBREW_PREFIX/bin/vimdiff
+    export EDITOR=$HOMEBREW_PREFIX/bin/vim
+  fi
+  # export PATH=/usr/local/opt/grep/libexec/gnubin:$PATH
+  # export PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+  # export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+fi
 
 source $OH_ZSH_HOME/oh-my-zsh.sh
 
@@ -78,10 +106,16 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 # }}}
 
-[[ -d $HOME/.bin ]] && export PATH=$HOME/.bin:$PATH
+# [[ -d $HOME/.bin ]] && export PATH=$HOME/.bin:$PATH
+[[ -f $HOME/.shrc_local ]] && source $HOME/.shrc_local
+[[ -f $HOME/.shrc ]] && source $HOME/.shrc
+
 # welcome
-# echo -ne "\E[01;31m Hi, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime
+# echo -ne "Hi, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime
+echo -ne ""
+
+source /Users/xutao/.config/broot/launcher/bash/br
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias ls='ls --color=tty'
+# vim: set ft=zsh syn=sh sw=2 ts=2 sts=2 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker:

@@ -40,6 +40,11 @@ disabled=false
 # modified = '📝'
 # untracked = '?'
 
+[python]
+disabled=true
+symbol = '👾 '
+pyenv_version_name = false
+
 [java]
 disabled=true
 

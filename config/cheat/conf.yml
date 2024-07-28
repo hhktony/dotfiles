@@ -49,6 +49,6 @@ cheatpaths:
   # If you have personalized cheatsheets, list them last. They will take
   # precedence over thepersonal mors global cheatsheets.
   - name: personal
-    path: ~/.cheat
+    path: /Users/xutao/Nutstore/Documents/note/cheat
     tags: [ personal ]
     readonly: false

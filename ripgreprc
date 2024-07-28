@@ -8,7 +8,7 @@
 --no-ignore
 
 # Exclude directories.
---glob=!{.git,.hg,.svn,node_modules,Trash,vendor,build,dist,tags,.tags,target}
+--glob=!{.git,.hg,.svn,.idea,,.vim,node_modules,tests,Trash,vendor,build,dist,tags,.tags,target}
 
 # Exclude file types.
 --glob=!*.{lock,po,pyc}

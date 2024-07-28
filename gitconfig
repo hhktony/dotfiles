@@ -23,9 +23,13 @@
     throwa = !git reset --hard HEAD && git clean -fd
     rb = rebase
     lg = log --abbrev-commit --decorate --all --graph
+    # ll = log --abbrev-commit --oneline --decorate --all
     ll = log --abbrev-commit --oneline --decorate --all
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+    changelog = log --oneline --format='%h %s (%cr) <%an>'
+    ql = log --oneline --decorate -10 --pretty=format:'%C(yellow)%h%C(reset)%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an> %C(bold black)[%G?]%Creset'
+    qll = log --oneline --decorate --pretty=format:'%C(yellow)%h%C(reset)%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an> %C(bold black)[%G?]%Creset'
     ls = ls-files
     ign = ls-files -o -i --exclude-standard
     branches = branch -a
@@ -55,9 +59,9 @@
 [user]
     name = Tony Xu
     email = hhktony@gmail.com
-[includeIf "gitdir:~/workspace/01-work/08-t2cloud/06-src"]
-    path = ~/.gitconfig.work
-[includeIf "gitdir:~/workspace/01-work/09-cepo/src"]
+[includeIf "gitdir:~/workspace/01-work/08-t2cloud/"]
+    path = ~/.gitconfig.t2cloud
+[includeIf "gitdir:~/workspace/01-work/09-cepo/"]
     path = ~/.gitconfig.cepo
 [commit]
     template = ~/.gitmessage
@@ -67,6 +71,11 @@
     process = git-lfs filter-process
     required = true
 [init]
-    defaultBranch = master
+    defaultBranch = main
 [http]
     sslBackend = openssl
+[safe]
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-core
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-cask
+	directory = /opt/homebrew/Library/Taps/homebrew/homebrew-services

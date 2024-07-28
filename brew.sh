@@ -25,17 +25,24 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install tree pv
 
   # brew install rlwrap
-  brew install zsh brew-cask-completion \
+  brew install zsh
+  brew install starship
+  brew install tmux
+  brew install brew-cask-completion
   brew install lsd
   brew install tree
   brew install dust
   brew install ncdu
+  brew install duf
   brew install bat
+  brew install hexyl
+  brew install viddy
   brew install delta
   brew install fd
   brew install fzf
-  brew install zoxide
-  brew install ag
+  brew install zoxide # fast jump dir
+  # brew install ag
+  brew install sd # sed like
   brew install ripgrep
   brew install cscope
   brew install jq
@@ -44,9 +51,11 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install reattach-to-user-namespace
   brew install git
   brew install git-lfs
+  git lfs install
   brew install gitui
   brew install tig
-  brew install cloc
+  brew install tokei
+  # brew install cloc
   brew install graphviz
   brew install imagemagick
   brew install ffmpeg
@@ -60,8 +69,8 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install procs
   brew install iproute2mac
   brew install wget
+  brew install lux
   brew install xh
-  brew install youtube-dl
   brew install subnetcalc
   brew install telnet
   brew install netcat
@@ -69,6 +78,9 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install nmap
   brew install proxychains-ng
   brew install shellcheck
+  brew install universal-ctags
+  brew install cheat
+  brew install tealdeer
   brew install ruby
 
   # brew install vim # /usr/local/bin/vim
@@ -81,12 +93,17 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   # brew install gnuplot --with-qt --with-cairo
 
   # nutstore 手动
+  brew install --cask raycast
   brew install --cask hammerspoon
-  brew install --cask bob
+  brew install --cask karabiner-elements
   # brew install --cask itsycal
   # brew install --cask stats
+  brew install --cask only-switch
   brew install --cask dozer
   brew install --cask cheatsheet
+
+  brew install --cask bob
+
   brew install --cask tencent-lemon
 
   brew install --cask iterm2
@@ -94,23 +111,37 @@ if [ "$(uname -s)" = 'Darwin' ]; then
 
   brew install --cask keycastr
 
+  brew install --cask wpsoffice-cn
+  brew install --cask drawio
   brew install --cask visual-studio-code
   brew install --cask sublime-text
   brew install --cask obsidian
+  brew install --cask mubu
+  brew install --cask yixiangbiji
+
+  brew install --cask baidunetdisk
   brew install --cask picgo
 
-  brew install --cask skim
+  brew install --cask updf
+  # brew install --cask skim
 
   # brew install --cask switchresx
 
-  brew install --cask vnc-viewer
+  brew install --cask todesk
   brew install --cask microsoft-remote-desktop
+  brew install --cask vnc-viewer
+
   brew install --cask iina
+  # brew install lihaoyun6/tap/quickrecorder
   brew install --cask qqmusic
   # brew install --cask neteasemusic
   brew install --cask google-chrome
   brew install --cask microsoft-edge
+  brew install --cask arc
+
   brew install --cask dingtalk
+  brew install --cask wechat
+
   brew install --cask wireshark
   brew install --cask tunnelblick
   brew install --cask clashx
@@ -118,7 +149,7 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   # brew install --cask macpass
   brew install --cask keepassxc
   brew install --cask snipaste
-  brew install --cask sequel-pro
+  brew install --cask sequel-ace
   brew install --cask alt-tab
 
   # brew tap homebrew/cask-versions
@@ -128,9 +159,11 @@ if [ "$(uname -s)" = 'Darwin' ]; then
 
   # brew install --cask qlmarkdown quicklook-json appcleaner
   # brew install --cask kawa # A macOS input source switcher with user-defined shortcuts.
-  # brew install docker
   # switchkey automute
   brew install --cask vmware-fusion
+
+  # brew install --cask docker
+  brew install --cask orbstack
   # brew install virtualbox virtualbox-extension-pack vagrant
   # brew install google-backup-and-sync postman tor-browser
   # brew install wiznote
@@ -138,7 +171,6 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   # brew install aerial # 屏保
   # brew java mat visualvm fluid caffeine xquartz inkscape xbar
   # brew install alfred totalfinder
-  brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
   # brew tap jeffreywildman/homebrew-virt-manager
   # brew install virt-manager virt-viewer
