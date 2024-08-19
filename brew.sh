@@ -81,6 +81,7 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install universal-ctags
   brew install cheat
   brew install tealdeer
+  brew install yazi
   brew install ruby
 
   # brew install vim # /usr/local/bin/vim

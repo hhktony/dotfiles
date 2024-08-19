@@ -17,7 +17,9 @@ disabled = true
 
 [git_branch]
 disabled = false
-symbol = "br:"
+# format='[$symbol $branch(:$remote_branch)]($style) '
+format='[$branch(:$remote_branch)]($style) '
+symbol = '🌱'
 
 [git_state]
 disabled = true
@@ -37,24 +39,35 @@ disabled=true
 # https://starship.rs/zh-CN/config/#git-status
 [git_status]
 disabled=false
-# modified = '📝'
-# untracked = '?'
+modified = '*'
+untracked = '?'
 
 [python]
-disabled=true
-symbol = '👾 '
+disabled=false
+# format='[${symbol} ${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+format='[${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+symbol = '🐍'
 pyenv_version_name = false
+
+[golang]
+disabled=true
 
 [java]
 disabled=true
 
 [nodejs]
-disabled=true
+disabled=false
+format='[$symbol($version )]($style)'
 
 [time]
 disabled=true
 
 [localip]
-ssh_only = false
+disabled = false
+ssh_only = true
 format = "[IP:$localipv4](bold red) "
-disabled = true
+
+[docker_context]
+disabled = false
+# format = '[🐋 $context ](blue bold)'
+format = '[$context ](blue bold)'

@@ -8,6 +8,7 @@
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ZSH_THEME="hhktony"
+# TODO(hhktony)
 eval "$(starship init zsh)"
 
 # if type brew &>/dev/null
@@ -116,6 +117,6 @@ echo -ne ""
 
 source /Users/xutao/.config/broot/launcher/bash/br
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # vim: set ft=zsh syn=sh sw=2 ts=2 sts=2 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker:

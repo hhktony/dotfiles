@@ -1,0 +1,106 @@
+#!/usr/bin/env bash
+#  Filename: /Users/xutao/.bin/swich-theme-mode.sh
+#      Desc: switch_theme_mode
+#    Author: xutao(Tony Xu), hhktony@gmail.com
+#   Company: myself
+
+switch_theme_mode() {
+  # change background to the given mode. If mode is missing,
+  # we try to deduct it from the system settings.
+
+  local mode="light" # default value
+  local mode_setting="$1"
+
+  if [[ -z "$mode_setting" ]]; then
+    local val=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+    if [[ $? -eq 0 && "$val" == "Dark" ]]; then
+      mode="dark"
+    fi
+  else
+  # echo $mode
+  # osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to not dark mode'
+    case "$mode_setting" in
+      light)
+        # osascript -l JavaScript -e "Application('System Events').appearancePreferences.darkMode = false" >/dev/null
+        osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to false' >/dev/null
+        mode="light"
+        ;;
+      dark)
+        # osascript -l JavaScript -e "Application('System Events').appearancePreferences.darkMode = true" >/dev/null
+        osascript -e 'tell application "System Events" to tell appearance preferences to set dark mode to true' >/dev/null
+        mode="dark"
+        ;;
+    esac
+  fi
+
+  # swich wezterm
+  case "$mode" in
+    dark)
+      sed -i "s|color_scheme.*$|color_scheme = 'Dracula',|" ~/.config/wezterm/wezterm.lua
+      ;;
+    light)
+      sed -i "s|color_scheme.*$|color_scheme = 'AtomOneLight',|" ~/.config/wezterm/wezterm.lua
+      ;;
+  esac
+
+  # swich vim
+  case "$mode" in
+    dark)
+      cat > ~/.vimrc.before << EOF
+let g:xvim_colorscheme = 'molokai'
+let g:xvim_background = 'dark'
+EOF
+      ;;
+    light)
+      cat > ~/.vimrc.before <<EOF
+let g:xvim_background = 'light'
+let g:xvim_colorscheme = 'github'
+EOF
+      ;;
+  esac
+  exit
+
+  # change neovim
+  for addr in $(/opt/homebrew/bin/nvr --serverlist); do
+    case "$mode" in
+      dark)
+        /opt/homebrew/bin/nvr --servername "$addr" -c "set background=dark"
+        ;;
+      light)
+        /opt/homebrew/bin/nvr --servername "$addr" -c "set background=light"
+        ;;
+    esac
+  done
+
+  # change tmux
+  case "$mode" in
+    dark)
+      tmux source-file ~/.tmux/tmux-dark.conf
+      ;;
+    light)
+      tmux source-file ~/.tmux/tmux-light.conf
+      ;;
+  esac
+
+  # change alacritty
+  alacritty_theme "$mode"
+}
+
+alacritty_theme() {
+  local mode="$1"
+
+  pushd /Users/fatih/Code/dotfiles
+
+  cp alacritty.toml alacritty.toml.backup
+  local line="import = [\"/Users/fatih/.config/alacritty/themes/alacritty-gruvbox-$mode.toml\"]"
+  echo "$line" > alacritty.toml
+
+  cat alacritty.toml.backup | tail -n +2 >> alacritty.toml
+  rm alacritty.toml.backup
+
+  popd
+}
+
+# Example usage:
+# switch_theme_mode light
+switch_theme_mode $1

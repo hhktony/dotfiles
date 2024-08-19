@@ -110,17 +110,10 @@ local config = {
 
   hide_mouse_cursor_when_typing = false,
 
-  -- color_scheme = 'matrix',
-  -- color_scheme = 'Mirage',
-  -- color_scheme = 'AdventureTime',
-  color_scheme = 'shades-of-purple',
-  -- color_scheme = 'Dracula',
+  -- Dark theme: 'Dracula' 'matrix' 'Mirage' 'AdventureTime' 'shades-of-purple'
+  color_scheme = 'Dracula',
 
-  -- Light
-  -- color_scheme = 'ayu_light',
-  -- color_scheme = 'AtomOneLight',
-  -- color_scheme = 'Builtin Solarized Light',
-  -- color_scheme = 'Solarized Light (Gogh)',
+  -- Light theme: 'ayu_light', 'AtomOneLight', 'Builtin Solarized Light', 'Solarized Light (Gogh)',
   colors = {
     -- cursor_bg = '#FFFFFF',
     -- cursor_fg = '#eaeaea',
@@ -261,3 +254,5 @@ end
 wezterm.log_info('Config file ' .. wezterm.config_file)
 
 return config
+
+-- vim: set ft=lua syn=lua et sw=2 ts=2 sts=2 tw=78 fdl=0 fdm=marker:

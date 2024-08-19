@@ -149,8 +149,8 @@ if [ -d "$HOME/.nvm" ];then
   export NVM_DIR="$HOME/.nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
   # [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+  export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
 fi
-export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node/
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
@@ -162,11 +162,11 @@ fi
 export SDKMAN_DIR="$HOME/.sdkman"
 [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && . "$HOME/.sdkman/bin/sdkman-init.sh"
 
-# export MACOS_JAVA_8_HOME=~/.devenv/jdk1.8.0_401.jdk/Contents/Home
-# export JAVA_HOME="$MACOS_JAVA_8_HOME"
+export MACOS_JAVA_8_HOME=~/.devenv/jdk1.8.0_401.jdk/Contents/Home
+export JAVA_HOME="$MACOS_JAVA_8_HOME"
 # export MACOS_JAVA_17_HOME=~/.devenv/jdk-17.0.7.jdk/Contents/Home
 # export JAVA_HOME="$MACOS_JAVA_17_HOME"
-# export PATH="$JAVA_HOME/bin:$PATH"
+export PATH="$JAVA_HOME/bin:$PATH"
 
 export M2_HOME="$HOME/.devenv/apache-maven-3.9.4"
 export MAVEN_OPTS="-Xmx1024m"
@@ -177,7 +177,8 @@ export PATH="${M2_HOME}/bin:$PATH"
 export GRADLE_HOME="$HOME/.devenv/gradle-8.5"
 export PATH="${GRADLE_HOME}/bin:$PATH"
 
-eval "$(zoxide init ${SHELL##*/})"
+export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
 
-[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+eval "$(fzf --${SHELL##*/})"
+eval "$(zoxide init ${SHELL##*/})"
 # vim: set ft=sh syn=sh sw=2 ts=2 sts=2 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker:
