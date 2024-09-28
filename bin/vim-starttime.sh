@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#  Filename: /Users/tony/dotfiles-comm/bin/vim-starttime.sh
+#  Filename: vim-starttime.sh
 #      Desc: TODO (some description)
 #    Author: xutao(Tony Xu), hhktony@gmail.com
 #   Company: myself

@@ -45,7 +45,8 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install sd # sed like
   brew install ripgrep
   brew install cscope
-  brew install jq
+  # brew install jq
+  brew install dasel
   brew install jid
   brew install hyperfine
   brew install reattach-to-user-namespace

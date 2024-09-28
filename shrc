@@ -1,17 +1,12 @@
 export EDITOR=vim
 
-if command -v vimx >/dev/null; then
-  alias vi='vimx'
-  alias vim='vimx'
-  export EDITOR=vimx
-fi
+_has() {
+  return $( which $1 &>/dev/null )
+}
 
-alias tmux='tmux -2'
-alias tree='tree -CN'
-alias e='vim'
-alias cls='clear'
-# alias ip='colorize-ip'
-alias ccat="highlight --out-format=xterm256"
+alias mkdir='mkdir -p'
+alias which='type -a'
+alias ls='ls --color'
 
 # cd
 alias ..2='cd ../..'
@@ -23,30 +18,42 @@ alias path='echo -e ${PATH//:/\\n}'
 alias libpath='echo -e ${LD_LIBRARY_PATH//:/\\n}'
 
 alias cman='man -M /usr/share/man/zh_CN'
+
+if _has vimx; then
+  alias vi='vimx'
+  alias vim='vimx'
+  export EDITOR=vimx
+fi
+
+alias tmux='tmux -2'
+alias tree='tree -CN'
+alias e='vim'
+alias cls='clear'
+
+# alias ip='colorize-ip'
+alias ccat="highlight --out-format=xterm256"
 # alias indent='indent -npro -gnu -i4 -ts4 -sob -l80 -ss -bl -bli 0 -npcs -npsl -nut'
 alias indent='indent -npro -kr -i4 -ts4 -sob -l80 -ss -ncs -cp1 -il0'
 # alias dstat='dstat -cdlmnpsy'
-if command -v delta >/dev/null; then
+if _has delta; then
   alias diff='delta'
 else
   alias diff='diff -urNwB'
 fi
 
-alias proxy="export https_proxy=http://127.0.0.1:7893 http_proxy=http://127.0.0.1:7893 all_proxy=socks5://127.0.0.1:7893"
+alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 alias unproxy="unset http_proxy https_proxy all_proxy no_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY NO_PROXY"
 
 # command -v bat >/dev/null && alias cat='bat -p'
-command -v bat >/dev/null && alias less='bat -p'
-command -v btm >/dev/null && alias top='btm'
-command -v duf >/dev/null && alias df='duf'
-alias ls='ls --color'
+
+_has bat && alias less='bat -p'
+_has btm && alias top='btm'
+_has duf && alias df='duf'
+_has viddy && alias watch='viddy'
+
 # command -v lsd >/dev/null && alias ls='lsd'
-command -v watch >/dev/null && alias watch='viddy'
 
 # command -v rsync >/dev/null && alias scp='rsync -avuzP'
-
-alias mkdir='mkdir -p'
-alias which='type -a'
 
 # alias starwars="telnet towel.blinkenlights.nl"
 
@@ -56,10 +63,10 @@ macinfo() { curl https://api.macvendors.com/"$1" ;}
 # No args query myip info
 ipinfo() { curl -L ipinfo.io/"$1" ;}
 
-export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+_has rg && export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
 
-command -v bat  > /dev/null && export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
-command -v tree > /dev/null && export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+_has tree && export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+_has bat && export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
 
 yz() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -111,7 +118,7 @@ office()   { command libreoffice "$@" & }
 export LESS="-iR"
 
 # Enable colors for ls, etc.  Prefer ~/.dir_colors
-if command -v dircolors >/dev/null; then
+if _has dircolors; then
   if [ -f ~/.dir_colors ]; then
     eval "$(dircolors -b ~/.dir_colors)"
   elif [ -f /etc/DIR_COLORS ]; then
@@ -122,7 +129,7 @@ if command -v dircolors >/dev/null; then
   fi
 fi
 
-export PATH="/usr/local/sbin:$PATH"
+export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 
 # export BAT_THEME="Material-Theme-Darker"
 export BAT_THEME="Dracula"
@@ -140,6 +147,7 @@ if [ -d "${HOME}/.devenv/go" ];then
   export GOPATH="$HOME/workspace/go"
   export GOBIN="$GOPATH/bin"
   export PATH="$GOROOT/bin:$GOBIN:$PATH"
+  alias go_build_linux="CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build"
 fi
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.

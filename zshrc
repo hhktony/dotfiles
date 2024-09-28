@@ -65,7 +65,7 @@ plugins=(
 # /bin/bash -c "$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)"
 if [[ $(uname -s) == "Darwin" ]]; then
   HOMEBREW_PREFIX=$(brew --prefix)
-  export HOMEBREW_NO_AUTO_UPDATE=false
+  export HOMEBREW_NO_AUTO_UPDATE=
   export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
   export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
   export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"

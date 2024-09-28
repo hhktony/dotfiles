@@ -71,7 +71,7 @@ local config = {
   automatically_reload_config = true,
   -- exit_behavior = 'CloseOnCleanExit', -- if the shell program exited with a successful status
   switch_to_last_active_tab_when_closing_tab = false,
-  selection_word_boundary = " \\()\"'`:,;<>~!@#$%^&*|+=[]{}~?‘’",
+  selection_word_boundary = " \\()\"'`:,;<>~!@#$%^&*|+=[]{}~?‘’「【“”。；：}",
 
 
   -- Window
@@ -191,8 +191,8 @@ local config = {
     { key = 'v', mods = 'CMD', action = act.PasteFrom('Clipboard') },
 
     { -- TODO
-      key = 'e',
-      mods = 'CTRL|SHIFT',
+      key = ',',
+      mods = 'CTRL',
       action = act.PromptInputLine {
         description = 'Enter new name for tab',
         action = wezterm.action_callback(function(window, pane, line)
