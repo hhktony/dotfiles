@@ -8,3 +8,16 @@ vimperator/info
 ncmpcpp/error.log
 bin/nutstore
 config/karabiner/automatic_backups/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDE
+.idea/
+.vscode/
+*.code-workspace
+
+# SSH (包含敏感信息，移出 git 管理)
+ssh/config
