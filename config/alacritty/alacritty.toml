@@ -1,0 +1,115 @@
+[general]
+live_config_reload = true
+
+[window]
+# startup_mode = "Fullscreen"
+padding.x = 5
+padding.y = 5
+
+# decorations = "transparent"
+dimensions.columns = 120
+dimensions.lines = 25
+
+[cursor]
+style.shape = "Beam"
+
+[mouse]
+hide_when_typing = true
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.primary]
+background = "#15141b"
+foreground = "#edecee"
+
+[colors.bright]
+black = "#4d4d4d"
+blue = "#a277ff"
+cyan = "#61ffca"
+green = "#61ffca"
+magenta = "#a277ff"
+red = "#ff6767"
+white = "#edecee"
+yellow = "#ffca85"
+
+[colors.cursor]
+cursor = "#a277ff"
+
+[colors.normal]
+black = "#110f18"
+blue = "#a277ff"
+cyan = "#61ffca"
+green = "#61ffca"
+magenta = "#a277ff"
+red = "#ff6767"
+white = "#edecee"
+yellow = "#ffca85"
+
+[colors.search.focused_match]
+background = "#9F7AF5"
+foreground = "#ffffff"
+
+[colors.search.matches]
+background = "#ffffff"
+foreground = "#000000"
+
+[colors.selection]
+background = "#29263c"
+text = "CellForeground"
+
+[font]
+size = 16.0
+
+# [font.bold]
+# family = "JetBrains Mono"
+# style = "Regular"
+# 
+# [font.bold_italic]
+# family = "JetBrains Mono"
+# style = "Italic"
+
+# [font.italic]
+# family = "JetBrains Mono"
+# style = "Italic"
+
+# [font.normal]
+# family = "JetBrains Mono"
+# style = "Regular"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.offset]
+x = 0
+y = 8
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = " \\()\"'`:,;<>~!@#$%^&*|+=[]{}~?‘’「【“”。；：}"
+
+[hints]
+alphabet = "etovxqpdygfblzhckisuran"
+
+[[hints.enabled]]
+command = "xdg-open"
+hyperlinks = true
+post_processing = true
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-<>\"\\s{-}\\^⟨⟩`]+"
+binding.key = "o"
+binding.mods = "Command|Shift"
+
+[keyboard]
+bindings = [
+{ mods = "Command",       key = "T",    action = "CreateNewTab" },
+{ mods = "Command",       key = "N",    action = "CreateNewWindow" },
+{ mods = "Command|Shift", key = "P",    action = "SelectPreviousTab" },
+{ mods = "Command|Shift", key = "N",    action = "SelectNextTab" },
+# { key = "X", mods = "Command", action = "ToggleFullscreen" },
+# { key = "H", mods = "Command|Shift", action = "HideOtherApplications" },
+]

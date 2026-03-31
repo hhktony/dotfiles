@@ -70,13 +70,17 @@ local config = {
   audible_bell = "Disabled",
   automatically_reload_config = true,
   -- exit_behavior = 'CloseOnCleanExit', -- if the shell program exited with a successful status
-  switch_to_last_active_tab_when_closing_tab = false,
-  selection_word_boundary = " \\()\"'`:,;<>~!@#$%^&*|+=[]{}~?‘’「【“”。；：}",
-
+  selection_word_boundary = " \\()\"'`:,;<>!@#$%^&*|+=[]{}?‘’「【“”。；：}",
 
   -- Window
   native_macos_fullscreen_mode = true,
+
   adjust_window_size_when_changing_font_size = true,
+  window_frame = {
+    -- active_titlebar_bg = '#090909',
+    -- font = fonts.font,
+    -- font_size = fonts.font_size,
+  },
   -- window_background_opacity = 0.91, -- 如果设置为1.0会明显卡顿
   window_padding = {
     left = 5,
@@ -92,9 +96,10 @@ local config = {
   window_close_confirmation = "NeverPrompt",
 
   -- Font
-  font = wezterm.font_with_fallback({ "JetBrains Mono" }),
+  -- font = wezterm.font_with_fallback({ "JetBrains Mono" }),
+  font = wezterm.font_with_fallback({ "Maple Mono NF CN" }),
   -- font = wezterm.font "IntelOne Mono",
-  font_size = 14,
+  font_size = 16,
   -- freetype_load_target = "Mono",
 
   enable_scroll_bar = false,
@@ -103,12 +108,15 @@ local config = {
   enable_tab_bar = true,
   hide_tab_bar_if_only_one_tab = true,
   show_tab_index_in_tab_bar = true,
-  tab_max_width = 51,
-  scrollback_lines = 99999,
+  tab_max_width = 25,
   -- tab_bar_at_bottom = true,
-  -- use_fancy_tab_bar = false,
+  use_fancy_tab_bar = false,
+  switch_to_last_active_tab_when_closing_tab = false,
+
+  scrollback_lines = 99999,
 
   hide_mouse_cursor_when_typing = false,
+  pane_focus_follows_mouse = true,
 
   -- Dark theme: 'Dracula' 'matrix' 'Mirage' 'AdventureTime' 'shades-of-purple'
   color_scheme = 'Dracula',
@@ -121,7 +129,6 @@ local config = {
     selection_fg = '#222226'
   },
 
-  pane_focus_follows_mouse = true,
   inactive_pane_hsb = { hue = 1.0, saturation = 1.0, brightness = 1.0 },
 
   -- SteadyBlock, BlinkingBlock, SteadyUnderline, BlinkingUnderline, SteadyBar, and BlinkingBar.
@@ -174,7 +181,7 @@ local config = {
     { key = 'h', mods = 'LEADER',       action = act.ActivatePaneDirection('Left') },
     { key = 'j', mods = 'LEADER',       action = act.ActivatePaneDirection 'Down'},
     { key = 'k', mods = 'LEADER',       action = act.ActivatePaneDirection 'Up'},
-    { key = 'z', mods = "LEADER",       action = act.TogglePaneZoomState}, 
+    { key = 'z', mods = "LEADER",       action = act.TogglePaneZoomState},
 
     -- CaseSensitiveString
     { key = 'f', mods = 'CMD', action = act.Search { CaseInSensitiveString = '' } },
@@ -192,7 +199,7 @@ local config = {
 
     { -- TODO
       key = ',',
-      mods = 'CTRL',
+      mods = 'CMD',
       action = act.PromptInputLine {
         description = 'Enter new name for tab',
         action = wezterm.action_callback(function(window, pane, line)

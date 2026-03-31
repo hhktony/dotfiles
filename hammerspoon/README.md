@@ -2,10 +2,7 @@
 
 ## 使用方法
 
-1. 安装 [Hammerspoon](http://www.hammerspoon.org/)
-2. `git clone  https://github.com/forecho/hammerspoon-config.git ~/.hammerspoon`
-
-所以配置文件都在 `config.lua` 文件中，你可以按照自己的习惯或者需求修改此文件。
+所以配置文件都在 `config.lua` 文件中，可以自定义。
 
 > 注：修改 `.lua` 文件会自动加载。
 
@@ -64,22 +61,13 @@
 
 ### 快速启动
 
-* <kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd> + <kbd>I</kbd> `Iterm`
+* <kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd> + <kbd>I</kbd> `WezTerm`
 * <kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd> + <kbd>G</kbd> `Google Chrome`
-* <kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd> + <kbd>D</kbd> `Finder`
-* <kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd> + <kbd>Y</kbd> `Activity Monitor`
 * <kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd> + <kbd>P</kbd> `System Preferences`
-
-
-### 切换输入法
-
-* <kbd>Option</kbd> + <kbd>S</kbd> `搜狗输入法`
-* <kbd>Option</kbd> + <kbd>E</kbd> `系统 ABC`
-* <kbd>Option</kbd> + <kbd>.</kbd> `系统 ABC、系统简体中文，搜狗输入法轮流切换`
 
 ### 自动切换输入法
 
-具体看 `config.lua` 文件里面的 `appInputMethod` 值
+具体看 `config.lua` 文件里面的 `apps` 值
 
 ### 自动开关蓝牙
 

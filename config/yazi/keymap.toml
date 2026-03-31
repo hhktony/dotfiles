@@ -2,7 +2,7 @@
 # If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
-[manager]
+[mgr]
 
 keymap = [
 	{ on = [ "<Esc>" ], run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
@@ -48,15 +48,15 @@ keymap = [
 	{ on = [ "<Left>" ],  run = "leave",    desc = "Go back to the parent directory" },
 	{ on = [ "<Right>" ], run = "enter",    desc = "Enter the child directory" },
 
-	{ on = [ "g", "g" ], run = "arrow -99999999", desc = "Move cursor to the top" },
-	{ on = [ "G" ],      run = "arrow 99999999",  desc = "Move cursor to the bottom" },
+	{ on = [ "g", "g" ], run = "arrow top", desc = "Move cursor to the top" },
+	{ on = [ "G" ],      run = "arrow bot",  desc = "Move cursor to the bottom" },
 
 	# Selection
-	{ on = [ "<Space>" ], run = [ "select --state=none", "arrow 1" ], desc = "Toggle the current selection state" },
-	{ on = [ "v" ],       run = "visual_mode",                        desc = "Enter visual mode (selection mode)" },
-	{ on = [ "V" ],       run = "visual_mode --unset",                desc = "Enter visual mode (unset mode)" },
-	{ on = [ "<C-a>" ],   run = "select_all --state=true",            desc = "Select all files" },
-	{ on = [ "<C-r>" ],   run = "select_all --state=none",            desc = "Inverse selection of all files" },
+	{ on = [ "<Space>" ], run = "toggle",                        desc = "Toggle the current selection state" },
+	{ on = [ "v" ],       run = "visual_mode",                   desc = "Enter visual mode (selection mode)" },
+	{ on = [ "V" ],       run = "visual_mode --unset",           desc = "Enter visual mode (unset mode)" },
+	{ on = [ "<C-a>" ],   run = "toggle_all",                    desc = "Select all files" },
+	{ on = [ "<C-r>" ],   run = "toggle_all --state=on",         desc = "Inverse selection of all files" },
 
 	# Operation
 	{ on = [ "o" ],         run = "open",                        desc = "Open the selected files" },
@@ -87,6 +87,7 @@ keymap = [
 	# Linemode
 	{ on = [ "m", "s" ], run = "linemode size",        desc = "Set linemode to size" },
 	{ on = [ "m", "p" ], run = "linemode permissions", desc = "Set linemode to permissions" },
+	{ on = [ "m", "c" ], run = "linemode btime",       desc = "Set linemode to btime" },
 	{ on = [ "m", "m" ], run = "linemode mtime",       desc = "Set linemode to mtime" },
 	{ on = [ "m", "n" ], run = "linemode none",        desc = "Set linemode to none" },
 

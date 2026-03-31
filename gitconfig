@@ -34,6 +34,7 @@
     ign = ls-files -o -i --exclude-standard
     branches = branch -a
     branch-name = rev-parse --abbrev-ref --symbolic-full-name HEAD
+    bs = for-each-ref --sort=-committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(committerdate:relative)%(color:reset) - %(contents:subject)'
     remotes = remote -v
     ac = !git add -A && git commit
     lasttag = describe --tags --abbrev=0
@@ -49,7 +50,10 @@
 [gui]
     encoding = utf-8
 [color]
-    ui = true
+    diff = auto
+    status = auto
+    branch = auto
+    ui = auto
 [push]
     default = current
 [pull]

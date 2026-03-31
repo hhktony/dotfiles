@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #  Filename: brew.sh
-#      Desc: TODO (some description)
+#      Desc: tools
 #    Author: xutao(Tony Xu), hhktony@gmail.com
 #   Company: myself
 if [ "$(uname -s)" = 'Darwin' ]; then
@@ -22,7 +22,9 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install uutils-coreutils
   brew install grep
   brew install gnu-sed
-  brew install tree pv
+  brew install gnu-tar
+  brew install tree
+  # brew install pv
 
   # brew install rlwrap
   brew install zsh
@@ -35,6 +37,7 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install ncdu
   brew install duf
   brew install bat
+  # brew install ccat
   brew install hexyl
   brew install viddy
   brew install delta
@@ -46,6 +49,9 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install ripgrep
   brew install cscope
   # brew install jq
+  brew install fx
+  brew install yq
+  brew install yh
   brew install dasel
   brew install jid
   brew install hyperfine
@@ -57,14 +63,13 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install tig
   brew install tokei
   # brew install cloc
-  brew install graphviz
-  brew install imagemagick
-  brew install ffmpeg
+  # brew install graphviz
+  # brew install imagemagick
+  # brew install ffmpeg
   brew install gnupg
-  brew install highlight
+  # brew install highlight
   brew install p7zip
   brew install unar
-  brew install ranger
   brew install htop
   brew install bottom
   brew install procs
@@ -82,8 +87,9 @@ if [ "$(uname -s)" = 'Darwin' ]; then
   brew install universal-ctags
   brew install cheat
   brew install tealdeer
-  brew install yazi
   brew install ruby
+  # brew install ranger
+  brew install yazi
 
   # brew install vim # /usr/local/bin/vim
 

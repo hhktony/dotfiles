@@ -1,5 +1,7 @@
-hs.fnutils.each(applist, function(entry)
-    hs.hotkey.bind(kb.app, entry.shortcut, entry.appname, function()
-        hs.application.launchOrFocus(entry.appname)
-    end)
+hs.fnutils.each(apps, function(app)
+    if app.shortcut then  -- Only bind shortcuts for apps that have them defined
+        hs.hotkey.bind(kb.app, app.shortcut, app.name, function()
+            hs.application.launchOrFocus(app.name)
+        end)
+    end
 end)

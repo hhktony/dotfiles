@@ -5,46 +5,29 @@ kb = {
   focus   = {"ctrl", "alt", "cmd"},
 }
 
-applist = {
-  -- {shortcut = 'Q', appname = 'QQ'},
-  {shortcut = 'A', appname = 'Arc'},
-  {shortcut = 'C', appname = 'Visual Studio Code'},
-  {shortcut = 'G', appname = 'Google Chrome'},
-  {shortcut = 'E', appname = 'Microsoft Edge'},
-  -- {shortcut = 'F', appname = 'Firefox'},
-  -- {shortcut = 'I', appname = 'iTerm'},
-  {shortcut = 'I', appname = 'WezTerm'},
-  {shortcut = 'J', appname = 'IntelliJ IDEA'},
-  {shortcut = 'N', appname = '印象笔记'},
-  {shortcut = 'O', appname = 'Obsidian'},
-  {shortcut = 'S', appname = 'Sublime Text'},
-  {shortcut = 'W', appname = 'WeChat'},
-  {shortcut = 'T', appname = 'DingTalk'},
-  {shortcut = 'Z', appname = 'Zed'},
-  -- {shortcut = 'T', appname = 'Microsoft To Do'},
+apps = {
+  { name = 'Alacritty',      path = '/Applications/Alacritty.app',       shortcut = 'A', input = 'English' },
+  -- { name = 'Arc',            path = '/Applications/Arc.app',             shortcut = 'A', input = 'English' },
+  -- { name = 'Cursor',         path = '/Applications/Cursor.app',          shortcut = 'C', input = 'English' },
+  { name = 'Microsoft Edge', path = '/Applications/Microsoft Edge.app',  shortcut = 'E', input = 'English' },
+  { name = 'Google Chrome',  path = '/Applications/Google Chrome.app',   shortcut = 'G', input = 'English' },
+  { name = 'Ghostty',        path = '/Applications/Ghostty.app',         shortcut = 'I', input = 'English' },
+  -- { name = 'WezTerm',        path = '/Applications/WezTerm.app',         shortcut = 'I', input = 'English' },
+  -- { name = 'Iterm',          path = '/Applications/iTerm.app',            shortcut = 'I', input = 'English' },
+  -- { name = 'Warp',          path = '/Applications/Warp.app',            shortcut = 'I', input = 'English' },
+  { name = 'IntelliJ IDEA',  path = '/Applications/IntelliJ IDEA.app',   shortcut = 'J', input = 'English' },
+  -- { name = '印象笔记',       path = '/Applications/印象笔记.app',        shortcut = 'N', input = 'Chinese' },
+  { name = 'Obsidian',       path = '/Applications/Obsidian.app',        shortcut = 'O', input = 'English' },
+  { name = 'Sublime Text',   path = '/Applications/Sublime Text.app',    shortcut = 'S', input = 'English' },
+  { name = '企业微信',       path = '/Applications/企业微信.app',        shortcut = 'T', input = 'Chinese' },
+  { name = 'WeChat',         path = '/Applications/WeChat.app',          shortcut = 'W', input = 'Chinese' },
+  { name = 'Zed',            path = '/Applications/Zed.app',             shortcut = 'Z', input = 'English' },
+  -- System apps
+  { name = 'Finder',             path = '/System/Library/CoreServices/Finder.app', input = 'English' },
+  { name = 'System Preferences', path = '/Applications/System Preferences.app',    input = 'English' }
 }
 
-appInputMethod = {
-  {'/System/Library/CoreServices/Finder.app', 'English'},
-  {'/Applications/Arc.app', 'English'},
-  {'/Applications/iTerm.app', 'English'},
-  {'/Applications/WezTerm.app', 'English'},
-  {'/Applications/Visual Studio Code.app', 'English'},
-  {'/Applications/Sublime Text.app', 'English'},
-  {'/Applications/Zed.app', 'English'},
-  {'/Applications/Google Chrome.app', 'English'},
-  {'/Applications/印象笔记.app', 'Chinese'},
-  {'/Applications/DingTalk.app', 'Chinese'},
-  {'/Applications/WeChat.app', 'Chinese'},
-  {'/Applications/System Preferences.app', 'English'},
-  -- {'/Applications/Dash.app', 'English'},
-  -- {'/Applications/NeteaseMusic.app', 'Chinese'},
-  -- {'/Applications/MindNode.app', 'Chinese'},
-  -- {'/Applications/Kindle.app', 'English'},
-  -- {'/Applications/QQ.app', 'Chinese'},
-  -- {'/Applications/wechatwebdevtools.app', 'English'},
-  -- {'/Applications/Sketch.app', 'English'},
-}
+-- hs.hotkey.bind({ "alt" }, "i", function() hs.application.open("WezTerm.app") end)
 
 hs.hotkey.alertDuration = 0
 hs.hints.showTitleThresh = 0

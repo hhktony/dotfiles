@@ -92,7 +92,7 @@ alacritty_theme() {
   pushd /Users/fatih/Code/dotfiles
 
   cp alacritty.toml alacritty.toml.backup
-  local line="import = [\"/Users/fatih/.config/alacritty/themes/alacritty-gruvbox-$mode.toml\"]"
+  local line="import = [\"/Users/xutao/.config/alacritty/themes/alacritty-gruvbox-$mode.toml\"]"
   echo "$line" > alacritty.toml
 
   cat alacritty.toml.backup | tail -n +2 >> alacritty.toml

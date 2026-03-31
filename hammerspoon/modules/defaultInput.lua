@@ -9,12 +9,9 @@ end
 
 function updateFocusAppInputMethod()
     local focusAppPath = hs.window.frontmostWindow():application():path()
-    for index, app in pairs(appInputMethod) do
-        local appPath = app[1]
-        local expectedIme = app[2]
-
-        if focusAppPath == appPath then
-            if expectedIme == 'English' then
+    for _, app in pairs(apps) do
+        if focusAppPath == app.path then
+            if app.input == 'English' then
                 English()
             else
                 Chinese()

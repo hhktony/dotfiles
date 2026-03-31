@@ -6,7 +6,7 @@ _has() {
 
 alias mkdir='mkdir -p'
 alias which='type -a'
-alias ls='ls --color'
+alias ls="ls --color --time-style '+%Y-%m-%d %H:%M:%S'"
 
 # cd
 alias ..2='cd ../..'
@@ -31,7 +31,7 @@ alias e='vim'
 alias cls='clear'
 
 # alias ip='colorize-ip'
-alias ccat="highlight --out-format=xterm256"
+# alias ccat="highlight --out-format=xterm256"
 # alias indent='indent -npro -gnu -i4 -ts4 -sob -l80 -ss -bl -bli 0 -npcs -npsl -nut'
 alias indent='indent -npro -kr -i4 -ts4 -sob -l80 -ss -ncs -cp1 -il0'
 # alias dstat='dstat -cdlmnpsy'
@@ -46,27 +46,51 @@ alias unproxy="unset http_proxy https_proxy all_proxy no_proxy HTTP_PROXY HTTPS_
 
 # command -v bat >/dev/null && alias cat='bat -p'
 
+#_has gomi && alias rm='gomi'
 _has bat && alias less='bat -p'
+_has ccat && alias cat='ccat'
 _has btm && alias top='btm'
 _has duf && alias df='duf'
 _has viddy && alias watch='viddy'
-
-# command -v lsd >/dev/null && alias ls='lsd'
-
-# command -v rsync >/dev/null && alias scp='rsync -avuzP'
-
-# alias starwars="telnet towel.blinkenlights.nl"
-
-mkcd() { mkdir -p "$@" && cd "$_"; }
-weath() { curl wttr.in/"$1" ;}
-macinfo() { curl https://api.macvendors.com/"$1" ;}
-# No args query myip info
-ipinfo() { curl -L ipinfo.io/"$1" ;}
+_has tssh && alias ssh='tssh'
+_has cheat && alias c='cheat'
+# _has gitui && alias tig='gitui'
 
 _has rg && export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
-
 _has tree && export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 _has bat && export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always {}'"
+
+_has gemini && alias g='https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 gemini'
+
+# command -v lsd >/dev/null && alias ls='lsd'
+# command -v rsync >/dev/null && alias scp='rsync -avuzP'
+# alias starwars="telnet towel.blinkenlights.nl"
+
+# -i turns on "smartcase" search by default
+export LESS="-iR"
+
+# export TERM=xterm-256color
+
+# Enable colors for ls, etc.  Prefer ~/.dir_colors
+if _has dircolors; then
+  if [ -f ~/.dir_colors ]; then
+    eval "$(dircolors -b ~/.dir_colors)"
+  elif [ -f /etc/DIR_COLORS ]; then
+    eval "$(dircolors -b /etc/DIR_COLORS)"
+  else
+    dircolors -p > ~/.dir_colors
+    eval "$(dircolors -b ~/.dir_colors)"
+  fi
+fi
+
+mkcd() { mkdir -p "$@" && cd "$_"; }
+# c() { cheat "$1.md"; }
+weath() { curl wttr.in/"$1" ;}
+
+macinfo() { curl https://api.macvendors.com/"$1" ;}
+
+# No args query myip info
+ipinfo() { curl -L ipinfo.io/"$1" ;}
 
 yz() {
   local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
@@ -83,6 +107,11 @@ yz() {
 #   cd "$(_z -l 2>&1 | fzf --height 60% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')" || exit
 # }
 
+alias i3keys='grep ^bindsym ~/.i3/config | fzf'
+
+# fzf-locate() { xdg-open "$(locate "*" | fzf -e)" ; }
+# fzf-cd() { cd "$(locate "*" | fzf -e)" ; }
+
 v() {
   local files
   files=$(grep '^>' ~/.viminfo | cut -c3- |
@@ -93,41 +122,15 @@ v() {
 
 tm() {
   if (( $# )); then
-    tmux has-session -t "$*" && tmux attach -t "$*" || tmux new-session -s "$*"
+    tmux has-session -t "$*" && tmux -2 attach -t "$*" || tmux -2 new-session -s "$*"
   else
-    tmux attach || tmux new-session -s default
+    tmux -2 attach || tmux -2 new-session -s default
   fi
 }
 
-alias i3keys='grep ^bindsym ~/.i3/config | fzf'
-
-# fzf-locate() { xdg-open "$(locate "*" | fzf -e)" ; }
-# fzf-cd() { cd "$(locate "*" | fzf -e)" ; }
-
 te() { [ "$(gnuclient -batch -eval t 2>&-)" = "t" ] &&  gnuclient -q "$@" || ( xemacs "$@" &); }
 
-firefox()  { command firefox     "$@" & }
-evince()   { command evince      "$@" & }
-zathura()  { command zathura     "$@" & }
-shotwell() { command shotwell    "$@" & }
-office()   { command libreoffice "$@" & }
-
 # set -o vi # Shell is vi mode
-
-# -i turns on "smartcase" search by default
-export LESS="-iR"
-
-# Enable colors for ls, etc.  Prefer ~/.dir_colors
-if _has dircolors; then
-  if [ -f ~/.dir_colors ]; then
-    eval "$(dircolors -b ~/.dir_colors)"
-  elif [ -f /etc/DIR_COLORS ]; then
-    eval "$(dircolors -b /etc/DIR_COLORS)"
-  else
-    dircolors -p > ~/.dir_colors
-    eval "$(dircolors -b ~/.dir_colors)"
-  fi
-fi
 
 export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 
@@ -135,57 +138,69 @@ export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 export BAT_THEME="Dracula"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
-  export PATH="${PYENV_ROOT}/bin:${PATH}"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
+eval "$(mise activate ${SHELL##*/})"
 
-if [ -d "${HOME}/.devenv/go" ];then
-  export GOROOT="$HOME/.devenv/go"
-  export GOPATH="$HOME/workspace/go"
-  export GOBIN="$GOPATH/bin"
-  export PATH="$GOROOT/bin:$GOBIN:$PATH"
-  alias go_build_linux="CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build"
-fi
+# export PYENV_ROOT="${HOME}/.pyenv"
+# if [ -d "${PYENV_ROOT}" ]; then
+#   export PATH="${PYENV_ROOT}/bin:${PATH}"
+#   eval "$(pyenv init -)"
+#   eval "$(pyenv virtualenv-init -)"
+# fi
+
+# if [ -d "${HOME}/.devenv/go" ];then
+#   export GOROOT="$HOME/.devenv/go"
+#   export GOBIN="$GOPATH/bin"
+#   export GOPATH="$HOME/workspace/go"
+#   export PATH="$GOROOT/bin:$GOBIN:$PATH"
+#   alias go_build_linux="CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build"
+# fi
+export GOPATH="$HOME/workspace/go"
+export PATH="$GOROOT/bin:$GOBIN:$PATH"
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8'
 
-if [ -d "$HOME/.nvm" ];then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-  # [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-  export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
-fi
+# if [ -d "$HOME/.nvm" ];then
+#   export NVM_DIR="$HOME/.nvm"
+#   [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#   # [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#   export NVM_NODEJS_ORG_MIRROR=https://npmmirror.com/mirrors/node
+# fi
 
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-if [ -d "$HOME/.jenv" ]; then
-  export PATH="$HOME/.jenv/bin:$PATH"
-  eval "$(jenv init -)"
-fi
+# if [ -d "$HOME/.jenv" ]; then
+#   export PATH="$HOME/.jenv/bin:$PATH"
+#   eval "$(jenv init -)"
+# fi
 
-export SDKMAN_DIR="$HOME/.sdkman"
-[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && . "$HOME/.sdkman/bin/sdkman-init.sh"
+# export SDKMAN_DIR="$HOME/.sdkman"
+# [ -s "$HOME/.sdkman/bin/sdkman-init.sh" ] && . "$HOME/.sdkman/bin/sdkman-init.sh"
 
-export MACOS_JAVA_8_HOME=~/.devenv/jdk1.8.0_401.jdk/Contents/Home
-export JAVA_HOME="$MACOS_JAVA_8_HOME"
-# export MACOS_JAVA_17_HOME=~/.devenv/jdk-17.0.7.jdk/Contents/Home
-# export JAVA_HOME="$MACOS_JAVA_17_HOME"
-export PATH="$JAVA_HOME/bin:$PATH"
+# export MACOS_JAVA_8_HOME=~/.devenv/jdk1.8.0_401.jdk/Contents/Home
+# export JAVA_HOME="$MACOS_JAVA_8_HOME"
+# # export MACOS_JAVA_17_HOME=~/.devenv/jdk-17.0.7.jdk/Contents/Home
+# # export JAVA_HOME="$MACOS_JAVA_17_HOME"
+# export PATH="$JAVA_HOME/bin:$PATH"
 
 export M2_HOME="$HOME/.devenv/apache-maven-3.9.4"
 export MAVEN_OPTS="-Xmx1024m"
 export PATH="${M2_HOME}/bin:$PATH"
+
+export MAVEND_HOME="$HOME/.devenv/maven-mvnd-1.0.2-darwin-aarch64"
+export PATH="${MAVEND_HOME}/bin:$PATH"
 
 # export GRADLE_HOME="$HOME/.devenv/gradle-8.2.1"
 # export GRADLE_HOME="$HOME/.devenv/gradle-6.9.3"
 export GRADLE_HOME="$HOME/.devenv/gradle-8.5"
 export PATH="${GRADLE_HOME}/bin:$PATH"
 
+export JMETER_HOME="$HOME/.devenv/apache-jmeter-5.6.3"
+export PATH="${JMETER_HOME}/bin:$PATH"
+
 export PATH="$HOME/.bin:$HOME/.local/bin:$PATH"
+# CoPaw
+export PATH="$HOME/.copaw/bin:$PATH"
 
 eval "$(fzf --${SHELL##*/})"
 eval "$(zoxide init ${SHELL##*/})"

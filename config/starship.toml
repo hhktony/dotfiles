@@ -56,7 +56,7 @@ disabled=true
 disabled=true
 
 [nodejs]
-disabled=true
+# disabled=true
 format='[$symbol($version )]($style)'
 
 [lua]

@@ -196,7 +196,7 @@ moveto = function(win, n)
     hs.alert.show("Only " .. #screens .. " monitors ")
   else
     local toWin = screen.allScreens()[n]:name()
-    hs.alert.show("Move " .. win:application():name() .. " to " .. toWin)
+    -- hs.alert.show("Move " .. win:application():name() .. " to " .. toWin)
 
     hs.layout.apply({{nil, win:title(), toWin, hs.layout.maximized, nil, nil}})
   end

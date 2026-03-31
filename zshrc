@@ -8,7 +8,6 @@
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # ZSH_THEME="hhktony"
-# TODO(hhktony)
 eval "$(starship init zsh)"
 
 # if type brew &>/dev/null
@@ -50,28 +49,32 @@ plugins=(
   alias-tips
   docker
   sudo
+  mvn
   # pip
   # golang
   # git-flow
   # docke-compose
-  # kubectl
+  kubectl
+  fzf
   # npm
   # nvm
   # pyenv # TODO: slow
   # django
-  # kubectl
 )
 
 # /bin/bash -c "$(curl -fsSL https://gitee.com/ineo6/homebrew-install/raw/master/install.sh)"
 if [[ $(uname -s) == "Darwin" ]]; then
   HOMEBREW_PREFIX=$(brew --prefix)
-  export HOMEBREW_NO_AUTO_UPDATE=
+  export HOMEBREW_NO_AUTO_UPDATE=1
+  export HOMEBREW_AUTO_UPDATE_SECS=86400
   export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
   export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
   export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
   export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/bottles"
   export PATH="$HOMEBREW_PREFIX/opt/uutils-coreutils/libexec/uubin:$PATH"
   export PATH="$HOMEBREW_PREFIX/opt/gnu-sed/libexec/gnubin:$PATH"
+  export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+  export PATH="/opt/homebrew/opt/mysql@8.4/bin:$PATH"
   FPATH=$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH
 
   if command -v $HOMEBREW_PREFIX/bin/vim >/dev/null; then
@@ -107,15 +110,11 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 # }}}
 
-# [[ -d $HOME/.bin ]] && export PATH=$HOME/.bin:$PATH
-[[ -f $HOME/.shrc_local ]] && source $HOME/.shrc_local
 [[ -f $HOME/.shrc ]] && source $HOME/.shrc
+[[ -f $HOME/.shrc_local ]] && source $HOME/.shrc_local
 
 # welcome
 # echo -ne "Hi, `whoami`! It's "; date '+%A, %B %-d %Y'; uptime
-echo -ne ""
-
-source /Users/xutao/.config/broot/launcher/bash/br
 
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
