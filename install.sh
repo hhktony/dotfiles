@@ -69,7 +69,7 @@ do_link_dir()
 {
   local src_dir=$1 dst_dir=$2 filter=$3
 
-  for src in `ls $src_dir $filter`
+  for src in $(ls $src_dir $filter)
   do
     link_file "$src_dir$src" "$dst_dir$src"
   done
@@ -77,7 +77,7 @@ do_link_dir()
 
 config_zsh()
 {
-  set -i "s|ZSH=.*|ZSH=$oh_zsh_dir|g" "$DOTFILES_DIR"/zshrc
+  sed -i "s|ZSH=.*|ZSH=$oh_zsh_dir|g" "$DOTFILES_DIR"/zshrc
   [ -d "$oh_zsh_dir" ] && return
   $GIT_CLONE https://github.com/robbyrussell/oh-my-zsh.git "$oh_zsh_dir"
 
