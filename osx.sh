@@ -1,200 +1,200 @@
-# https://macos-defaults.com
-echo "Finder: show all filename extensions"
+# 参考: https://macos-defaults.com
+echo "Finder: 显示所有文件扩展名"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-echo "show hidden files by default"
+echo "默认显示隐藏文件"
 defaults write com.apple.Finder AppleShowAllFiles -bool false
 
-echo "expand save dialog by default"
+echo "默认展开保存对话框"
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
-# echo "show the ~/Library folder in Finder"
+# echo "在 Finder 中显示 ~/Library 文件夹"
 chflags nohidden ~/Library
 
-# echo "disable resume system wide"
+# echo "全局禁用恢复功能"
 # defaults write NSGlobalDomainNSQuitAlwaysKeepWindows -bool false
 
-echo "Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)"
+echo "启用所有控件的完整键盘访问（例如在模态对话框中启用 Tab）"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
-echo "Enable subpixel font rendering on non-Apple LCDs"
+echo "在非 Apple LCD 屏幕上启用亚像素字体渲染"
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
-# echo "Enable the 2D Dock"
+# echo "启用 2D Dock 样式"
 # defaults write com.apple.dock no-glass -bool true
 
-echo "Automatically hide and show the Dock"
+echo "自动隐藏和显示 Dock"
 defaults write com.apple.dock autohide -bool true
 
-#echo "Make Dock icons of hidden applications translucent"
+#echo "使已隐藏应用的 Dock 图标变为半透明"
 #defaults write com.apple.dock showhidden -bool true
 
-#echo "Enable iTunes track notifications in the Dock"
+#echo "在 Dock 中启用 iTunes 歌曲通知"
 #defaults write com.apple.dock itunes-notifications -bool true
 
-# Disable menu bar transparency
+# 禁用菜单栏透明度
 #defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
 
-# Show remaining battery time; hide percentage
+# 显示剩余电池时间；隐藏百分比
 # defaults write com.apple.menuextra.battery ShowPercent -string "NO"
 # defaults write com.apple.menuextra.battery ShowTime -string "YES"
 
-# echo "Always show scrollbars"
+# echo "始终显示滚动条"
 # defaults write NSGlobalDomain AppleShowScrollBars -string "Auto"
 
-#echo "Allow quitting Finder via ⌘ + Q; doing so will also hide desktop icons"
+#echo "允许通过 ⌘ + Q 退出 Finder；同时会隐藏桌面图标"
 #defaults write com.apple.finder QuitMenuItem -bool true
 
-echo "Disable window animations and Get Info animations in Finder"
+echo "禁用 Finder 中的窗口动画和获取信息动画"
 defaults write com.apple.finder DisableAllAnimations -bool true
 
-echo "Show Path bar in Finder"
+echo "在 Finder 中显示路径栏"
 defaults write com.apple.finder ShowPathbar -bool true
 
-echo "Show Status bar in Finder"
+echo "在 Finder 中显示状态栏"
 defaults write com.apple.finder ShowStatusBar -bool true
 
-# echo "Expand print panel by default"
+# echo "默认展开打印面板"
 # defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 
-#echo "Disable the “Are you sure you want to open this application?” dialog"
+#echo "禁用「你确定要打开此应用吗？」对话框"
 #defaults write com.apple.LaunchServices LSQuarantine -bool false
 
-#echo "Disable shadow in screenshots"
+#echo "禁用截图阴影"
 #defaults write com.apple.screencapture disable-shadow -bool true
 
-# echo "Enable highlight hover effect for the grid view of a stack (Dock)"
+# echo "启用 Dock 栈网格视图的高亮悬停效果"
 # defaults write com.apple.dock mouse-over-hilte-stack -bool true
 
-# echo "Enable spring loading for all Dock items"
+# echo "为所有 Dock 项目启用弹簧加载"
 # defaults write enable-spring-load-actions-on-all-items -bool true
 
-# echo "Show indicator lights for open applications in the Dock"
+# echo "在 Dock 中显示已打开应用的指示灯"
 # defaults write com.apple.dock show-process-indicators -bool true
 
-echo "Don’t animate opening applications from the Dock"
+echo "禁用从 Dock 打开应用时的动画"
 defaults write com.apple.dock launchanim -bool false
 
-#echo "Display ASCII control characters using caret notation in standard text views"
-# Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
+#echo "在标准文本视图中使用脱字符 notation 显示 ASCII 控制字符"
+# 尝试例如 `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
 #defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
 
-#echo "Disable press-and-hold for keys in favor of key repeat"
+#echo "禁用按键按住功能，改用按键重复"
 #defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
-#echo "Set a blazingly fast keyboard repeat rate"
+#echo "设置极快的键盘重复速率"
 defaults write NSGlobalDomain KeyRepeat -int 2
 
-#echo "Set a shorter Delay until key repeat"
+#echo "缩短按键重复的初始延迟"
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-#echo "Disable auto-correct"
+#echo "禁用自动纠错"
 #defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-echo "Disable opening and closing window animations"
+echo "禁用窗口打开和关闭动画"
 defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
 
-# echo "Disable disk image verification"
+# echo "禁用磁盘镜像验证"
 # defaults write com.apple.frameworks.diskimages skip-verify -bool true
 # defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 # defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
-# echo "Automatically open a new Finder window when a volume is mounted"
+# echo "挂载卷时自动打开新的 Finder 窗口"
 # defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
 # defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
 # defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
-# echo "Display full POSIX path as Finder window title"
+# echo "在 Finder 窗口标题中显示完整 POSIX 路径"
 # defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
 
-# Increase window resize speed for Cocoa applications
+# 加快 Cocoa 应用的窗口调整速度
 # defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
-# echo "Avoid creating .DS_Store files on network volumes"
+# echo "避免在网络卷上创建 .DS_Store 文件"
 # defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
-# echo "Disable the warning when changing a file extension"
+# echo "禁用更改文件扩展名时的警告"
 # defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
-# echo "Show item info below desktop icons"
+# echo "在桌面图标下方显示项目信息"
 # /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
 
-# echo "Enable snap-to-grid for desktop icons"
+# echo "启用桌面图标的自动对齐网格"
 # /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
-# echo "Disable the warning before emptying the Trash"
+# echo "禁用清空废纸篓前的警告"
 # defaults write com.apple.finder WarnOnEmptyTrash -bool false
 
-# Empty Trash securely by default
+# 默认安全清空废纸篓
 # defaults write com.apple.finder EmptyTrashSecurely -bool true
 
-#echo "Require password immediately after sleep or screen saver begins"
+#echo "睡眠或屏幕保护程序启动后立即要求输入密码"
 #defaults write com.apple.screensaver askForPassword -int 1
 #defaults write com.apple.screensaver askForPasswordDelay -int 0
 
-echo "Enable tap to click (Trackpad)"
+echo "启用触控板轻触点击"
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 
-#echo "Map bottom right Trackpad corner to right-click"
+#echo "将触控板右下角映射为右键点击"
 #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
 #defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
 
-# echo "Disable Safari’s thumbnail cache for History and Top Sites"
+# echo "禁用 Safari 的历史记录和常用站点的缩略图缓存"
 # defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
-echo "Enable Safari’s debug menu"
+echo "启用 Safari 的调试菜单"
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
 
-# echo "Make Safari’s search banners default to Contains instead of Starts With"
+# echo "将 Safari 的搜索栏默认改为「包含」而非「开头是」"
 # defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
 
-# Remove useless icons from Safari’s bookmarks bar
+# 从 Safari 书签栏移除无用图标
 # defaults write com.apple.Safari ProxiesInBookmarksBar "()"
 
-# echo "Add a context menu item for showing the Web Inspector in web views"
+# echo "在 Web 视图中添加显示 Web 检查器的上下文菜单项"
 # defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
-#echo "Only use UTF-8 in Terminal.app"
+#echo "在 Terminal.app 中仅使用 UTF-8"
 #defaults write com.apple.terminal StringEncodings -array 4
 
-# echo "Disable the Ping sidebar in iTunes"
+# echo "禁用 iTunes 中的 Ping 侧边栏"
 # defaults write com.apple.iTunes disablePingSidebar -bool true
 
-# echo "Disable all the other Ping stuff in iTunes"
+# echo "禁用 iTunes 中所有其他 Ping 功能"
 # defaults write com.apple.iTunes disablePing -bool true
 
-# echo "Make ⌘ + F focus the search input in iTunes"
+# echo "使 ⌘ + F 在 iTunes 中聚焦搜索输入框"
 # defaults write com.apple.iTunes NSUserKeyEquivalents -dict-add "Target Search Field" "@F"
 
-# Disable send and reply animations in Mail.app
+# 禁用 Mail.app 中的发送和回复动画
 # defaults write com.apple.Mail DisableReplyAnimations -bool true
 # defaults write com.apple.Mail DisableSendAnimations -bool true
 
-# Disable Resume system-wide
+# 全局禁用恢复功能
 # defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
 
-# echo "Disable the “reopen windows when logging back in” option"
-# This works, although the checkbox will still appear to be checked.
+# echo "禁用「重新登录时重新打开窗口」选项"
+# 此方法有效，但复选框仍会显示为选中状态
 # defaults write com.apple.loginwindow TALLogoutSavesState -bool false
 # defaults write com.apple.loginwindow LoginwindowLaunchesRelaunchApps -bool false
 
-# echo "Enable Dashboard dev mode (allows keeping widgets on the desktop)"
+# echo "启用 Dashboard 开发者模式（允许将小组件保留在桌面上）"
 # defaults write com.apple.dashboard devmode -bool true
 
-#echo "Reset Launchpad"
+#echo "重置 Launchpad"
 #[ -e ~/Library/Application\ Support/Dock/*.db ] && rm ~/Library/Application\ Support/Dock/*.db
 
-# echo "Disable local Time Machine backups"
+# echo "禁用本地 Time Machine 备份"
 # hash tmutil &> /dev/null && sudo tmutil disablelocal
 
-#echo "Remove Dropbox’s green checkmark icons in Finder"
+#echo "移除 Finder 中 Dropbox 的绿色勾号图标"
 #file=/Applications/Dropbox.app/Contents/Resources/check.icns
 #[ -e "$file" ] && mv -f "$file" "$file.bak"
 #unset file
 
-#Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
-# Commented out, as this is known to cause problems when saving files in Adobe Illustrator CS5 :(
+# 修复 QuickLook 中古老的 UTF-8 bug (http://mths.be/bbo)
+# 已注释掉，已知在 Adobe Illustrator CS5 中保存文件时会导致问题
 #echo "0x08000100:0" > ~/.CFUserTextEncoding
 
-echo "Kill affected applications"
+echo "重启受影响的应用"
 for app in Safari Finder Dock Mail SystemUIServer; do killall "$app" >/dev/null 2>&1; done
