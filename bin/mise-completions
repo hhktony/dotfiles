@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# 将 mise 安装的工具补全文件链接到 shell 补全目录
+# 用法: mise-completions [zsh|bash]
+
+set -euo pipefail
+
+MISE_INSTALLS="${MISE_DATA_DIR:-$HOME/.local/share/mise}/installs"
+
+setup_zsh() {
+  local target_dir="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/functions"
+  mkdir -p "$target_dir"
+
+  local count=0
+  while IFS= read -r f; do
+    local name target
+    name="$(basename "$f")"
+    target="$target_dir/$name"
+    if [[ ! -L "$target" ]]; then
+      ln -sf "$f" "$target"
+      ((count++))
+    fi
+  done < <(find "$MISE_INSTALLS" -path "*/autocomplete/_*" ! -name "*.ps1" -type f 2>/dev/null)
+
+  echo "zsh: 链接了 $count 个补全到 $target_dir"
+}
+
+setup_bash() {
+  local target_dir="$HOME/.local/share/bash-completion/completions"
+  mkdir -p "$target_dir"
+
+  local count=0
+  while IFS= read -r f; do
+    local name target
+    name="$(basename "$f")"
+    target="$target_dir/$name"
+    if [[ ! -L "$target" ]]; then
+      ln -sf "$f" "$target"
+      ((count++))
+    fi
+  done < <(find "$MISE_INSTALLS" -path "*/autocomplete/*" \( -name "*.bash" -o -name "*.sh" \) -type f 2>/dev/null)
+
+  echo "bash: 链接了 $count 个补全到 $target_dir"
+}
+
+case "${1:-zsh}" in
+  zsh)  setup_zsh ;;
+  bash) setup_bash ;;
+  *)    echo "用法: mise-completions [zsh|bash]"; exit 1 ;;
+esac

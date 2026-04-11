@@ -141,6 +141,7 @@ export BAT_THEME="Dracula"
 export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 eval "$(mise activate ${SHELL##*/})"
+# mise-completions ${SHELL##*/} 2>/dev/null
 
 # export PYENV_ROOT="${HOME}/.pyenv"
 # if [ -d "${PYENV_ROOT}" ]; then
