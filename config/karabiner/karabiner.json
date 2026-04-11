@@ -30,18 +30,16 @@
         {
           "identifiers": {
             "is_keyboard": true,
-            "product_id": 276,
             "vendor_id": 4176
           },
-          "manipulate_caps_lock_led": false
+          "manipulate_caps_lock_led": false,
+          "ignore": false
         },
         {
           "identifiers": {
-            "is_keyboard": true,
-            "product_id": 1031,
-            "vendor_id": 4176
+            "is_pointing_device": true
           },
-          "manipulate_caps_lock_led": false
+          "ignore": true
         }
       ],
       "fn_function_keys": [

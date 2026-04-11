@@ -54,6 +54,8 @@ _has duf && alias df='duf'
 _has viddy && alias watch='viddy'
 _has tssh && alias ssh='tssh'
 _has cheat && alias c='cheat'
+_has iina && alias p='iina'
+
 # _has gitui && alias tig='gitui'
 
 _has rg && export FZF_DEFAULT_COMMAND='rg --hidden -l ""'

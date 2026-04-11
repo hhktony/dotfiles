@@ -119,8 +119,6 @@ HISTSIZE=1000
 HISTFILESIZE=2000
 # }}}
 
-[ -f "$HOME/.bin/z.sh"   ] && source "$HOME/.bin/z.sh"
 [ -f "$HOME/.shrc"       ] && source "$HOME/.shrc"
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # vim: set sw=2 ts=2 sts=2 et tw=78 foldmarker={{{,}}} foldlevel=0 foldmethod=marker:

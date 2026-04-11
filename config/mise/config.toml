@@ -19,6 +19,12 @@ golangci-lint = "latest"
 gofumpt = "latest"
 # gopls = "latest"
 "ubi:goreleaser/goreleaser" = "latest"
+bun = "1.3.12"
+zig = "0.15.2"
+zls = "latest"
+lazygit = "latest"
+yq = "latest"
+lsd = "latest"
 
 [env]
 # _.python.venv = { path = ".venv", create = true, uv_create_args = ['--seed'] }
